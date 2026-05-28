@@ -100,7 +100,7 @@
   .past-card-body { padding: 20px 24px; }
   .past-card-desc { font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 20px; }
 
-  /* Facebook embed wrapper */
+  /* Facebook embed wrapper — fluid scaling */
   .fb-embed-wrap {
     background: #f0f2f5;
     border-radius: 10px;
@@ -109,10 +109,17 @@
     justify-content: center;
     padding: 16px;
   }
-  .fb-embed-wrap iframe {
+  .fb-embed-scaler {
+    width: 100%;
+    max-width: 500px;
+    overflow: hidden;
+  }
+  .fb-embed-scaler iframe {
+    width: 500px;
     max-width: 100%;
-    border-radius: 8px;
     display: block;
+    border-radius: 8px;
+    transform-origin: top left;
   }
 
   /* Placeholder for missing posts */
@@ -137,15 +144,37 @@
   .footer-links a:hover { color: var(--teal); }
   .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 16px; }
 
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .section-inner { padding: 0 4px; }
+    .past-card-title { font-size: 19px; }
+  }
+
   @media (max-width: 640px) {
     .nav-links { display: none; }
     .nav-hamburger { display: block; }
     .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 12px 16px 16px; border-bottom: 2px solid var(--border); box-shadow: var(--shadow); gap: 2px; }
     .nav-links.open a { padding: 10px 12px; }
-    .past-card-header { flex-direction: column; align-items: flex-start; }
-    .past-card-amount-wrap { text-align: left; }
-    .stats-inner { grid-template-columns: 1fr; gap: 20px; }
+    .page-header { padding: 40px 20px 32px; }
+    .stats-inner { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .strip-stat-value { font-size: 24px; }
+    .strip-stat-label { font-size: 10px; }
+    .section { padding: 28px 16px 48px; }
+    .past-card-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .past-card-header-left { gap: 10px; }
+    .past-card-icon { font-size: 28px; }
+    .past-card-title { font-size: 17px; }
+    .past-card-amount-wrap { text-align: left; padding-top: 8px; border-top: 1px solid var(--border); width: 100%; }
+    .past-card-body { padding: 16px; }
     .fb-embed-wrap { padding: 8px; }
+    .year-heading { font-size: 18px; }
+  }
+
+  @media (max-width: 420px) {
+    .stats-inner { grid-template-columns: 1fr; gap: 16px; }
+    .past-card-title { font-size: 15px; }
+    .past-card-meta { font-size: 12px; }
+    .nav-brand-sub { display: none; }
   }
 </style>
 </head>
@@ -176,7 +205,7 @@
 <!-- PAGE HEADER -->
 <div class="page-header">
   <div class="page-header-inner">
-    <h1>🏆 Past Fundraisers 🏆 </h1>
+    <h1>🏆 Past Fundraisers</h1>
     <p>A record of everything we've achieved together — every dollar raised goes directly back into Solway Primary School.</p>
   </div>
 </div>
@@ -207,28 +236,30 @@
     <div class="year-group">
       <div class="year-heading">📅 2026</div>
 
-<!-- Sausage Sizzle -->
-<div class="past-card">
-  <div class="past-card-header">
-    <div class="past-card-header-left">
-      <div class="past-card-icon">🏃🏃</div>
-      <div>
-        <div class="past-card-title">Sausage Sizzle — School Cross Country 🌭🌭</div>
-        <div class="past-card-meta">
-          <span>📅 27 May 2026</span>
-          <span class="tag-complete">✅ Complete</span>
-        </div>
-      </div>
-    </div>
+      <!-- Sausage Sizzle -->
+      <div class="past-card">
+        <div class="past-card-header">
+          <div class="past-card-header-left">
+            <div class="past-card-icon">🌭</div>
+            <div>
+              <div class="past-card-title">Sausage Sizzle — School Cross Country</div>
+              <div class="past-card-meta">
+                <span>📅 27 May 2026</span>
+                <span class="tag-complete">✅ Complete</span>
+              </div>
+            </div>
+          </div>
           <div class="past-card-amount-wrap">
             <div class="past-card-amount tbc">TBC</div>
             <div class="past-card-amount-label">Raised</div>
           </div>
         </div>
         <div class="past-card-body">
-          <div class="past-card-desc">Sausage sizzle held at the school cross country event. Thank you to everyone who came along and supported!</div>
+          <div class="past-card-desc">A sausage sizzle held at the school cross country event. Cash and card sales on the day — thank you to everyone who came along and supported!</div>
           <div class="fb-embed-wrap">
-            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid0suBJaPj7RU1hEDhRUUUJrKjqbcYE6JQErMVgERmjHUvbt4W5AW2hcSet9LyhP5JZl%26id%3D61577478982554&show_text=true&width=500" width="500" height="619" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            <div class="fb-embed-scaler">
+              <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid0suBJaPj7RU1hEDhRUUUJrKjqbcYE6JQErMVgERmjHUvbt4W5AW2hcSet9LyhP5JZl%26id%3D61577478982554&show_text=true&width=500" width="500" height="619" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
           </div>
         </div>
       </div>
@@ -254,7 +285,9 @@
         <div class="past-card-body">
           <div class="past-card-desc">Pre-ordered hot cross buns sold to school families in the lead-up to Easter. A delicious way to raise funds for the school!</div>
           <div class="fb-embed-wrap">
-            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02NfoLSxKdyt9su9Hpv1NkrT3JvrU8HFDU9mx5qFCdZKTJVCPH1a131dmSvvrtGAGQl%26id%3D61577478982554&show_text=true&width=500" width="500" height="250" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            <div class="fb-embed-scaler">
+              <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02NfoLSxKdyt9su9Hpv1NkrT3JvrU8HFDU9mx5qFCdZKTJVCPH1a131dmSvvrtGAGQl%26id%3D61577478982554&show_text=true&width=500" width="500" height="250" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
           </div>
         </div>
       </div>
@@ -278,7 +311,7 @@
           </div>
         </div>
         <div class="past-card-body">
-          <div class="past-card-desc">Iceblock Fridays throughout Term 1 — a favourite on hot days! </div>
+          <div class="past-card-desc">Iceblock sales to students throughout Term 1 — a favourite on hot days! Thank you to everyone who helped run the stall.</div>
           <div class="fb-placeholder">
             <div class="fb-placeholder-icon">📘</div>
             Facebook post coming soon
@@ -343,6 +376,29 @@
 function toggleNav() {
   document.getElementById('navLinks').classList.toggle('open');
 }
+
+// Scale Facebook iframes down on narrow screens
+function scaleFbEmbeds() {
+  document.querySelectorAll('.fb-embed-scaler').forEach(function(scaler) {
+    var iframe = scaler.querySelector('iframe');
+    if (!iframe) return;
+    var available = scaler.offsetWidth;
+    var native = 500;
+    if (available < native) {
+      var scale = available / native;
+      iframe.style.transform = 'scale(' + scale + ')';
+      iframe.style.height = (parseInt(iframe.getAttribute('height')) * scale) + 'px';
+      scaler.style.height = (parseInt(iframe.getAttribute('height')) * scale) + 'px';
+    } else {
+      iframe.style.transform = '';
+      iframe.style.height = '';
+      scaler.style.height = '';
+    }
+  });
+}
+
+window.addEventListener('load', scaleFbEmbeds);
+window.addEventListener('resize', scaleFbEmbeds);
 </script>
 </body>
 </html>
