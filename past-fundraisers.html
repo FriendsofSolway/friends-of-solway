@@ -13,13 +13,11 @@
     --teal-mid: #B2ECEA;
     --blue: #3B7DD8;
     --blue-dark: #2A5FA8;
-    --blue-light: #E3EEF9;
     --green: #2EAD6D;
     --green-light: #E5F5ED;
     --orange: #FF9800;
     --orange-dark: #EF6C00;
     --orange-light: #FFF3E0;
-    --red: #E53935;
     --bg: #F0FAFA;
     --card: #FFFFFF;
     --text: #1E3232;
@@ -29,7 +27,6 @@
     --shadow-sm: 0 2px 12px rgba(43,188,179,0.10);
     --shadow: 0 4px 24px rgba(43,188,179,0.14);
     --radius: 16px;
-    --radius-lg: 24px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
@@ -46,18 +43,12 @@
   .nav-links a:hover { background: var(--teal-light); color: var(--teal-dark); }
   .nav-links a.active { background: var(--teal-light); color: var(--teal-dark); }
   .nav-cta { background: linear-gradient(135deg, var(--teal), var(--blue)); color: white !important; padding: 8px 16px !important; border-radius: 10px !important; font-weight: 700 !important; }
-  .nav-cta:hover { opacity: 0.9; background: linear-gradient(135deg, var(--teal), var(--blue)) !important; color: white !important; }
+  .nav-cta:hover { opacity: 0.9; }
   .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-mid); margin: 5px 0; border-radius: 2px; transition: 0.2s; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-mid); margin: 5px 0; border-radius: 2px; }
 
   /* ── PAGE HEADER ── */
-  .page-header {
-    background: linear-gradient(160deg, #E8FAF9 0%, #EAF2FF 50%, #FFF8E1 100%);
-    padding: 56px 24px 48px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
+  .page-header { background: linear-gradient(160deg, #E8FAF9 0%, #EAF2FF 50%, #FFF8E1 100%); padding: 56px 24px 48px; text-align: center; position: relative; overflow: hidden; }
   .page-header::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(43,188,179,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
   .page-header-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
   .page-header h1 { font-family: 'Fredoka', sans-serif; font-size: clamp(28px, 5vw, 42px); font-weight: 700; color: var(--teal-dark); margin-bottom: 12px; }
@@ -69,48 +60,73 @@
   .strip-stat-value { font-family: 'Fredoka', sans-serif; font-size: 32px; font-weight: 700; color: var(--teal-dark); line-height: 1; margin-bottom: 4px; }
   .strip-stat-label { font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
 
-  /* ── FUNDRAISER LIST ── */
+  /* ── FUNDRAISER CARDS ── */
   .section { padding: 48px 24px 64px; }
-  .section-inner { max-width: 800px; margin: 0 auto; }
+  .section-inner { max-width: 860px; margin: 0 auto; }
 
-  .year-group { margin-bottom: 48px; }
-  .year-heading {
-    font-family: 'Fredoka', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--text-light);
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+  .year-group { margin-bottom: 56px; }
+  .year-heading { font-family: 'Fredoka', sans-serif; font-size: 22px; font-weight: 700; color: var(--text-light); margin-bottom: 24px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
 
   .past-card {
     background: white;
     border-radius: var(--radius);
     border: 2px solid var(--border);
     box-shadow: var(--shadow-sm);
-    padding: 24px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .past-card:hover { box-shadow: var(--shadow); }
+
+  .past-card-header {
     display: flex;
     align-items: center;
-    gap: 20px;
-    transition: all 0.2s;
+    justify-content: space-between;
+    padding: 20px 24px 16px;
+    gap: 16px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
   }
-  .past-card:hover { border-color: var(--teal); box-shadow: var(--shadow); transform: translateY(-2px); }
-  .past-card-icon { font-size: 40px; line-height: 1; flex-shrink: 0; width: 56px; text-align: center; }
-  .past-card-body { flex: 1; }
-  .past-card-title { font-family: 'Fredoka', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-  .past-card-meta { font-size: 13px; color: var(--text-light); font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .past-card-desc { font-size: 14px; color: var(--text-light); line-height: 1.5; }
-  .past-card-amount { text-align: right; flex-shrink: 0; }
-  .past-amount-value { font-family: 'Fredoka', sans-serif; font-size: 26px; font-weight: 700; color: var(--teal-dark); line-height: 1; white-space: nowrap; }
-  .past-amount-label { font-size: 11px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-top: 4px; }
-  .past-amount-placeholder { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: var(--border); }
-
+  .past-card-header-left { display: flex; align-items: center; gap: 14px; }
+  .past-card-icon { font-size: 36px; line-height: 1; flex-shrink: 0; }
+  .past-card-title { font-family: 'Fredoka', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .past-card-meta { font-size: 13px; color: var(--text-light); font-weight: 600; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .tag-complete { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 20px; background: var(--green-light); color: var(--green); }
+  .past-card-amount-wrap { text-align: right; flex-shrink: 0; }
+  .past-card-amount { font-family: 'Fredoka', sans-serif; font-size: 28px; font-weight: 700; color: var(--teal-dark); line-height: 1; }
+  .past-card-amount.tbc { font-size: 18px; color: #CCC; }
+  .past-card-amount-label { font-size: 11px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-top: 2px; }
+
+  .past-card-body { padding: 20px 24px; }
+  .past-card-desc { font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 20px; }
+
+  /* Facebook embed wrapper */
+  .fb-embed-wrap {
+    background: #f0f2f5;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+  }
+  .fb-embed-wrap iframe {
+    max-width: 100%;
+    border-radius: 8px;
+    display: block;
+  }
+
+  /* Placeholder for missing posts */
+  .fb-placeholder {
+    background: #f0f2f5;
+    border-radius: 10px;
+    padding: 28px;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 14px;
+    font-weight: 600;
+    border: 2px dashed var(--border);
+  }
+  .fb-placeholder-icon { font-size: 32px; margin-bottom: 8px; }
 
   /* ── FOOTER ── */
   footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 40px 24px 28px; text-align: center; }
@@ -126,9 +142,10 @@
     .nav-hamburger { display: block; }
     .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 12px 16px 16px; border-bottom: 2px solid var(--border); box-shadow: var(--shadow); gap: 2px; }
     .nav-links.open a { padding: 10px 12px; }
-    .past-card { flex-wrap: wrap; }
-    .past-card-amount { width: 100%; text-align: left; border-top: 1px solid var(--border); padding-top: 12px; margin-top: 4px; }
+    .past-card-header { flex-direction: column; align-items: flex-start; }
+    .past-card-amount-wrap { text-align: left; }
     .stats-inner { grid-template-columns: 1fr; gap: 20px; }
+    .fb-embed-wrap { padding: 8px; }
   }
 </style>
 </head>
@@ -146,7 +163,7 @@
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
-      <li><a href="#" class="active">Past Fundraisers</a></li>
+      <li><a href="past-fundraisers.html" class="active">Past Fundraisers</a></li>
       <li><a href="#">About</a></li>
       <li><a href="https://friendsofsolway.github.io/solway-pizza/solway-pizza-order.html" class="nav-cta">🍕 Order Pizza</a></li>
     </ul>
@@ -190,72 +207,115 @@
     <div class="year-group">
       <div class="year-heading">📅 2026</div>
 
+      <!-- Sausage Sizzle -->
       <div class="past-card">
-        <div class="past-card-icon">🌭</div>
-        <div class="past-card-body">
-          <div class="past-card-title">Sausage Sizzle — School Cross Country</div>
-          <div class="past-card-meta">
-            <span>📅 27 May 2026</span>
-            <span class="tag-complete">✅ Complete</span>
+        <div class="past-card-header">
+          <div class="past-card-header-left">
+            <div class="past-card-icon">🌭</div>
+            <div>
+              <div class="past-card-title">Sausage Sizzle — School Cross Country</div>
+              <div class="past-card-meta">
+                <span>📅 27 May 2026</span>
+                <span class="tag-complete">✅ Complete</span>
+              </div>
+            </div>
           </div>
-          <div class="past-card-desc">A sausage sizzle held at the school cross country event. Cash and card sales on the day.</div>
+          <div class="past-card-amount-wrap">
+            <div class="past-card-amount tbc">TBC</div>
+            <div class="past-card-amount-label">Raised</div>
+          </div>
         </div>
-        <div class="past-card-amount">
-          <div class="past-amount-placeholder">TBC</div>
-          <div class="past-amount-label">Raised</div>
+        <div class="past-card-body">
+          <div class="past-card-desc">A sausage sizzle held at the school cross country event. Cash and card sales on the day — thank you to everyone who came along and supported!</div>
+          <div class="fb-embed-wrap">
+            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid0suBJaPj7RU1hEDhRUUUJrKjqbcYE6JQErMVgERmjHUvbt4W5AW2hcSet9LyhP5JZl%26id%3D61577478982554&show_text=true&width=500" width="500" height="619" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+          </div>
         </div>
       </div>
 
+      <!-- Hot Cross Buns -->
       <div class="past-card">
-        <div class="past-card-icon">🍞</div>
-        <div class="past-card-body">
-          <div class="past-card-title">Hot Cross Buns Sale</div>
-          <div class="past-card-meta">
-            <span>📅 March 2026</span>
-            <span class="tag-complete">✅ Complete</span>
+        <div class="past-card-header">
+          <div class="past-card-header-left">
+            <div class="past-card-icon">🍞</div>
+            <div>
+              <div class="past-card-title">Hot Cross Buns Sale</div>
+              <div class="past-card-meta">
+                <span>📅 March 2026</span>
+                <span class="tag-complete">✅ Complete</span>
+              </div>
+            </div>
           </div>
-          <div class="past-card-desc">Pre-ordered hot cross buns sold to school families in the lead-up to Easter.</div>
+          <div class="past-card-amount-wrap">
+            <div class="past-card-amount tbc">TBC</div>
+            <div class="past-card-amount-label">Raised</div>
+          </div>
         </div>
-        <div class="past-card-amount">
-          <div class="past-amount-placeholder">TBC</div>
-          <div class="past-amount-label">Raised</div>
+        <div class="past-card-body">
+          <div class="past-card-desc">Pre-ordered hot cross buns sold to school families in the lead-up to Easter. A delicious way to raise funds for the school!</div>
+          <div class="fb-embed-wrap">
+            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02NfoLSxKdyt9su9Hpv1NkrT3JvrU8HFDU9mx5qFCdZKTJVCPH1a131dmSvvrtGAGQl%26id%3D61577478982554&show_text=true&width=500" width="500" height="250" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+          </div>
         </div>
       </div>
 
+      <!-- Iceblock Sales -->
       <div class="past-card">
-        <div class="past-card-icon">🧊</div>
-        <div class="past-card-body">
-          <div class="past-card-title">Iceblock Sales</div>
-          <div class="past-card-meta">
-            <span>📅 Term 1 2026</span>
-            <span class="tag-complete">✅ Complete</span>
+        <div class="past-card-header">
+          <div class="past-card-header-left">
+            <div class="past-card-icon">🧊</div>
+            <div>
+              <div class="past-card-title">Iceblock Sales</div>
+              <div class="past-card-meta">
+                <span>📅 Term 1 2026</span>
+                <span class="tag-complete">✅ Complete</span>
+              </div>
+            </div>
           </div>
-          <div class="past-card-desc">Iceblock sales to students throughout Term 1 — a favourite on hot days!</div>
+          <div class="past-card-amount-wrap">
+            <div class="past-card-amount tbc">TBC</div>
+            <div class="past-card-amount-label">Raised</div>
+          </div>
         </div>
-        <div class="past-card-amount">
-          <div class="past-amount-placeholder">TBC</div>
-          <div class="past-amount-label">Raised</div>
+        <div class="past-card-body">
+          <div class="past-card-desc">Iceblock sales to students throughout Term 1 — a favourite on hot days! Thank you to everyone who helped run the stall.</div>
+          <div class="fb-placeholder">
+            <div class="fb-placeholder-icon">📘</div>
+            Facebook post coming soon
+          </div>
         </div>
       </div>
+
     </div>
 
     <!-- 2025 -->
     <div class="year-group">
       <div class="year-heading">📅 2025</div>
 
+      <!-- Stock Drive -->
       <div class="past-card">
-        <div class="past-card-icon">🐄</div>
-        <div class="past-card-body">
-          <div class="past-card-title">Stock Drive</div>
-          <div class="past-card-meta">
-            <span>📅 November 2025</span>
-            <span class="tag-complete">✅ Complete</span>
+        <div class="past-card-header">
+          <div class="past-card-header-left">
+            <div class="past-card-icon">🐄</div>
+            <div>
+              <div class="past-card-title">Stock Drive</div>
+              <div class="past-card-meta">
+                <span>📅 November 2025</span>
+                <span class="tag-complete">✅ Complete</span>
+              </div>
+            </div>
           </div>
-          <div class="past-card-desc">A community stock drive fundraiser supporting the school.</div>
+          <div class="past-card-amount-wrap">
+            <div class="past-card-amount tbc">TBC</div>
+            <div class="past-card-amount-label">Raised</div>
+          </div>
         </div>
-        <div class="past-card-amount">
-          <div class="past-amount-placeholder">TBC</div>
-          <div class="past-amount-label">Raised</div>
+        <div class="past-card-body">
+          <div class="past-card-desc">A community stock drive fundraiser supporting the school. A great effort from everyone involved!</div>
+          <div class="fb-placeholder">
+            <div class="fb-placeholder-icon">📘</div>
+            Facebook post coming soon
+          </div>
         </div>
       </div>
 
