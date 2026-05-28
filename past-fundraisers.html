@@ -15,11 +15,7 @@
     --blue-dark: #2A5FA8;
     --green: #2EAD6D;
     --green-light: #E5F5ED;
-    --orange: #FF9800;
-    --orange-dark: #EF6C00;
-    --orange-light: #FFF3E0;
     --bg: #F0FAFA;
-    --card: #FFFFFF;
     --text: #1E3232;
     --text-mid: #3A5252;
     --text-light: #5A7070;
@@ -66,23 +62,11 @@
   .year-group { margin-bottom: 56px; }
   .year-heading { font-family: 'Fredoka', sans-serif; font-size: 22px; font-weight: 700; color: var(--text-light); margin-bottom: 24px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
 
-  .past-card {
-    background: white;
-    border-radius: var(--radius);
-    border-top: 2px solid var(--blue-dark);
-    border-left: 2px solid var(--blue-dark);
-    border-right: 2px solid var(--blue-dark);
-    border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
-    margin-bottom: 24px;
-    overflow: hidden;
-    transition: box-shadow 0.2s;
-  }
+  .past-card { background: white; border-radius: var(--radius); border-top: 2px solid var(--blue-dark); border-left: 2px solid var(--blue-dark); border-right: 2px solid var(--blue-dark); border-bottom: 1px solid var(--border); box-shadow: var(--shadow-sm); margin-bottom: 24px; overflow: hidden; transition: box-shadow 0.2s; }
   .past-card:hover { box-shadow: var(--shadow); }
-
   .past-card-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px 16px; gap: 16px; border-bottom: 1px solid var(--border); }
-  .past-card-header-left { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
   .past-card-emoji { width: 56px; height: 56px; border-radius: 50%; background: #E3EEF9; border: 2px solid var(--blue); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+  .past-card-info { flex: 1; min-width: 0; }
   .past-card-title { font-family: 'Fredoka', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 4px; word-break: break-word; }
   .past-card-meta { font-size: 13px; color: var(--text-light); font-weight: 600; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .tag-complete { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 20px; background: var(--green-light); color: var(--green); white-space: nowrap; }
@@ -97,8 +81,6 @@
   .fb-embed-wrap { background: #f0f2f5; border-radius: 10px; overflow: hidden; display: flex; justify-content: center; padding: 16px; }
   .fb-embed-scaler { width: 100%; max-width: 500px; overflow: hidden; }
   .fb-embed-scaler iframe { width: 500px; max-width: 100%; display: block; border-radius: 8px; transform-origin: top left; }
-  .fb-placeholder { background: #f0f2f5; border-radius: 10px; padding: 28px; text-align: center; color: var(--text-light); font-size: 14px; font-weight: 600; border: 2px dashed var(--border); }
-  .fb-placeholder-icon { font-size: 32px; margin-bottom: 8px; }
 
   /* ── FOOTER ── */
   footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 40px 24px 28px; text-align: center; }
@@ -177,7 +159,7 @@
       <div class="strip-stat-label">Fundraisers completed</div>
     </div>
     <div>
-      <div class="strip-stat-value">TBC</div>
+      <div class="strip-stat-value">$7,604+</div>
       <div class="strip-stat-label">Total raised</div>
     </div>
     <div>
@@ -191,21 +173,18 @@
 <section class="section">
   <div class="section-inner">
 
-    <!-- 2026 -->
     <div class="year-group">
       <div class="year-heading">📅 2026</div>
 
       <!-- Sausage Sizzle -->
       <div class="past-card">
         <div class="past-card-header">
-          <div class="past-card-header-left">
-            <div class="past-card-emoji">🏃</div>
-            <div>
-              <div class="past-card-title">🏃 Sausage Sizzle — School Cross Country 🌭🌭</div>
-              <div class="past-card-meta">
-                <span>📅 27 May 2026</span>
-                <span class="tag-complete">✅ Complete</span>
-              </div>
+          <div class="past-card-emoji">🏃</div>
+          <div class="past-card-info">
+            <div class="past-card-title">Sausage Sizzle — School Cross Country 🌭🌭</div>
+            <div class="past-card-meta">
+              <span>📅 27 May 2026</span>
+              <span class="tag-complete">✅ Complete</span>
             </div>
           </div>
           <div class="past-card-amount-wrap">
@@ -226,14 +205,12 @@
       <!-- Hot Cross Buns -->
       <div class="past-card">
         <div class="past-card-header">
-          <div class="past-card-header-left">
-            <div class="past-card-emoji">🐣</div>
-            <div>
-              <div class="past-card-title">🐣 Hot Cross Buns Sale 🍞🍞</div>
-              <div class="past-card-meta">
-                <span>📅 March 2026</span>
-                <span class="tag-complete">✅ Complete</span>
-              </div>
+          <div class="past-card-emoji">🐣</div>
+          <div class="past-card-info">
+            <div class="past-card-title">Hot Cross Buns Sale 🍞🍞</div>
+            <div class="past-card-meta">
+              <span>📅 March 2026</span>
+              <span class="tag-complete">✅ Complete</span>
             </div>
           </div>
           <div class="past-card-amount-wrap">
@@ -254,14 +231,12 @@
       <!-- Iceblock Sales -->
       <div class="past-card">
         <div class="past-card-header">
-          <div class="past-card-header-left">
-            <div class="past-card-emoji">🍧</div>
-            <div>
-              <div class="past-card-title">🍧 Iceblock Sales 🍧🍧</div>
-              <div class="past-card-meta">
-                <span>📅 Term 1 2026</span>
-                <span class="tag-complete">✅ Complete</span>
-              </div>
+          <div class="past-card-emoji">🍧</div>
+          <div class="past-card-info">
+            <div class="past-card-title">Iceblock Sales 🍧🍧</div>
+            <div class="past-card-meta">
+              <span>📅 Term 1 2026</span>
+              <span class="tag-complete">✅ Complete</span>
             </div>
           </div>
           <div class="past-card-amount-wrap">
@@ -277,14 +252,12 @@
       <!-- Stock Drive -->
       <div class="past-card">
         <div class="past-card-header">
-          <div class="past-card-header-left">
-            <div class="past-card-emoji">🐑</div>
-            <div>
-              <div class="past-card-title">🐑 Stock Drive 🐑🐑</div>
-              <div class="past-card-meta">
-                <span>📅 January 2026</span>
-                <span class="tag-complete">✅ Complete</span>
-              </div>
+          <div class="past-card-emoji">🐑</div>
+          <div class="past-card-info">
+            <div class="past-card-title">Stock Drive 🐑🐑</div>
+            <div class="past-card-meta">
+              <span>📅 January 2026</span>
+              <span class="tag-complete">✅ Complete</span>
             </div>
           </div>
           <div class="past-card-amount-wrap">
@@ -303,7 +276,6 @@
       </div>
 
     </div>
-
   </div>
 </section>
 
@@ -326,7 +298,6 @@
 function toggleNav() {
   document.getElementById('navLinks').classList.toggle('open');
 }
-
 function scaleFbEmbeds() {
   document.querySelectorAll('.fb-embed-scaler').forEach(function(scaler) {
     var iframe = scaler.querySelector('iframe');
@@ -345,7 +316,6 @@ function scaleFbEmbeds() {
     }
   });
 }
-
 window.addEventListener('load', scaleFbEmbeds);
 window.addEventListener('resize', scaleFbEmbeds);
 </script>
