@@ -66,15 +66,28 @@
   .year-group { margin-bottom: 56px; }
   .year-heading { font-family: 'Fredoka', sans-serif; font-size: 22px; font-weight: 700; color: var(--text-light); margin-bottom: 24px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
 
-  .past-card { background: white; border-radius: var(--radius); border: 2px solid var(--border); box-shadow: var(--shadow-sm); margin-bottom: 24px; overflow: hidden; transition: box-shadow 0.2s; }
+  .past-card {
+    background: white;
+    border-radius: var(--radius);
+    border-top: 4px solid var(--blue-dark);
+    border-left: 4px solid var(--blue-dark);
+    border-right: 4px solid var(--blue-dark);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 24px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
   .past-card:hover { box-shadow: var(--shadow); }
+
   .past-card-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px 16px; gap: 16px; border-bottom: 1px solid var(--border); }
   .past-card-header-left { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
+  .past-card-emoji { width: 56px; height: 56px; border-radius: 50%; background: #E3EEF9; border: 2px solid var(--blue); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
   .past-card-title { font-family: 'Fredoka', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 4px; word-break: break-word; }
   .past-card-meta { font-size: 13px; color: var(--text-light); font-weight: 600; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .tag-complete { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 20px; background: var(--green-light); color: var(--green); white-space: nowrap; }
   .past-card-amount-wrap { text-align: right; flex-shrink: 0; min-width: 60px; }
-  .past-card-amount { font-family: 'Fredoka', sans-serif; font-size: 28px; font-weight: 700; color: var(--teal-dark); line-height: 1; }
+  .past-card-amount { font-family: 'Fredoka', sans-serif; font-size: 28px; font-weight: 700; color: var(--blue-dark); line-height: 1; }
   .past-card-amount.tbc { font-size: 18px; color: #CCC; }
   .past-card-amount-label { font-size: 11px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-top: 2px; }
   .past-card-body { padding: 20px 24px; }
@@ -186,8 +199,9 @@
       <div class="past-card">
         <div class="past-card-header">
           <div class="past-card-header-left">
+            <div class="past-card-emoji">🏃</div>
             <div>
-              <div class="past-card-title">🏃🏃 Sausage Sizzle — School Cross Country 🌭🌭</div>
+              <div class="past-card-title">🏃 Sausage Sizzle — School Cross Country 🌭🌭</div>
               <div class="past-card-meta">
                 <span>📅 27 May 2026</span>
                 <span class="tag-complete">✅ Complete</span>
@@ -213,8 +227,9 @@
       <div class="past-card">
         <div class="past-card-header">
           <div class="past-card-header-left">
+            <div class="past-card-emoji">🐣</div>
             <div>
-              <div class="past-card-title">🐣🐣 Hot Cross Buns Sale 🍞🍞</div>
+              <div class="past-card-title">🐣 Hot Cross Buns Sale 🍞🍞</div>
               <div class="past-card-meta">
                 <span>📅 March 2026</span>
                 <span class="tag-complete">✅ Complete</span>
@@ -240,8 +255,9 @@
       <div class="past-card">
         <div class="past-card-header">
           <div class="past-card-header-left">
+            <div class="past-card-emoji">🍧</div>
             <div>
-              <div class="past-card-title">🍧🍧 Iceblock Sales 🍧🍧</div>
+              <div class="past-card-title">🍧 Iceblock Sales 🍧🍧</div>
               <div class="past-card-meta">
                 <span>📅 Term 1 2026</span>
                 <span class="tag-complete">✅ Complete</span>
@@ -255,18 +271,16 @@
         </div>
         <div class="past-card-body">
           <div class="past-card-desc">Iceblock sales to students throughout Term 1 — a favourite on hot days! Thank you to everyone who helped run the stall.</div>
-          </div>
         </div>
       </div>
-
-    </div>
 
       <!-- Stock Drive -->
       <div class="past-card">
         <div class="past-card-header">
           <div class="past-card-header-left">
+            <div class="past-card-emoji">🐑</div>
             <div>
-              <div class="past-card-title">🐑🐑 Stock Drive 🐑🐑</div>
+              <div class="past-card-title">🐑 Stock Drive 🐑🐑</div>
               <div class="past-card-meta">
                 <span>📅 January 2026</span>
                 <span class="tag-complete">✅ Complete</span>
@@ -274,7 +288,7 @@
             </div>
           </div>
           <div class="past-card-amount-wrap">
-            <div class="past-card-amount tbc">$7,020</div>
+            <div class="past-card-amount">$7,020</div>
             <div class="past-card-amount-label">Raised</div>
           </div>
         </div>
