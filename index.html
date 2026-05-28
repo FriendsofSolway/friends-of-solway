@@ -80,20 +80,22 @@
 
   /* ── GOAL CARD ── */
   .goal-card { background: white; border-radius: var(--radius-lg); border: 2px solid var(--border); box-shadow: var(--shadow); padding: 36px; max-width: 720px; margin: 0 auto; }
-  .goal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; gap: 16px; flex-wrap: wrap; }
+  .goal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; gap: 16px; flex-wrap: wrap; }
   .goal-title { font-family: 'Fredoka', sans-serif; font-size: 20px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
   .goal-desc { font-size: 14px; color: var(--text-light); max-width: 360px; }
-  .goal-badge { background: var(--green-light); color: var(--green); font-family: 'Fredoka', sans-serif; font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 20px; white-space: nowrap; }
-  .progress-track { background: var(--teal-light); border-radius: 100px; height: 24px; overflow: hidden; margin-bottom: 12px; position: relative; }
-  .progress-bar { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--teal), var(--blue)); position: relative; transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1); min-width: 0; }
-  .progress-bar::after { content: ''; position: absolute; top: 4px; right: 6px; bottom: 4px; width: 40px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3)); border-radius: 100px; }
-  .progress-shine { position: absolute; top: 4px; left: 8px; height: 6px; width: 30%; background: rgba(255,255,255,0.4); border-radius: 100px; }
-  .progress-labels { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-light); margin-bottom: 24px; }
-  .progress-pct { font-family: 'Fredoka', sans-serif; font-size: 13px; font-weight: 600; color: var(--teal-dark); }
-  .goal-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-top: 24px; border-top: 2px solid var(--border); }
-  .stat { text-align: center; }
-  .stat-value { font-family: 'Fredoka', sans-serif; font-size: 28px; font-weight: 700; color: var(--teal-dark); line-height: 1; margin-bottom: 4px; }
-  .stat-label { font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+  .goal-badge { background: var(--green-light); color: var(--green); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 20px; white-space: nowrap; }
+  .goal-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+  .stat-raised { background: #FAECE7; border-radius: var(--radius); padding: 14px 16px; border: 1px solid #F5C4B3; }
+  .stat-remaining { background: var(--bg); border-radius: var(--radius); padding: 14px 16px; }
+  .stat-goal { background: #EAF3DE; border-radius: var(--radius); padding: 14px 16px; border: 1px solid #C0DD97; }
+  .stat-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .stat-raised .stat-label { color: #993C1D; }
+  .stat-remaining .stat-label { color: var(--text-light); }
+  .stat-goal .stat-label { color: #3B6D11; }
+  .stat-value { font-family: 'Fredoka', sans-serif; font-size: 26px; font-weight: 700; line-height: 1; }
+  .stat-raised .stat-value { color: #712B13; }
+  .stat-remaining .stat-value { color: var(--text); }
+  .stat-goal .stat-value { color: #27500A; }
 
   /* ── WHAT WE'RE RAISING FOR ── */
   .raising-section { background: white; }
@@ -161,7 +163,7 @@
     .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 12px 16px 16px; border-bottom: 2px solid var(--border); box-shadow: var(--shadow); gap: 2px; }
     .nav-links.open a { padding: 10px 12px; }
     .goal-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .stat-value { font-size: 22px; }
+    .stat-value { font-size: 20px; }
     .hero { padding: 48px 20px 56px; }
     .section { padding: 40px 20px; }
   }
@@ -214,29 +216,68 @@
   <div class="section-inner" style="text-align:center">
     <div class="section-label">2026 Goal</div>
     <h2 class="section-title">Our Fundraising Progress</h2>
-    <p class="section-subtitle" style="margin:0 auto 32px">Here's where we're at!</p>
+    <p class="section-subtitle" style="margin:0 auto 32px">Every pizza ordered, every plant sold gets us closer. Here's where we're at!</p>
     <div class="goal-card">
       <div class="goal-header">
         <div>
-          <div class="goal-title">🎨 Concrete Art for Solway School 🎨 </div>
-          <div class="goal-desc">Bringing beautiful, lasting artwork games to our school grounds—a creative space every child can enjoy.</div>
+          <div class="goal-title">🎨 Concrete Art for Solway School</div>
+          <div class="goal-desc">Bringing beautiful, lasting artwork to our school grounds — a creative space every child can enjoy and be proud of.</div>
         </div>
-        <div class="goal-badge">✅ In progress</div>
+        <span class="goal-badge">✅ In progress</span>
       </div>
-      <div class="progress-track">
-        <div class="progress-bar" id="progressBar" style="width: 0%">
-          <div class="progress-shine"></div>
-        </div>
-      </div>
-      <div class="progress-labels">
-        <span>$0</span>
-        <span class="progress-pct" id="progressPct">0%</span>
-        <span>$15,000</span>
-      </div>
+
+      <svg id="thermometerSvg" viewBox="0 0 560 55" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+        <defs>
+          <clipPath id="thermClip">
+            <rect x="0" y="18" width="560" height="28" rx="14"/>
+          </clipPath>
+        </defs>
+        <text x="0"   y="12" text-anchor="start"  font-size="10" fill="#aaa">$0</text>
+        <text x="140" y="12" text-anchor="middle" font-size="10" fill="#aaa">$3,750</text>
+        <text x="280" y="12" text-anchor="middle" font-size="10" fill="#C0392B" font-weight="bold">$7,500</text>
+        <text x="420" y="12" text-anchor="middle" font-size="10" fill="#aaa">$11,250</text>
+        <text x="560" y="12" text-anchor="end"    font-size="10" fill="#3B8A3B" font-weight="bold">$15,000</text>
+        <line x1="140" y1="14" x2="140" y2="18" stroke="#ccc" stroke-width="1"/>
+        <line x1="280" y1="14" x2="280" y2="18" stroke="#C0392B" stroke-width="1.5"/>
+        <line x1="420" y1="14" x2="420" y2="18" stroke="#ccc" stroke-width="1"/>
+        <rect x="0" y="18" width="560" height="28" rx="14" fill="#ebebeb" stroke="#ccc" stroke-width="1.5"/>
+        <rect id="seg0"  x="1"   y="19" width="28" height="26" rx="3" fill="#ebebeb" clip-path="url(#thermClip)"/>
+        <rect id="seg1"  x="31"  y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg2"  x="61"  y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg3"  x="91"  y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg4"  x="121" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg5"  x="151" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg6"  x="181" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg7"  x="211" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg8"  x="241" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg9"  x="271" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg10" x="301" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg11" x="331" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg12" x="361" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg13" x="391" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg14" x="421" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg15" x="451" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg16" x="481" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg17" x="511" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg18" x="531" y="19" width="28" height="26" rx="3" fill="#ebebeb" clip-path="url(#thermClip)"/>
+        <line x1="140" y1="46" x2="140" y2="50" stroke="#ccc" stroke-width="1"/>
+        <line x1="280" y1="46" x2="280" y2="50" stroke="#C0392B" stroke-width="1.5"/>
+        <line x1="420" y1="46" x2="420" y2="50" stroke="#ccc" stroke-width="1"/>
+      </svg>
+
       <div class="goal-stats">
-        <div class="stat"><div class="stat-value" id="statRaised">$0</div><div class="stat-label">Raised so far</div></div>
-        <div class="stat"><div class="stat-value" id="statRemaining">$15,000</div><div class="stat-label">Still to go</div></div>
-        <div class="stat"><div class="stat-value" id="statPct">0%</div><div class="stat-label">Of goal reached</div></div>
+        <div class="stat-raised">
+          <div class="stat-label">🔥 Raised so far</div>
+          <div class="stat-value" id="statRaised">$0</div>
+        </div>
+        <div class="stat-remaining">
+          <div class="stat-label">💪 Still to go</div>
+          <div class="stat-value" id="statRemaining">$15,000</div>
+        </div>
+        <div class="stat-goal">
+          <div class="stat-label">🏆 Goal</div>
+          <div class="stat-value">$15,000</div>
+        </div>
       </div>
     </div>
   </div>
@@ -252,7 +293,7 @@
       <div class="raising-card">
         <span class="raising-icon">🎨</span>
         <div class="raising-card-title">Concrete Art</div>
-        <div class="raising-card-desc">Beautiful, lasting artwork games in our school grounds.</div>
+        <div class="raising-card-desc">Beautiful, lasting artwork installed in our school grounds — a creative landmark every child can be proud of.</div>
         <div class="raising-card-amount">$15,000 goal — current</div>
       </div>
       <div class="raising-card">
@@ -361,7 +402,7 @@
 
 <!-- ABOUT STRIP -->
 <div class="about-strip">
-  <h2>👋 Who are Friends of Solway?</h2>
+  <h2>👋 Who are Friends of Solway 👋?</h2>
   <p>We're a group of parents and caregivers who volunteer our time to raise funds that go directly back into Solway Primary School.</p>
   <a href="#" class="btn-white">Learn more about us →</a>
 </div>
@@ -387,14 +428,24 @@ function toggleNav() {
 }
 const GOAL = 15000;
 const RAISED = 0;
+const SEG_COLOURS = [
+  '#8B0000','#B22020','#C0392B','#D44020','#E05020',
+  '#E86820','#F08020','#F5A020','#F5C020','#EAD020',
+  '#C8D820','#A0C820','#80B820','#60A820','#409820',
+  '#308830','#287828','#206820','#185818'
+];
 function animateProgress() {
-  const pct = Math.min(Math.round((RAISED / GOAL) * 100), 100);
+  const pct = Math.min((RAISED / GOAL), 1);
   const remaining = Math.max(GOAL - RAISED, 0);
-  setTimeout(() => { document.getElementById('progressBar').style.width = pct + '%'; }, 300);
-  document.getElementById('progressPct').textContent = pct + '%';
+  const filledSegs = Math.round(pct * 19);
+  setTimeout(function() {
+    for (var i = 0; i < 19; i++) {
+      var seg = document.getElementById('seg' + i);
+      if (seg) seg.setAttribute('fill', i < filledSegs ? SEG_COLOURS[i] : '#ebebeb');
+    }
+  }, 300);
   document.getElementById('statRaised').textContent = '$' + RAISED.toLocaleString('en-NZ');
   document.getElementById('statRemaining').textContent = '$' + remaining.toLocaleString('en-NZ');
-  document.getElementById('statPct').textContent = pct + '%';
 }
 animateProgress();
 </script>
