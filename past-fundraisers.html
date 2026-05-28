@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Fundraisers — Friends of Solway</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #2BBCB3;
+    --teal-dark: #1A9E96;
+    --teal-light: #E0F7F6;
+    --teal-mid: #B2ECEA;
+    --blue: #3B7DD8;
+    --blue-dark: #2A5FA8;
+    --blue-light: #E3EEF9;
+    --green: #2EAD6D;
+    --green-light: #E5F5ED;
+    --orange: #FF9800;
+    --orange-dark: #EF6C00;
+    --orange-light: #FFF3E0;
+    --red: #E53935;
+    --bg: #F0FAFA;
+    --card: #FFFFFF;
+    --text: #1E3232;
+    --text-mid: #3A5252;
+    --text-light: #5A7070;
+    --border: #C8E6E4;
+    --shadow-sm: 0 2px 12px rgba(43,188,179,0.10);
+    --shadow: 0 4px 24px rgba(43,188,179,0.14);
+    --radius: 16px;
+    --radius-lg: 24px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav { background: white; border-bottom: 2px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); }
+  .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--teal-mid); }
+  .nav-brand-text { font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 600; color: var(--teal-dark); line-height: 1.2; }
+  .nav-brand-sub { font-size: 11px; font-weight: 400; color: var(--text-light); font-family: 'Nunito', sans-serif; display: block; }
+  .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 8px; transition: all 0.15s; }
+  .nav-links a:hover { background: var(--teal-light); color: var(--teal-dark); }
+  .nav-links a.active { background: var(--teal-light); color: var(--teal-dark); }
+  .nav-cta { background: linear-gradient(135deg, var(--teal), var(--blue)); color: white !important; padding: 8px 16px !important; border-radius: 10px !important; font-weight: 700 !important; }
+  .nav-cta:hover { opacity: 0.9; background: linear-gradient(135deg, var(--teal), var(--blue)) !important; color: white !important; }
+  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-mid); margin: 5px 0; border-radius: 2px; transition: 0.2s; }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    background: linear-gradient(160deg, #E8FAF9 0%, #EAF2FF 50%, #FFF8E1 100%);
+    padding: 56px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(43,188,179,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+  .page-header-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
+  .page-header h1 { font-family: 'Fredoka', sans-serif; font-size: clamp(28px, 5vw, 42px); font-weight: 700; color: var(--teal-dark); margin-bottom: 12px; }
+  .page-header p { font-size: 16px; color: var(--text-mid); max-width: 480px; margin: 0 auto; }
+
+  /* ── STATS STRIP ── */
+  .stats-strip { background: white; border-bottom: 2px solid var(--border); padding: 28px 24px; }
+  .stats-inner { max-width: 720px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center; }
+  .strip-stat-value { font-family: 'Fredoka', sans-serif; font-size: 32px; font-weight: 700; color: var(--teal-dark); line-height: 1; margin-bottom: 4px; }
+  .strip-stat-label { font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  /* ── FUNDRAISER LIST ── */
+  .section { padding: 48px 24px 64px; }
+  .section-inner { max-width: 800px; margin: 0 auto; }
+
+  .year-group { margin-bottom: 48px; }
+  .year-heading {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .past-card {
+    background: white;
+    border-radius: var(--radius);
+    border: 2px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    padding: 24px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.2s;
+  }
+  .past-card:hover { border-color: var(--teal); box-shadow: var(--shadow); transform: translateY(-2px); }
+  .past-card-icon { font-size: 40px; line-height: 1; flex-shrink: 0; width: 56px; text-align: center; }
+  .past-card-body { flex: 1; }
+  .past-card-title { font-family: 'Fredoka', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .past-card-meta { font-size: 13px; color: var(--text-light); font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .past-card-desc { font-size: 14px; color: var(--text-light); line-height: 1.5; }
+  .past-card-amount { text-align: right; flex-shrink: 0; }
+  .past-amount-value { font-family: 'Fredoka', sans-serif; font-size: 26px; font-weight: 700; color: var(--teal-dark); line-height: 1; white-space: nowrap; }
+  .past-amount-label { font-size: 11px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-top: 4px; }
+  .past-amount-placeholder { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: var(--border); }
+
+  .tag-complete { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 20px; background: var(--green-light); color: var(--green); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 40px 24px 28px; text-align: center; }
+  .footer-logo { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px; display: block; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
+  .footer-name { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: white; margin-bottom: 6px; }
+  .footer-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 16px 0; flex-wrap: wrap; }
+  .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
+  .footer-links a:hover { color: var(--teal); }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 16px; }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: block; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 12px 16px 16px; border-bottom: 2px solid var(--border); box-shadow: var(--shadow); gap: 2px; }
+    .nav-links.open a { padding: 10px 12px; }
+    .past-card { flex-wrap: wrap; }
+    .past-card-amount { width: 100%; text-align: left; border-top: 1px solid var(--border); padding-top: 12px; margin-top: 4px; }
+    .stats-inner { grid-template-columns: 1fr; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src="https://friendsofsolway.github.io/solway-pizza/Friends_of_Solway_Logo.png" alt="Friends of Solway" class="nav-logo">
+      <span class="nav-brand-text">
+        Friends of Solway
+        <span class="nav-brand-sub">Solway Primary School</span>
+      </span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#" class="active">Past Fundraisers</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="https://friendsofsolway.github.io/solway-pizza/solway-pizza-order.html" class="nav-cta">🍕 Order Pizza</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <h1>🏆 Past Fundraisers</h1>
+    <p>A record of everything we've achieved together — every dollar raised goes directly back into Solway Primary School.</p>
+  </div>
+</div>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div>
+      <div class="strip-stat-value">4</div>
+      <div class="strip-stat-label">Fundraisers completed</div>
+    </div>
+    <div>
+      <div class="strip-stat-value">TBC</div>
+      <div class="strip-stat-label">Total raised</div>
+    </div>
+    <div>
+      <div class="strip-stat-value">2</div>
+      <div class="strip-stat-label">Years fundraising</div>
+    </div>
+  </div>
+</div>
+
+<!-- FUNDRAISER LIST -->
+<section class="section">
+  <div class="section-inner">
+
+    <!-- 2026 -->
+    <div class="year-group">
+      <div class="year-heading">📅 2026</div>
+
+      <div class="past-card">
+        <div class="past-card-icon">🌭</div>
+        <div class="past-card-body">
+          <div class="past-card-title">Sausage Sizzle — School Cross Country</div>
+          <div class="past-card-meta">
+            <span>📅 27 May 2026</span>
+            <span class="tag-complete">✅ Complete</span>
+          </div>
+          <div class="past-card-desc">A sausage sizzle held at the school cross country event. Cash and card sales on the day.</div>
+        </div>
+        <div class="past-card-amount">
+          <div class="past-amount-placeholder">TBC</div>
+          <div class="past-amount-label">Raised</div>
+        </div>
+      </div>
+
+      <div class="past-card">
+        <div class="past-card-icon">🍞</div>
+        <div class="past-card-body">
+          <div class="past-card-title">Hot Cross Buns Sale</div>
+          <div class="past-card-meta">
+            <span>📅 March 2026</span>
+            <span class="tag-complete">✅ Complete</span>
+          </div>
+          <div class="past-card-desc">Pre-ordered hot cross buns sold to school families in the lead-up to Easter.</div>
+        </div>
+        <div class="past-card-amount">
+          <div class="past-amount-placeholder">TBC</div>
+          <div class="past-amount-label">Raised</div>
+        </div>
+      </div>
+
+      <div class="past-card">
+        <div class="past-card-icon">🧊</div>
+        <div class="past-card-body">
+          <div class="past-card-title">Iceblock Sales</div>
+          <div class="past-card-meta">
+            <span>📅 Term 1 2026</span>
+            <span class="tag-complete">✅ Complete</span>
+          </div>
+          <div class="past-card-desc">Iceblock sales to students throughout Term 1 — a favourite on hot days!</div>
+        </div>
+        <div class="past-card-amount">
+          <div class="past-amount-placeholder">TBC</div>
+          <div class="past-amount-label">Raised</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2025 -->
+    <div class="year-group">
+      <div class="year-heading">📅 2025</div>
+
+      <div class="past-card">
+        <div class="past-card-icon">🐄</div>
+        <div class="past-card-body">
+          <div class="past-card-title">Stock Drive</div>
+          <div class="past-card-meta">
+            <span>📅 November 2025</span>
+            <span class="tag-complete">✅ Complete</span>
+          </div>
+          <div class="past-card-desc">A community stock drive fundraiser supporting the school.</div>
+        </div>
+        <div class="past-card-amount">
+          <div class="past-amount-placeholder">TBC</div>
+          <div class="past-amount-label">Raised</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="https://friendsofsolway.github.io/solway-pizza/Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
+  <div class="footer-name">Friends of Solway</div>
+  <div style="font-size:13px;margin-bottom:4px">Fundraising committee for Solway Primary School, Masterton</div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="past-fundraisers.html">Past Fundraisers</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="https://friendsofsolway.github.io/solway-pizza/solway-pizza-order.html">Order Pizza</a></li>
+    <li><a href="https://friendsofsolway.github.io/solway-pizza/solway-pizza-my-orders.html">My Orders</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Friends of Solway. All fundraising goes to Solway Primary School. 🌿</div>
+</footer>
+
+<script>
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+</script>
+</body>
+</html>
