@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Sponsors — Friends of Solway</title>
+<title>Friends of Solway — Fundraising for Solway Primary School</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -13,28 +13,25 @@
     --teal-mid: #B2ECEA;
     --blue: #3B7DD8;
     --blue-dark: #2A5FA8;
+    --blue-light: #E3EEF9;
     --green: #2EAD6D;
     --green-light: #E5F5ED;
     --orange: #FF9800;
     --orange-dark: #EF6C00;
     --orange-light: #FFF3E0;
-    --gold: #F5A623;
-    --gold-light: #FEF6E7;
-    --gold-dark: #C47D0E;
-    --silver: #8A9BA8;
-    --silver-light: #F0F4F7;
-    --silver-dark: #5A6B7A;
-    --bronze: #CD7F32;
-    --bronze-light: #FAF0E6;
-    --bronze-dark: #8B5A1F;
+    --yellow: #FFD600;
+    --red: #E53935;
     --bg: #F0FAFA;
+    --card: #FFFFFF;
     --text: #1E3232;
     --text-mid: #3A5252;
     --text-light: #5A7070;
     --border: #C8E6E4;
     --shadow-sm: 0 2px 12px rgba(43,188,179,0.10);
     --shadow: 0 4px 24px rgba(43,188,179,0.14);
+    --shadow-lg: 0 8px 40px rgba(43,188,179,0.18);
     --radius: 16px;
+    --radius-lg: 24px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
@@ -51,158 +48,104 @@
   .nav-links a:hover { background: var(--teal-light); color: var(--teal-dark); }
   .nav-links a.active { background: var(--teal-light); color: var(--teal-dark); }
   .nav-cta { background: linear-gradient(135deg, var(--teal), var(--blue)); color: white !important; padding: 8px 16px !important; border-radius: 10px !important; font-weight: 700 !important; }
-  .nav-cta:hover { opacity: 0.9; }
+  .nav-cta:hover { opacity: 0.9; background: linear-gradient(135deg, var(--teal), var(--blue)) !important; color: white !important; }
   .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-mid); margin: 5px 0; border-radius: 2px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-mid); margin: 5px 0; border-radius: 2px; transition: 0.2s; }
 
-  /* ── PAGE HEADER ── */
-  .page-header { background: linear-gradient(160deg, #E8FAF9 0%, #EAF2FF 50%, #FFF8E1 100%); padding: 56px 24px 48px; text-align: center; position: relative; overflow: hidden; }
-  .page-header::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(43,188,179,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
-  .page-header-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
-  .page-header h1 { font-family: 'Fredoka', sans-serif; font-size: clamp(28px, 5vw, 42px); font-weight: 700; color: var(--teal-dark); margin-bottom: 12px; }
-  .page-header p { font-size: 16px; color: var(--text-mid); max-width: 620px; margin: 0 auto; }
+  /* ── HERO ── */
+  .hero { background: linear-gradient(160deg, #E8FAF9 0%, #EAF2FF 50%, #FFF8E1 100%); padding: 64px 24px 72px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(43,188,179,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+  .hero::after { content: ''; position: absolute; bottom: -60px; left: -60px; width: 260px; height: 260px; background: radial-gradient(circle, rgba(59,125,216,0.10) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+  .hero-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-logo-wrap { width: 200px; height: 200px; margin: 0 auto 28px; position: relative; animation: fadeUp 0.6s ease both; }
+  .hero-logo-ring { position: absolute; inset: -8px; border-radius: 50%; border: 3px solid transparent; background: linear-gradient(135deg, var(--teal), var(--blue), var(--teal)) border-box; -webkit-mask: linear-gradient(white 0 0) padding-box, linear-gradient(white 0 0); -webkit-mask-composite: destination-out; mask-composite: exclude; opacity: 0.6; }
+  .hero-logo-ring2 { position: absolute; inset: -16px; border-radius: 50%; border: 2px solid var(--teal-mid); opacity: 0.4; }
+  .hero-logo { width: 200px; height: 200px; display: block; border-radius: 50%; box-shadow: 0 12px 48px rgba(43,188,179,0.28), 0 4px 16px rgba(43,188,179,0.15); border: 5px solid white; object-fit: cover; position: relative; z-index: 1; }
+  .hero h1 { font-family: 'Fredoka', sans-serif; font-size: clamp(30px, 6vw, 46px); font-weight: 700; color: var(--teal-dark); line-height: 1.15; margin-bottom: 14px; animation: fadeUp 0.6s 0.1s ease both; }
+  .hero h1 em { color: var(--blue-dark); font-style: normal; }
+  .hero-subtitle { font-size: 17px; color: var(--text-mid); max-width: 480px; margin: 0 auto 32px; animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: linear-gradient(135deg, var(--teal), var(--blue)); color: white; text-decoration: none; font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 600; border-radius: 12px; box-shadow: 0 4px 16px rgba(43,188,179,0.35); transition: all 0.2s; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(43,188,179,0.45); }
+  .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: white; color: var(--teal-dark); text-decoration: none; font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 600; border-radius: 12px; border: 2px solid var(--border); transition: all 0.2s; }
+  .btn-secondary:hover { border-color: var(--teal); background: var(--teal-light); transform: translateY(-2px); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
   /* ── SECTIONS ── */
-  .section { padding: 48px 24px; }
-  .section-inner { max-width: 900px; margin: 0 auto; }
+  .section { padding: 56px 24px; }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+  .section-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 8px; }
+  .section-title { font-family: 'Fredoka', sans-serif; font-size: clamp(22px, 4vw, 32px); font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.2; }
+  .section-subtitle { font-size: 15px; color: var(--text-light); margin-bottom: 32px; max-width: 520px; }
 
-  /* ── TIER HEADING ── */
-  .tier-heading {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-    padding-bottom: 12px;
-    border-bottom: 2px solid var(--border);
-  }
-  .tier-badge {
-    font-family: 'Fredoka', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    padding: 6px 18px;
-    border-radius: 20px;
-  }
-  .tier-badge.gold { background: var(--gold-light); color: var(--gold-dark); border: 1px solid var(--gold); }
-  .tier-badge.silver { background: var(--silver-light); color: var(--silver-dark); border: 1px solid var(--silver); }
-  .tier-badge.bronze { background: var(--bronze-light); color: var(--bronze-dark); border: 1px solid var(--bronze); }
-  .tier-title { font-family: 'Fredoka', sans-serif; font-size: 30px; font-weight: 700; color: var(--text); }
+  /* ── GOAL CARD ── */
+  .goal-card { background: white; border-radius: var(--radius-lg); border: 2px solid var(--border); box-shadow: var(--shadow); padding: 36px; max-width: 720px; margin: 0 auto; }
+  .goal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; gap: 16px; flex-wrap: wrap; }
+  .goal-title { font-family: 'Fredoka', sans-serif; font-size: 20px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .goal-desc { font-size: 14px; color: var(--text-light); max-width: 360px; }
+  .goal-badge { background: var(--green-light); color: var(--green); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 2px 8px; border-radius: 20px; white-space: nowrap; }
+  .goal-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+  .stat-raised { background: #FAECE7; border-radius: var(--radius); padding: 14px 16px; border: 1px solid #F5C4B3; }
+  .stat-remaining { background: var(--bg); border-radius: var(--radius); padding: 14px 16px; }
+  .stat-goal { background: #EAF3DE; border-radius: var(--radius); padding: 14px 16px; border: 1px solid #C0DD97; }
+  .stat-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .stat-raised .stat-label { color: #993C1D; }
+  .stat-remaining .stat-label { color: var(--text-light); }
+  .stat-goal .stat-label { color: #3B6D11; }
+  .stat-value { font-family: 'Fredoka', sans-serif; font-size: 26px; font-weight: 700; line-height: 1; }
+  .stat-raised .stat-value { color: #712B13; }
+  .stat-remaining .stat-value { color: var(--text); }
+  .stat-goal .stat-value { color: #27500A; }
 
-  /* ── SPONSOR CARDS ── */
-  .sponsors-grid { display: grid; gap: 20px; margin-bottom: 48px; }
-  .sponsors-grid.gold-grid { grid-template-columns: 1fr; }
-  .sponsors-grid.silver-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-  .sponsors-grid.bronze-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  /* ── WHAT WE'RE RAISING FOR ── */
+  .raising-section { background: white; }
+  .raising-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 32px; }
+  .raising-card { background: var(--bg); border: 2px solid var(--border); border-radius: var(--radius); padding: 24px; text-align: center; transition: all 0.2s; }
+  .raising-card:hover { border-color: var(--teal); transform: translateY(-3px); box-shadow: var(--shadow); }
+  .raising-icon { font-size: 40px; margin-bottom: 12px; display: block; line-height: 1; }
+  .raising-card-title { font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .raising-card-desc { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+  .raising-card-amount { display: inline-block; margin-top: 10px; padding: 4px 12px; background: var(--teal-light); color: var(--teal-dark); border-radius: 20px; font-family: 'Fredoka', sans-serif; font-size: 14px; font-weight: 600; }
 
-  .sponsor-card {
-    background: white;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-sm);
-    overflow: hidden;
-    transition: all 0.2s;
-    display: flex;
-    flex-direction: column;
-  }
-  .sponsor-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-  .sponsor-card.gold { border-top: 4px solid var(--gold); border-left: 1px solid #F5C4B3; border-right: 1px solid #F5C4B3; border-bottom: 1px solid #F5C4B3; }
-  .sponsor-card.silver { border-top: 4px solid var(--silver); border: 1px solid #D0DCE4; border-top-width: 4px; }
-  .sponsor-card.bronze { border-top: 4px solid var(--bronze); border: 1px solid #E8D5C0; border-top-width: 4px; }
+  /* ── CURRENT FUNDRAISERS ── */
+  .fundraisers-section { background: linear-gradient(180deg, var(--bg) 0%, #EAF9F8 100%); }
+  .fundraisers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 8px; }
+  .fundraiser-card { background: white; border-radius: var(--radius); border: 2px solid var(--border); box-shadow: var(--shadow-sm); overflow: hidden; transition: all 0.2s; display: flex; flex-direction: column; }
+  .fundraiser-card:hover { border-color: var(--teal); transform: translateY(-3px); box-shadow: var(--shadow); }
+  .fundraiser-banner { height: 8px; background: linear-gradient(90deg, var(--teal), var(--blue)); }
+  .fundraiser-banner.green { background: linear-gradient(90deg, var(--green), #1B7A4A); }
+  .fundraiser-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+  .fundraiser-tag { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; }
+  .tag-open { background: var(--green-light); color: var(--green); }
+  .tag-upcoming { background: var(--orange-light); color: var(--orange-dark); }
+  .fundraiser-title { font-family: 'Fredoka', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .fundraiser-desc { font-size: 14px; color: var(--text-light); line-height: 1.5; margin-bottom: 16px; flex: 1; }
+  .fundraiser-meta { display: flex; gap: 14px; font-size: 12px; color: var(--text-light); font-weight: 600; margin-bottom: 14px; flex-wrap: wrap; }
+  .fundraiser-meta span { display: flex; align-items: center; gap: 4px; }
+  .fundraiser-link { display: block; text-align: center; padding: 10px; background: linear-gradient(135deg, var(--teal), var(--blue)); color: white; text-decoration: none; border-radius: 10px; font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 600; transition: opacity 0.2s; }
+  .fundraiser-link:hover { opacity: 0.9; }
+  .fundraiser-link.disabled { background: #EEE; color: #AAA; pointer-events: none; }
 
-  .sponsor-card.gold .sponsor-logo-wrap { padding: 32px 40px; }
-  .sponsor-card.silver .sponsor-logo-wrap { padding: 24px 32px; }
-  .sponsor-card.bronze .sponsor-logo-wrap { padding: 20px 28px; }
+  /* ── PAST FUNDRAISERS PREVIEW ── */
+  .past-section { background: white; }
+  .past-preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 8px; }
+  .past-preview-card { background: var(--bg); border: 2px solid var(--border); border-radius: var(--radius); padding: 20px; display: flex; align-items: center; gap: 16px; transition: all 0.2s; }
+  .past-preview-card:hover { border-color: var(--teal); transform: translateY(-2px); box-shadow: var(--shadow); }
+  .past-preview-icon { font-size: 32px; line-height: 1; flex-shrink: 0; }
+  .past-preview-body { flex: 1; }
+  .past-preview-title { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+  .past-preview-date { font-size: 12px; color: var(--text-light); font-weight: 600; }
+  .past-preview-amount { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 700; color: var(--teal-dark); white-space: nowrap; flex-shrink: 0; }
+  .past-preview-amount.tbc { color: var(--border); font-size: 13px; }
+  .view-all-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 12px 24px; background: white; color: var(--teal-dark); text-decoration: none; font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 700; border-radius: 12px; border: 2px solid var(--border); transition: all 0.2s; }
+  .view-all-btn:hover { border-color: var(--teal); background: var(--teal-light); transform: translateY(-2px); }
 
-  .sponsor-logo-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    border-bottom: 1px solid var(--border);
-  }
-  .sponsor-logo {
-    max-width: 100%;
-    max-height: 100px;
-    object-fit: contain;
-    display: block;
-  }
-  .sponsor-logo-placeholder {
-    width: 100%;
-    max-height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Fredoka', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--text-light);
-    background: var(--bg);
-    border-radius: 8px;
-    padding: 20px;
-    letter-spacing: 0.02em;
-  }
-  .sponsor-logo-placeholder.gold-text { color: var(--gold-dark); }
-  .sponsor-logo-placeholder.silver-text { color: var(--silver-dark); }
-  .sponsor-logo-placeholder.bronze-text { color: var(--bronze-dark); }
-
-  .sponsor-body { padding: 20px 24px; flex: 1; display: flex; flex-direction: column; }
-  .sponsor-name { font-family: 'Fredoka', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
-  .sponsor-desc { font-size: 14px; color: var(--text-light); line-height: 1.6; flex: 1; margin-bottom: 16px; }
-  .sponsor-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 8px;
-    transition: all 0.15s;
-    align-self: flex-start;
-  }
-  .sponsor-link.gold { background: var(--gold-light); color: var(--gold-dark); border: 1px solid var(--gold); }
-  .sponsor-link.gold:hover { background: var(--gold); color: white; }
-  .sponsor-link.silver { background: var(--silver-light); color: var(--silver-dark); border: 1px solid var(--silver); }
-  .sponsor-link.silver:hover { background: var(--silver); color: white; }
-  .sponsor-link.bronze { background: var(--bronze-light); color: var(--bronze-dark); border: 1px solid var(--bronze); }
-  .sponsor-link.bronze:hover { background: var(--bronze); color: white; }
-
-  /* ── PLACEHOLDER SLOT ── */
-  .sponsor-slot {
-    background: white;
-    border-radius: var(--radius);
-    border: 2px dashed var(--border);
-    padding: 32px 24px;
-    text-align: center;
-    color: var(--text-light);
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    min-height: 160px;
-  }
-  .sponsor-slot-icon { font-size: 28px; }
-  .sponsor-slot-text { font-weight: 600; }
-  .sponsor-slot-sub { font-size: 13px; font-weight: 400; }
-
-  /* ── BECOME A SPONSOR ── */
-  .become-section {
-    background: linear-gradient(135deg, var(--teal-dark), var(--blue-dark));
-    padding: 56px 24px;
-    text-align: center;
-    color: white;
-  }
-  .become-section h2 { font-family: 'Fredoka', sans-serif; font-size: clamp(22px, 4vw, 32px); font-weight: 700; margin-bottom: 14px; }
-  .become-section p { font-size: 16px; opacity: 0.88; max-width: 560px; margin: 0 auto 32px; line-height: 1.65; }
-  .become-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 700px; margin: 0 auto 36px; }
-  .become-tier { background: rgba(255,255,255,0.12); border-radius: var(--radius); padding: 20px 16px; text-align: center; border: 1px solid rgba(255,255,255,0.2); }
-  .become-tier-icon { font-size: 28px; margin-bottom: 8px; }
-  .become-tier-name { font-family: 'Fredoka', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 4px; }
-  .become-tier-desc { font-size: 12px; opacity: 0.75; line-height: 1.4; }
-  .btn-white { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; background: white; color: var(--teal-dark); text-decoration: none; font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 700; border-radius: 12px; transition: all 0.2s; }
-  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.15); }
+  /* ── ABOUT STRIP ── */
+  .about-strip { background: linear-gradient(135deg, var(--teal-dark), var(--blue-dark)); padding: 56px 24px; color: white; text-align: center; }
+  .about-strip h2 { font-family: 'Fredoka', sans-serif; font-size: clamp(22px, 4vw, 32px); font-weight: 700; margin-bottom: 14px; }
+  .about-strip p { font-size: 16px; opacity: 0.88; max-width: 560px; margin: 0 auto 28px; line-height: 1.65; }
+  .about-strip .btn-white { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; background: white; color: var(--teal-dark); text-decoration: none; font-family: 'Fredoka', sans-serif; font-size: 16px; font-weight: 700; border-radius: 12px; transition: all 0.2s; }
+  .about-strip .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.15); }
 
   /* ── FOOTER ── */
   footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 40px 24px 28px; text-align: center; }
@@ -219,14 +162,12 @@
     .nav-hamburger { display: block; }
     .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 12px 16px 16px; border-bottom: 2px solid var(--border); box-shadow: var(--shadow); gap: 2px; }
     .nav-links.open a { padding: 10px 12px; }
-    .page-header { padding: 40px 20px 32px; }
-    .section { padding: 32px 16px; }
-    .become-tiers { grid-template-columns: 1fr; max-width: 300px; }
-    .sponsors-grid.silver-grid, .sponsors-grid.bronze-grid { grid-template-columns: 1fr; }
+    .goal-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .stat-value { font-size: 20px; }
+    .hero { padding: 48px 20px 56px; }
+    .section { padding: 40px 20px; }
   }
-  @media (max-width: 420px) {
-    .nav-brand-sub { display: none; }
-  }
+  @media (max-width: 380px) { .goal-stats { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -242,9 +183,9 @@
       </span>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
       <li><a href="past-fundraisers.html">Past Fundraisers</a></li>
-      <li><a href="sponsors.html" class="active">Sponsors</a></li>
+      <li><a href="sponsors.html">Sponsors</a></li>
       <li><a href="#">About</a></li>
       <li><a href="https://friendsofsolway.github.io/solway-pizza/solway-pizza-order.html" class="nav-cta">🍕 Order Pizza</a></li>
     </ul>
@@ -254,104 +195,217 @@
   </div>
 </nav>
 
-<!-- PAGE HEADER -->
-<div class="page-header">
-  <div class="page-header-inner">
-    <h1>🤝 Our Sponsors</h1>
-    <p>A huge thank you to the businesses and organisations who support Friends of Solway and help make our school a better place for every tamariki.</p>
-  </div>
-</div>
-
-<!-- SPONSORS -->
-<section class="section">
-  <div class="section-inner">
-
-    <!-- GOLD -->
-    <div class="tier-heading">
-      <span class="tier-badge gold">🥇 Gold</span>
-      <span class="tier-title">Gold Sponsors</span>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-logo-wrap">
+      <div class="hero-logo-ring2"></div>
+      <div class="hero-logo-ring"></div>
+      <img src="https://friendsofsolway.github.io/solway-pizza/Friends_of_Solway_Logo.png" alt="Friends of Solway" class="hero-logo">
     </div>
-    <div class="sponsors-grid gold-grid">
-
-      <div class="sponsor-card gold">
-        <div class="sponsor-logo-wrap">
-          <div class="sponsor-logo-placeholder gold-text">Guthrie Bowron</div>
-        </div>
-        <div class="sponsor-body">
-          <div class="sponsor-name">Guthrie Bowron</div>
-          <div class="sponsor-desc">Guthrie Bowron is New Zealand's leading paint and decorating specialist. We're proud to have their generous support backing our fundraising efforts for Solway Primary School.</div>
-          <a href="https://www.guthrieowron.co.nz" target="_blank" class="sponsor-link gold">🌐 Visit Website →</a>
-        </div>
-      </div>
-
+    <h1>Raising funds for<br><em>Solway Primary School</em></h1>
+    <p class="hero-subtitle">Friends of Solway is a parent-led committee working together to make school life richer for every child at Solway. 🌿</p>
+    <div class="hero-btns">
+      <a href="past-fundraisers.html" class="btn-primary">🏆 See Past Fundraisers</a>
+      <a href="#" class="btn-secondary">💚 About Us</a>
     </div>
-
-    <!-- SILVER -->
-    <div class="tier-heading">
-      <span class="tier-badge silver">🥈 Silver</span>
-      <span class="tier-title">Silver Sponsors</span>
-    </div>
-    <div class="sponsors-grid silver-grid">
-      <div class="sponsor-slot">
-        <div class="sponsor-slot-icon">🤝</div>
-        <div class="sponsor-slot-text">Your business here</div>
-        <div class="sponsor-slot-sub">Become a Silver Sponsor</div>
-      </div>
-      <div class="sponsor-slot">
-        <div class="sponsor-slot-icon">🤝</div>
-        <div class="sponsor-slot-text">Your business here</div>
-        <div class="sponsor-slot-sub">Become a Silver Sponsor</div>
-      </div>
-    </div>
-
-    <!-- BRONZE -->
-    <div class="tier-heading">
-      <span class="tier-badge bronze">🥉 Bronze</span>
-      <span class="tier-title">Bronze Sponsors</span>
-    </div>
-    <div class="sponsors-grid bronze-grid">
-      <div class="sponsor-slot">
-        <div class="sponsor-slot-icon">🤝</div>
-        <div class="sponsor-slot-text">Your business here</div>
-        <div class="sponsor-slot-sub">Become a Bronze Sponsor</div>
-      </div>
-      <div class="sponsor-slot">
-        <div class="sponsor-slot-icon">🤝</div>
-        <div class="sponsor-slot-text">Your business here</div>
-        <div class="sponsor-slot-sub">Become a Bronze Sponsor</div>
-      </div>
-      <div class="sponsor-slot">
-        <div class="sponsor-slot-icon">🤝</div>
-        <div class="sponsor-slot-text">Your business here</div>
-        <div class="sponsor-slot-sub">Become a Bronze Sponsor</div>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<!-- BECOME A SPONSOR -->
-<div class="become-section">
-  <h2>💼 Become a Sponsor</h2>
-  <p>Support Friends of Solway and get your business in front of our school community. Every contribution goes directly towards improving Solway Primary School for our tamariki.</p>
-  <div class="become-tiers">
-    <div class="become-tier">
-      <div class="become-tier-icon">🥇</div>
-      <div class="become-tier-name">Gold</div>
-      <div class="become-tier-desc">Large logo, featured placement, website link, social media mention</div>
-    </div>
-    <div class="become-tier">
-      <div class="become-tier-icon">🥈</div>
-      <div class="become-tier-name">Silver</div>
-      <div class="become-tier-desc">Medium logo, website link, social media mention</div>
-    </div>
-    <div class="become-tier">
-      <div class="become-tier-icon">🥉</div>
-      <div class="become-tier-name">Bronze</div>
-      <div class="become-tier-desc">Name listing and website link on our sponsors page</div>
+<!-- FUNDRAISING GOAL -->
+<section class="section">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-label">2026 Goal</div>
+    <h2 class="section-title">Our Fundraising Progress</h2>
+    <p class="section-subtitle" style="margin:0 auto 32px">Every pizza ordered, every plant sold gets us closer. Here's where we're at!</p>
+    <div class="goal-card">
+      <div class="goal-header">
+        <div>
+          <div class="goal-title">🎨 Concrete Art for Solway School</div>
+          <div class="goal-desc">Bringing beautiful, lasting artwork to our school grounds — a creative space every child can enjoy and be proud of.</div>
+        </div>
+        <span class="goal-badge">✅ In progress</span>
+      </div>
+
+      <svg id="thermometerSvg" viewBox="0 0 560 55" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+        <defs>
+          <clipPath id="thermClip">
+            <rect x="0" y="18" width="560" height="28" rx="14"/>
+          </clipPath>
+        </defs>
+        <text x="0"   y="12" text-anchor="start"  font-size="10" fill="#aaa">$0</text>
+        <text x="140" y="12" text-anchor="middle" font-size="10" fill="#aaa">$3,750</text>
+        <text x="280" y="12" text-anchor="middle" font-size="10" fill="#C0392B" font-weight="bold">$7,500</text>
+        <text x="420" y="12" text-anchor="middle" font-size="10" fill="#aaa">$11,250</text>
+        <text x="560" y="12" text-anchor="end"    font-size="10" fill="#3B8A3B" font-weight="bold">$15,000</text>
+        <line x1="140" y1="14" x2="140" y2="18" stroke="#ccc" stroke-width="1"/>
+        <line x1="280" y1="14" x2="280" y2="18" stroke="#C0392B" stroke-width="1.5"/>
+        <line x1="420" y1="14" x2="420" y2="18" stroke="#ccc" stroke-width="1"/>
+        <rect x="0" y="18" width="560" height="28" rx="14" fill="#ebebeb" stroke="#ccc" stroke-width="1.5"/>
+        <rect id="seg0"  x="1"   y="19" width="28" height="26" rx="3" fill="#ebebeb" clip-path="url(#thermClip)"/>
+        <rect id="seg1"  x="31"  y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg2"  x="61"  y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg3"  x="91"  y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg4"  x="121" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg5"  x="151" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg6"  x="181" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg7"  x="211" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg8"  x="241" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg9"  x="271" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg10" x="301" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg11" x="331" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg12" x="361" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg13" x="391" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg14" x="421" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg15" x="451" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg16" x="481" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg17" x="511" y="19" width="28" height="26" rx="3" fill="#ebebeb"/>
+        <rect id="seg18" x="531" y="19" width="28" height="26" rx="3" fill="#ebebeb" clip-path="url(#thermClip)"/>
+        <line x1="140" y1="46" x2="140" y2="50" stroke="#ccc" stroke-width="1"/>
+        <line x1="280" y1="46" x2="280" y2="50" stroke="#C0392B" stroke-width="1.5"/>
+        <line x1="420" y1="46" x2="420" y2="50" stroke="#ccc" stroke-width="1"/>
+      </svg>
+
+      <div class="goal-stats">
+        <div class="stat-raised">
+          <div class="stat-label">🔥 Raised so far</div>
+          <div class="stat-value" id="statRaised">$0</div>
+        </div>
+        <div class="stat-remaining">
+          <div class="stat-label">💪 Still to go</div>
+          <div class="stat-value" id="statRemaining">$15,000</div>
+        </div>
+        <div class="stat-goal">
+          <div class="stat-label">🏆 Goal</div>
+          <div class="stat-value">$15,000</div>
+        </div>
+      </div>
     </div>
   </div>
-  <a href="mailto:shannon.bayliss@hotmail.com" class="btn-white">📧 Get in Touch →</a>
+</section>
+
+<!-- WHAT WE'RE RAISING FOR -->
+<section class="section raising-section">
+  <div class="section-inner">
+    <div class="section-label">Where it goes</div>
+    <h2 class="section-title">What We're Raising For</h2>
+    <p class="section-subtitle">Every dollar raised goes directly back into improving the school for our tamariki.</p>
+    <div class="raising-grid">
+      <div class="raising-card">
+        <span class="raising-icon">🎨</span>
+        <div class="raising-card-title">Concrete Art</div>
+        <div class="raising-card-desc">Beautiful, lasting artwork installed in our school grounds — a creative landmark every child can be proud of.</div>
+        <div class="raising-card-amount">$15,000 goal — current</div>
+      </div>
+      <div class="raising-card">
+        <span class="raising-icon">⛵</span>
+        <div class="raising-card-title">Shade Sails</div>
+        <div class="raising-card-desc">Covered outdoor spaces so tamariki can play and learn comfortably in all weather.</div>
+        <div class="raising-card-amount">Future goal</div>
+      </div>
+      <div class="raising-card">
+        <span class="raising-icon">🛝</span>
+        <div class="raising-card-title">Playground Equipment</div>
+        <div class="raising-card-desc">Fun, safe play equipment that keeps kids active, imaginative, and engaged at break time.</div>
+        <div class="raising-card-amount">Future goal</div>
+      </div>
+      <div class="raising-card">
+        <span class="raising-icon">🪑</span>
+        <div class="raising-card-title">Seating Areas</div>
+        <div class="raising-card-desc">Comfortable outdoor seating for students, whānau, and community to gather and connect.</div>
+        <div class="raising-card-amount">Future goal</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRENT FUNDRAISERS -->
+<section class="section fundraisers-section">
+  <div class="section-inner">
+    <div class="section-label">Get involved</div>
+    <h2 class="section-title">Current Fundraisers</h2>
+    <p class="section-subtitle" style="margin-bottom:28px">Easy ways to support the school — every little bit helps!</p>
+    <div class="fundraisers-grid">
+      <div class="fundraiser-card">
+        <div class="fundraiser-banner"></div>
+        <div class="fundraiser-body">
+          <span class="fundraiser-tag tag-open">🟢 Open now</span>
+          <div class="fundraiser-title">🍕 Friday Pizza Lunch</div>
+          <div class="fundraiser-desc">Order pizza for your child delivered to school every Friday. Choose from Pizza Combo, Single Pizza, or Gluten Free. Ham and cheese, Hawaiian, or plain cheese.</div>
+          <div class="fundraiser-meta">
+            <span>📅 Every Friday</span>
+            <span>💳 Pay online</span>
+            <span>🎓 All classes</span>
+          </div>
+          <a href="https://friendsofsolway.github.io/solway-pizza/solway-pizza-order.html" class="fundraiser-link">Order Now →</a>
+        </div>
+      </div>
+      <div class="fundraiser-card">
+        <div class="fundraiser-banner green"></div>
+        <div class="fundraiser-body">
+          <span class="fundraiser-tag tag-upcoming">🟡 Coming soon</span>
+          <div class="fundraiser-title">🌱 Plant Sale</div>
+          <div class="fundraiser-desc">Grab something beautiful for your garden while supporting the school! A range of plants available — dates and details coming soon. Cash and card accepted on the day.</div>
+          <div class="fundraiser-meta">
+            <span>📅 Date TBC</span>
+            <span>💵 Cash & card</span>
+          </div>
+          <a href="#" class="fundraiser-link disabled">Details TBC</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAST FUNDRAISERS PREVIEW -->
+<section class="section past-section">
+  <div class="section-inner">
+    <div class="section-label">What we've achieved</div>
+    <h2 class="section-title">Past Fundraisers</h2>
+    <p class="section-subtitle">A snapshot of what we've raised together so far.</p>
+    <div class="past-preview-grid">
+      <div class="past-preview-card">
+        <div class="past-preview-icon">🏃</div>
+        <div class="past-preview-body">
+          <div class="past-preview-title">Sausage Sizzle</div>
+          <div class="past-preview-date">Cross Country — 27 May 2026</div>
+        </div>
+        <div class="past-preview-amount">$584</div>
+      </div>
+      <div class="past-preview-card">
+        <div class="past-preview-icon">🐣</div>
+        <div class="past-preview-body">
+          <div class="past-preview-title">Hot Cross Buns</div>
+          <div class="past-preview-date">March 2026</div>
+        </div>
+        <div class="past-preview-amount tbc">TBC</div>
+      </div>
+      <div class="past-preview-card">
+        <div class="past-preview-icon">🍧</div>
+        <div class="past-preview-body">
+          <div class="past-preview-title">Iceblock Sales</div>
+          <div class="past-preview-date">Term 1 2026</div>
+        </div>
+        <div class="past-preview-amount tbc">TBC</div>
+      </div>
+      <div class="past-preview-card">
+        <div class="past-preview-icon">🐑</div>
+        <div class="past-preview-body">
+          <div class="past-preview-title">Stock Drive</div>
+          <div class="past-preview-date">January 2026</div>
+        </div>
+        <div class="past-preview-amount">$7,020</div>
+      </div>
+    </div>
+    <a href="past-fundraisers.html" class="view-all-btn">🏆 View all past fundraisers →</a>
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<div class="about-strip">
+  <h2>👋 Who are Friends of Solway?</h2>
+  <p>We're a group of parents and caregivers who volunteer our time to raise funds that go directly back into Solway Primary School.</p>
+  <a href="#" class="btn-white">Learn more about us →</a>
 </div>
 
 <!-- FOOTER -->
@@ -365,6 +419,7 @@
     <li><a href="sponsors.html">Sponsors</a></li>
     <li><a href="#">About</a></li>
     <li><a href="https://friendsofsolway.github.io/solway-pizza/solway-pizza-order.html">Order Pizza</a></li>
+    <li><a href="https://friendsofsolway.github.io/solway-pizza/solway-pizza-my-orders.html">My Orders</a></li>
   </ul>
   <div class="footer-copy">© 2026 Friends of Solway. All fundraising goes to Solway Primary School. 🌿</div>
 </footer>
@@ -373,6 +428,28 @@
 function toggleNav() {
   document.getElementById('navLinks').classList.toggle('open');
 }
+const GOAL = 15000;
+const RAISED = 0;
+const SEG_COLOURS = [
+  '#8B0000','#B22020','#C0392B','#D44020','#E05020',
+  '#E86820','#F08020','#F5A020','#F5C020','#EAD020',
+  '#C8D820','#A0C820','#80B820','#60A820','#409820',
+  '#308830','#287828','#206820','#185818'
+];
+function animateProgress() {
+  const pct = Math.min((RAISED / GOAL), 1);
+  const remaining = Math.max(GOAL - RAISED, 0);
+  const filledSegs = Math.round(pct * 19);
+  setTimeout(function() {
+    for (var i = 0; i < 19; i++) {
+      var seg = document.getElementById('seg' + i);
+      if (seg) seg.setAttribute('fill', i < filledSegs ? SEG_COLOURS[i] : '#ebebeb');
+    }
+  }, 300);
+  document.getElementById('statRaised').textContent = '$' + RAISED.toLocaleString('en-NZ');
+  document.getElementById('statRemaining').textContent = '$' + remaining.toLocaleString('en-NZ');
+}
+animateProgress();
 </script>
 </body>
 </html>
