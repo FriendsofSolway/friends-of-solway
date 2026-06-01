@@ -109,7 +109,6 @@
   .sponsor-card.silver { border-top: 4px solid var(--silver); border: 1px solid #D0DCE4; border-top-width: 4px; }
   .sponsor-card.bronze { border-top: 4px solid var(--bronze); border: 1px solid #E8D5C0; border-top-width: 4px; }
 
-  .sponsor-card.gold .sponsor-logo-wrap { padding: 32px 40px; }
   .sponsor-card.silver .sponsor-logo-wrap { padding: 24px 32px; }
   .sponsor-card.bronze .sponsor-logo-wrap { padding: 20px 28px; }
 
@@ -120,6 +119,21 @@
     background: white;
     border-bottom: 1px solid var(--border);
   }
+
+  /* Gold logo wrap */
+  .sponsor-card.gold .sponsor-logo-wrap {
+    padding: 40px;
+    min-height: 280px;
+    background: #F5F5F5;
+  }
+  .sponsor-card.gold .sponsor-logo-img {
+    max-width: 280px;
+    max-height: 260px;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+  }
+
   .sponsor-logo-img {
     max-width: 180px;
     max-height: 80px;
@@ -274,7 +288,7 @@
     <div class="sponsors-grid gold-grid">
       <div class="sponsor-card gold">
         <div class="sponsor-logo-wrap">
-          <img src="GB_MastertonGreytown Logo.png" alt="Guthrie Bowron" class="sponsor-logo-img">
+          <img src="GB_MastertonGreytown_Logo.png" alt="Guthrie Bowron" class="sponsor-logo-img">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">Guthrie Bowron — Masterton and Greytown</div>
