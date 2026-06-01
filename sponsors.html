@@ -91,7 +91,7 @@
 
   /* ── SPONSOR CARDS ── */
   .sponsors-grid { display: grid; gap: 20px; margin-bottom: 48px; }
-  .sponsors-grid.gold-grid { grid-template-columns: 1fr; }
+  .sponsors-grid.gold-grid { grid-template-columns: repeat(2, 1fr); }
   .sponsors-grid.silver-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
   .sponsors-grid.bronze-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
 
@@ -236,6 +236,7 @@
     .page-header { padding: 40px 20px 32px; }
     .section { padding: 32px 16px; }
     .become-tiers { grid-template-columns: 1fr; max-width: 300px; }
+    .sponsors-grid.gold-grid { grid-template-columns: 1fr; }
     .sponsors-grid.silver-grid, .sponsors-grid.bronze-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 420px) {
@@ -286,6 +287,8 @@
       <span class="tier-title">Gold Sponsors</span>
     </div>
     <div class="sponsors-grid gold-grid">
+
+      <!-- Option 1: Portrait logo -->
       <div class="sponsor-card gold">
         <div class="sponsor-logo-wrap">
           <img src="GB_MastertonGreytown Logo.png" alt="Guthrie Bowron" class="sponsor-logo-img">
@@ -295,8 +298,9 @@
           <div class="sponsor-desc">Guthrie Bowron is New Zealand's leading paint and decorating specialist. We're proud to have their generous support backing our fundraising efforts for Solway Primary School.</div>
           <a href="https://www.guthriebowron.co.nz/find-a-store/masterton/" target="_blank" class="sponsor-link gold">🌐 Visit Website →</a>
         </div>
-        </div>
-          <div class="sponsors-grid gold-grid">
+      </div>
+
+      <!-- Option 2: Alternative logo -->
       <div class="sponsor-card gold">
         <div class="sponsor-logo-wrap">
           <img src="GB_logo.jpg" alt="Guthrie Bowron" class="sponsor-logo-img">
@@ -307,6 +311,7 @@
           <a href="https://www.guthriebowron.co.nz/find-a-store/masterton/" target="_blank" class="sponsor-link gold">🌐 Visit Website →</a>
         </div>
       </div>
+
     </div>
 
     <!-- SILVER -->
