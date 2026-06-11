@@ -7,31 +7,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --teal: #2BBCB3;
-    --teal-dark: #1A9E96;
-    --teal-light: #E0F7F6;
-    --blue: #3B7DD8;
-    --blue-light: #E3EEF9;
-    --orange: #FF9800;
-    --orange-dark: #EF6C00;
-    --orange-light: #FFF3E0;
-    --red: #E53935;
-    --red-light: #FFEBEE;
-    --green: #4CAF50;
-    --green-light: #E8F5E9;
-    --bg: #F0FAFA;
-    --card: #FFFFFF;
-    --text: #2D2D2D;
-    --text-light: #5A6B6B;
-    --border: #C8E6E4;
-    --shadow: 0 2px 16px rgba(43,188,179,0.10);
-    --radius: 14px;
+    --teal: #2BBCB3; --teal-dark: #1A9E96; --teal-light: #E0F7F6;
+    --blue: #3B7DD8; --blue-light: #E3EEF9;
+    --orange: #FF9800; --orange-dark: #EF6C00; --orange-light: #FFF3E0;
+    --red: #E53935; --red-light: #FFEBEE;
+    --green: #4CAF50; --green-light: #E8F5E9;
+    --bg: #F0FAFA; --card: #FFFFFF; --text: #2D2D2D; --text-light: #5A6B6B;
+    --border: #C8E6E4; --shadow: 0 2px 16px rgba(43,188,179,0.10); --radius: 14px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; display: flex; flex-direction: column; }
   .page-wrap { max-width: 640px; margin: 0 auto; padding: 0 20px 20px; width: 100%; }
-
-  /* ── NAV ── */
   nav { background: white; border-bottom: 2px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
   .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
   .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
@@ -45,34 +31,26 @@
   .nav-cta { background: linear-gradient(135deg, var(--teal), var(--blue)); color: white !important; padding: 8px 16px !important; border-radius: 10px !important; font-weight: 700 !important; }
   .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
   .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-light); margin: 5px 0; border-radius: 2px; }
-
-  /* ── PAGE HEADER ── */
   .page-header { background: linear-gradient(160deg, #E8FAF9 0%, #EAF2FF 50%, #FFF8E1 100%); padding: 48px 24px 40px; text-align: center; position: relative; overflow: hidden; margin-bottom: 24px; }
   .page-header::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(43,188,179,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
   .page-header-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
   .page-header-logo { width: 100px; height: 100px; margin: 0 auto 16px; display: block; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 16px rgba(43,188,179,0.2); }
   .page-header h1 { font-family: 'Fredoka', sans-serif; font-size: clamp(24px, 5vw, 36px); font-weight: 700; color: var(--teal-dark); margin-bottom: 8px; }
   .page-header p { font-size: 15px; color: var(--text-light); max-width: 520px; margin: 0 auto; }
-
   .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; margin-bottom: 16px; border: 1px solid var(--border); }
   .card-title { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: var(--teal-dark); margin-bottom: 16px; }
-
   label { display: block; font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
   input { width: 100%; padding: 10px 14px; border: 2px solid var(--border); border-radius: 8px; font-family: 'Nunito', sans-serif; font-size: 15px; color: var(--text); transition: border-color 0.2s; background: white; }
   input:focus { outline: none; border-color: var(--teal); }
   .field { margin-bottom: 14px; }
-
   .lookup-btn { width: 100%; padding: 14px; background: linear-gradient(135deg, var(--teal), var(--blue)); color: white; border: none; border-radius: 10px; font-family: 'Fredoka', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer; transition: opacity 0.2s; }
   .lookup-btn:hover { opacity: 0.9; }
   .lookup-btn:disabled { background: #CCC; cursor: not-allowed; opacity: 1; }
   .lookup-btn.loading { opacity: 0.8; pointer-events: none; }
-
   .spinner { display: inline-block; width: 18px; height: 18px; border: 3px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.6s linear infinite; vertical-align: middle; margin-right: 8px; }
   @keyframes spin { to { transform: rotate(360deg); } }
-
   .results { margin-top: 16px; }
   .no-results { text-align: center; padding: 24px; color: var(--text-light); font-size: 15px; }
-
   .order-group { margin-bottom: 16px; }
   .order-date { font-family: 'Fredoka', sans-serif; font-size: 16px; font-weight: 600; color: var(--teal-dark); padding: 10px 14px; background: var(--teal-light); border-radius: 8px 8px 0 0; border: 1px solid var(--border); border-bottom: none; }
   .order-items { border: 1px solid var(--border); border-radius: 0 0 8px 8px; overflow: hidden; }
@@ -86,11 +64,8 @@
   .status-paid { background: var(--green-light); color: var(--green); }
   .status-pending { background: var(--orange-light); color: var(--orange-dark); }
   .status-refunded { background: var(--red-light); color: var(--red); }
-
   .back-link { display: block; text-align: center; margin-top: 16px; color: var(--teal-dark); font-weight: 600; font-size: 14px; text-decoration: none; }
   .back-link:hover { text-decoration: underline; }
-
-  /* ── FOOTER ── */
   .site-footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 40px 24px 28px; text-align: center; margin-top: auto; }
   .footer-logo { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px; display: block; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
   .footer-name { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: white; margin-bottom: 4px; }
@@ -98,7 +73,6 @@
   .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
   .footer-links a:hover { color: var(--teal); }
   .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 14px; }
-
   @media (max-width: 640px) {
     .nav-links { display: none; }
     .nav-hamburger { display: block; }
@@ -117,18 +91,18 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="https://friendsofsolway.github.io/friends-of-solway/" class="nav-brand">
-      <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="nav-logo">
+    <a href="../index.html" class="nav-brand">
+      <img src="../Friends_of_Solway_Logo.png" alt="Friends of Solway" class="nav-logo">
       <span class="nav-brand-text">
         Friends of Solway
         <span class="nav-brand-sub">Solway Primary School</span>
       </span>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="https://friendsofsolway.github.io/friends-of-solway/">Home</a></li>
-      <li><a href="https://friendsofsolway.github.io/friends-of-solway/past-fundraisers.html">Past Fundraisers</a></li>
-      <li><a href="https://friendsofsolway.github.io/friends-of-solway/sponsors.html">Sponsors</a></li>
-      <li><a href="solway-pizza-order.html" class="nav-cta">🍕 Order Pizza</a></li>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../past-fundraisers.html">Past Fundraisers</a></li>
+      <li><a href="../sponsors.html">Sponsors</a></li>
+      <li><a href="index.html" class="nav-cta">🍕 Order Pizza</a></li>
     </ul>
     <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -139,7 +113,7 @@
 <!-- PAGE HEADER -->
 <div class="page-header">
   <div class="page-header-inner">
-    <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="page-header-logo">
+    <img src="../Friends_of_Solway_Logo.png" alt="Friends of Solway" class="page-header-logo">
     <h1>📋 My Pizza Orders</h1>
     <p>Enter your email to see your order history</p>
   </div>
@@ -158,37 +132,34 @@
 
   <div class="results" id="results"></div>
 
-  <a href="solway-pizza-order.html" class="back-link">🍕 Back to Order Form</a>
+  <a href="index.html" class="back-link">🍕 Back to Order Form</a>
 
 </div>
 
 <!-- FOOTER -->
 <footer class="site-footer">
-  <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
+  <img src="../Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
   <div class="footer-name">Friends of Solway</div>
   <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.6)">Fundraising committee for Solway Primary School, Masterton</div>
   <ul class="footer-links">
-    <li><a href="https://friendsofsolway.github.io/friends-of-solway/">Home</a></li>
-    <li><a href="https://friendsofsolway.github.io/friends-of-solway/past-fundraisers.html">Past Fundraisers</a></li>
-    <li><a href="https://friendsofsolway.github.io/friends-of-solway/sponsors.html">Sponsors</a></li>
-    <li><a href="solway-pizza-order.html">🍕 Order Pizza</a></li>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../past-fundraisers.html">Past Fundraisers</a></li>
+    <li><a href="../sponsors.html">Sponsors</a></li>
+    <li><a href="index.html">🍕 Order Pizza</a></li>
   </ul>
   <div class="footer-copy">© 2026 Friends of Solway. All fundraising goes to Solway Primary School. 🌿</div>
 </footer>
 
 <script>
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzNX8kPNKRdlAD4qxrY1mgoYj5x8iJ-DOQd-MpILc8yxwugDiPqxgYdr7HuR_aeOVLwcg/exec';
-const TEST_MODE = true; // set to false when going live
+const TEST_MODE = true;
 
 function toggleNav() {
   document.getElementById('navLinks').classList.toggle('open');
 }
 
 document.getElementById('lookupEmail').addEventListener('keypress', function(e) {
-  if (e.key === 'Enter') {
-    e.preventDefault();
-    lookupOrders();
-  }
+  if (e.key === 'Enter') { e.preventDefault(); lookupOrders(); }
 });
 
 async function lookupOrders() {
@@ -209,9 +180,7 @@ async function lookupOrders() {
       headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({ action: 'lookup_orders', email: email, testMode: TEST_MODE })
     });
-
     const result = await response.json();
-
     if (result.success && result.orders) {
       displayOrders(result.orders);
     } else {
@@ -226,12 +195,10 @@ async function lookupOrders() {
   btn.disabled = false;
 }
 
-// IE-safe date formatter — converts YYYY-MM-DD to "Friday, 29 May 2026"
 const MONTHS_LONG = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const DAYS_LONG   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
 function formatDateNice(dateStr) {
-  // Handle YYYY-MM-DD or ISO timestamp; fall back to raw string if not parseable
   const s = String(dateStr || '').trim();
   const ymd = s.length >= 10 ? s.substring(0, 10) : s;
   const parts = ymd.split('-');
@@ -246,13 +213,11 @@ function formatDateNice(dateStr) {
 
 function displayOrders(orders) {
   const results = document.getElementById('results');
-
   if (orders.length === 0) {
     results.innerHTML = '<div class="no-results">🤔 No orders found for this email address.<br>Make sure you\'re using the same email you ordered with.</div>';
     return;
   }
 
-  // Group orders by delivery date (normalised to YYYY-MM-DD for reliable sorting)
   const grouped = {};
   orders.forEach(order => {
     const raw = String(order.deliveryDate || '').trim();
@@ -262,19 +227,15 @@ function displayOrders(orders) {
   });
 
   let html = '';
-
-  // Sort dates (most recent first)
   const dates = Object.keys(grouped).sort().reverse();
 
   dates.forEach(date => {
     html += '<div class="order-group">';
     html += '<div class="order-date">📅 ' + formatDateNice(date) + '</div>';
     html += '<div class="order-items">';
-
     grouped[date].forEach(order => {
       const statusClass = order.status === 'Paid' ? 'status-paid' : order.status === 'Refunded' ? 'status-refunded' : 'status-pending';
       const statusEmoji = order.status === 'Paid' ? '✅' : order.status === 'Refunded' ? '↩️' : '⏳';
-
       html += '<div class="order-item">';
       html += '  <div class="order-item-details">';
       html += '    <div class="order-item-child">🧒 ' + (order.childName || 'Unknown') + ' <span style="font-weight:400;color:#5A6B6B;">(' + (order.childClass || '') + ')</span></div>';
@@ -284,13 +245,11 @@ function displayOrders(orders) {
       html += '  <div class="order-item-status ' + statusClass + '">' + statusEmoji + ' ' + (order.status || 'Unknown') + '</div>';
       html += '</div>';
     });
-
     html += '</div></div>';
   });
 
   results.innerHTML = html;
 }
 </script>
-
 </body>
 </html>
