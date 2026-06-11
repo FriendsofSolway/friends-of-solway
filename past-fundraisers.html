@@ -7,27 +7,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --teal: #2BBCB3;
-    --teal-dark: #1A9E96;
-    --teal-light: #E0F7F6;
-    --teal-mid: #B2ECEA;
-    --blue: #3B7DD8;
-    --blue-dark: #2A5FA8;
-    --green: #2EAD6D;
-    --green-light: #E5F5ED;
-    --bg: #F0FAFA;
-    --text: #1E3232;
-    --text-mid: #3A5252;
-    --text-light: #5A7070;
-    --border: #C8E6E4;
-    --shadow-sm: 0 2px 12px rgba(43,188,179,0.10);
-    --shadow: 0 4px 24px rgba(43,188,179,0.14);
+    --teal: #2BBCB3; --teal-dark: #1A9E96; --teal-light: #E0F7F6; --teal-mid: #B2ECEA;
+    --blue: #3B7DD8; --blue-dark: #2A5FA8;
+    --green: #2EAD6D; --green-light: #E5F5ED;
+    --bg: #F0FAFA; --text: #1E3232; --text-mid: #3A5252; --text-light: #5A7070;
+    --border: #C8E6E4; --shadow-sm: 0 2px 12px rgba(43,188,179,0.10); --shadow: 0 4px 24px rgba(43,188,179,0.14);
     --radius: 16px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-
-  /* ── NAV ── */
   nav { background: white; border-bottom: 2px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); }
   .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
   .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
@@ -42,26 +30,19 @@
   .nav-cta:hover { opacity: 0.9; }
   .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
   .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-mid); margin: 5px 0; border-radius: 2px; }
-
-  /* ── PAGE HEADER ── */
   .page-header { background: linear-gradient(160deg, #E8FAF9 0%, #EAF2FF 50%, #FFF8E1 100%); padding: 56px 24px 48px; text-align: center; position: relative; overflow: hidden; }
   .page-header::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(43,188,179,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
   .page-header-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
   .page-header h1 { font-family: 'Fredoka', sans-serif; font-size: clamp(28px, 5vw, 60px); font-weight: 700; color: var(--teal-dark); margin-bottom: 12px; }
   .page-header p { font-size: 16px; color: var(--text-mid); max-width: 480px; margin: 0 auto; }
-
-  /* ── STATS STRIP ── */
   .stats-strip { background: white; border-bottom: 2px solid var(--border); padding: 28px 24px; }
   .stats-inner { max-width: 720px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center; }
   .strip-stat-value { font-family: 'Fredoka', sans-serif; font-size: 32px; font-weight: 700; color: var(--teal-dark); line-height: 1; margin-bottom: 4px; }
   .strip-stat-label { font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
-
-  /* ── FUNDRAISER CARDS ── */
   .section { padding: 48px 24px 64px; }
   .section-inner { max-width: 860px; margin: 0 auto; }
   .year-group { margin-bottom: 56px; }
   .year-heading { font-family: 'Fredoka', sans-serif; font-size: 22px; font-weight: 700; color: var(--text-light); margin-bottom: 24px; padding-bottom: 10px; border-bottom: 2px solid var(--border); }
-
   .past-card { background: white; border-radius: var(--radius); border-top: 2px solid var(--blue-dark); border-left: 2px solid var(--blue-dark); border-right: 2px solid var(--blue-dark); border-bottom: 1px solid var(--border); box-shadow: var(--shadow-sm); margin-bottom: 24px; overflow: hidden; transition: box-shadow 0.2s; }
   .past-card:hover { box-shadow: var(--shadow); }
   .past-card-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px 16px; gap: 16px; border-bottom: 1px solid var(--border); }
@@ -76,13 +57,9 @@
   .past-card-amount-label { font-size: 11px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-top: 2px; }
   .past-card-body { padding: 20px 24px; }
   .past-card-desc { font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 20px; }
-
-  /* ── FACEBOOK EMBEDS ── */
   .fb-embed-wrap { background: #f0f2f5; border-radius: 10px; overflow: hidden; display: flex; justify-content: center; padding: 16px; }
   .fb-embed-scaler { width: 100%; max-width: 500px; overflow: hidden; }
   .fb-embed-scaler iframe { width: 500px; max-width: 100%; display: block; border-radius: 8px; transform-origin: top left; }
-
-  /* ── FOOTER ── */
   footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 40px 24px 28px; text-align: center; }
   .footer-logo { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px; display: block; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
   .footer-name { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: white; margin-bottom: 6px; }
@@ -90,33 +67,17 @@
   .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
   .footer-links a:hover { color: var(--teal); }
   .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 16px; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 860px) {
-    .section-inner { padding: 0 4px; }
-    .past-card-title { font-size: 19px; }
-  }
+  @media (max-width: 860px) { .section-inner { padding: 0 4px; } .past-card-title { font-size: 19px; } }
   @media (max-width: 640px) {
-    .nav-links { display: none; }
-    .nav-hamburger { display: block; }
+    .nav-links { display: none; } .nav-hamburger { display: block; }
     .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 12px 16px 16px; border-bottom: 2px solid var(--border); box-shadow: var(--shadow); gap: 2px; }
     .nav-links.open a { padding: 10px 12px; }
-    .page-header { padding: 40px 20px 32px; }
-    .stats-inner { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .strip-stat-value { font-size: 24px; }
-    .strip-stat-label { font-size: 10px; }
-    .section { padding: 28px 16px 48px; }
-    .past-card-title { font-size: 17px; }
-    .past-card-body { padding: 16px; }
-    .fb-embed-wrap { padding: 8px; }
-    .year-heading { font-size: 18px; }
+    .page-header { padding: 40px 20px 32px; } .stats-inner { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .strip-stat-value { font-size: 24px; } .strip-stat-label { font-size: 10px; }
+    .section { padding: 28px 16px 48px; } .past-card-title { font-size: 17px; }
+    .past-card-body { padding: 16px; } .fb-embed-wrap { padding: 8px; } .year-heading { font-size: 18px; }
   }
-  @media (max-width: 420px) {
-    .stats-inner { grid-template-columns: 1fr; gap: 16px; }
-    .past-card-title { font-size: 15px; }
-    .past-card-meta { font-size: 12px; }
-    .nav-brand-sub { display: none; }
-  }
+  @media (max-width: 420px) { .stats-inner { grid-template-columns: 1fr; gap: 16px; } .past-card-title { font-size: 15px; } .past-card-meta { font-size: 12px; } .nav-brand-sub { display: none; } }
 </style>
 </head>
 <body>
@@ -125,7 +86,7 @@
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-brand">
-      <img src="https://friendsofsolway.github.io/solway-pizza/Friends_of_Solway_Logo.png" alt="Friends of Solway" class="nav-logo">
+      <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="nav-logo">
       <span class="nav-brand-text">
         Friends of Solway
         <span class="nav-brand-sub">Solway Primary School</span>
@@ -135,7 +96,7 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="past-fundraisers.html" class="active">Past Fundraisers</a></li>
       <li><a href="sponsors.html">Sponsors</a></li>
-      <li><a href="https://friendsofsolway.github.io/solway-pizza/solway-pizza-order.html" class="nav-cta">🍕 Order Pizza</a></li>
+      <li><a href="order-pizza/index.html" class="nav-cta">🍕 Order Pizza</a></li>
     </ul>
     <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -172,20 +133,15 @@
 <!-- FUNDRAISER LIST -->
 <section class="section">
   <div class="section-inner">
-
     <div class="year-group">
       <div class="year-heading">📅 2026</div>
 
-      <!-- Sausage Sizzle -->
       <div class="past-card">
         <div class="past-card-header">
           <div class="past-card-emoji">🏃</div>
           <div class="past-card-info">
             <div class="past-card-title">InterSchool Cross Country - Sausage sizzle and Bake sale</div>
-            <div class="past-card-meta">
-              <span>📅 09 June 2026</span>
-              <span class="tag-complete">✅ Complete</span>
-            </div>
+            <div class="past-card-meta"><span>📅 09 June 2026</span><span class="tag-complete">✅ Complete</span></div>
           </div>
           <div class="past-card-amount-wrap">
             <div class="past-card-amount">$2,374.60</div>
@@ -194,24 +150,18 @@
         </div>
         <div class="past-card-body">
           <div class="past-card-desc">A sausage sizzle and bake sale at the InterSchool Cross Country - our group of hardy volunteers braced the cold, wind and rain to raise funds for our tamariki. Thank you to all of our amazing Solway whanau for their donated baking!</div>
-          <div class="fb-embed-wrap">
-            <div class="fb-embed-scaler">
-              <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid0EQhjx55DvtjZ16Knhovv3yJFnKWQJwwv5cgVxHPDiLPKv87muQcnWR6UZpr6XcWSl%26id%3D61577478982554&show_text=true&width=500" width="500" height="684" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-            </div>
-          </div>
+          <div class="fb-embed-wrap"><div class="fb-embed-scaler">
+            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid0EQhjx55DvtjZ16Knhovv3yJFnKWQJwwv5cgVxHPDiLPKv87muQcnWR6UZpr6XcWSl%26id%3D61577478982554&show_text=true&width=500" width="500" height="684" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+          </div></div>
         </div>
       </div>
 
-      <!-- Sausage Sizzle -->
       <div class="past-card">
         <div class="past-card-header">
           <div class="past-card-emoji">🏃</div>
           <div class="past-card-info">
             <div class="past-card-title">Sausage Sizzle — School Cross Country</div>
-            <div class="past-card-meta">
-              <span>📅 27 May 2026</span>
-              <span class="tag-complete">✅ Complete</span>
-            </div>
+            <div class="past-card-meta"><span>📅 27 May 2026</span><span class="tag-complete">✅ Complete</span></div>
           </div>
           <div class="past-card-amount-wrap">
             <div class="past-card-amount">$584</div>
@@ -220,24 +170,18 @@
         </div>
         <div class="past-card-body">
           <div class="past-card-desc">A sausage sizzle held at the school cross country event. Thank you to everyone who came along and supported!</div>
-          <div class="fb-embed-wrap">
-            <div class="fb-embed-scaler">
-              <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid0suBJaPj7RU1hEDhRUUUJrKjqbcYE6JQErMVgERmjHUvbt4W5AW2hcSet9LyhP5JZl%26id%3D61577478982554&show_text=true&width=500" width="500" height="625" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-            </div>
-          </div>
+          <div class="fb-embed-wrap"><div class="fb-embed-scaler">
+            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid0suBJaPj7RU1hEDhRUUUJrKjqbcYE6JQErMVgERmjHUvbt4W5AW2hcSet9LyhP5JZl%26id%3D61577478982554&show_text=true&width=500" width="500" height="625" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+          </div></div>
         </div>
       </div>
 
-      <!-- Hot Cross Buns -->
       <div class="past-card">
         <div class="past-card-header">
           <div class="past-card-emoji">🐣</div>
           <div class="past-card-info">
             <div class="past-card-title">Hot Cross Buns Sale</div>
-            <div class="past-card-meta">
-              <span>📅 March 2026</span>
-              <span class="tag-complete">✅ Complete</span>
-            </div>
+            <div class="past-card-meta"><span>📅 March 2026</span><span class="tag-complete">✅ Complete</span></div>
           </div>
           <div class="past-card-amount-wrap">
             <div class="past-card-amount">$613.80</div>
@@ -246,24 +190,18 @@
         </div>
         <div class="past-card-body">
           <div class="past-card-desc">Pre-ordered hot cross buns sold to school families in the lead-up to Easter. A delicious way to raise funds for the school!</div>
-          <div class="fb-embed-wrap">
-            <div class="fb-embed-scaler">
-              <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02NfoLSxKdyt9su9Hpv1NkrT3JvrU8HFDU9mx5qFCdZKTJVCPH1a131dmSvvrtGAGQl%26id%3D61577478982554&show_text=true&width=500" width="500" height="625" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-            </div>
-          </div>
+          <div class="fb-embed-wrap"><div class="fb-embed-scaler">
+            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02NfoLSxKdyt9su9Hpv1NkrT3JvrU8HFDU9mx5qFCdZKTJVCPH1a131dmSvvrtGAGQl%26id%3D61577478982554&show_text=true&width=500" width="500" height="625" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+          </div></div>
         </div>
       </div>
 
-      <!-- Iceblock Sales -->
       <div class="past-card">
         <div class="past-card-header">
           <div class="past-card-emoji">🍧</div>
           <div class="past-card-info">
             <div class="past-card-title">Iceblock Sales</div>
-            <div class="past-card-meta">
-              <span>📅 Term 1 2026</span>
-              <span class="tag-complete">✅ Complete</span>
-            </div>
+            <div class="past-card-meta"><span>📅 Term 1 2026</span><span class="tag-complete">✅ Complete</span></div>
           </div>
           <div class="past-card-amount-wrap">
             <div class="past-card-amount tbc">TBC</div>
@@ -275,16 +213,12 @@
         </div>
       </div>
 
-            <!-- Meet the Teacher BBQ-->
       <div class="past-card">
         <div class="past-card-header">
           <div class="past-card-emoji">🏃</div>
           <div class="past-card-info">
             <div class="past-card-title">Meet the Teacher</div>
-            <div class="past-card-meta">
-              <span>📅 Term 1 2026</span>
-              <span class="tag-complete">✅ Complete</span>
-            </div>
+            <div class="past-card-meta"><span>📅 Term 1 2026</span><span class="tag-complete">✅ Complete</span></div>
           </div>
           <div class="past-card-amount-wrap">
             <div class="past-card-amount">$499.30</div>
@@ -295,17 +229,13 @@
           <div class="past-card-desc">A delicious BBQ during Meet the Teacher evening!</div>
         </div>
       </div>
-      
-      <!-- Stock Drive -->
+
       <div class="past-card">
         <div class="past-card-header">
           <div class="past-card-emoji">🐑</div>
           <div class="past-card-info">
             <div class="past-card-title">Stock Drive</div>
-            <div class="past-card-meta">
-              <span>📅 January 2026</span>
-              <span class="tag-complete">✅ Complete</span>
-            </div>
+            <div class="past-card-meta"><span>📅 January 2026</span><span class="tag-complete">✅ Complete</span></div>
           </div>
           <div class="past-card-amount-wrap">
             <div class="past-card-amount">$7,020</div>
@@ -314,11 +244,9 @@
         </div>
         <div class="past-card-body">
           <div class="past-card-desc">A community stock drive fundraiser supporting the school.</div>
-          <div class="fb-embed-wrap">
-            <div class="fb-embed-scaler">
-              <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid0xsvtiFFE2tLqHytotNmFZ8KsmyNWCTK4Th8EA4VaNBGqoBGd1UbAGSXvZ8kJJnt3l%26id%3D61565457876607&show_text=true&width=500" width="500" height="625" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-            </div>
-          </div>
+          <div class="fb-embed-wrap"><div class="fb-embed-scaler">
+            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid0xsvtiFFE2tLqHytotNmFZ8KsmyNWCTK4Th8EA4VaNBGqoBGd1UbAGSXvZ8kJJnt3l%26id%3D61565457876607&show_text=true&width=500" width="500" height="625" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+          </div></div>
         </div>
       </div>
 
@@ -328,15 +256,15 @@
 
 <!-- FOOTER -->
 <footer>
-  <img src="https://friendsofsolway.github.io/solway-pizza/Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
+  <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
   <div class="footer-name">Friends of Solway</div>
   <div style="font-size:13px;margin-bottom:4px">Fundraising committee for Solway Primary School, Masterton</div>
   <ul class="footer-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="past-fundraisers.html">Past Fundraisers</a></li>
     <li><a href="sponsors.html">Sponsors</a></li>
-    <li><a href="https://friendsofsolway.github.io/solway-pizza/solway-pizza-order.html">Order Pizza</a></li>
-    <li><a href="https://friendsofsolway.github.io/solway-pizza/solway-pizza-my-orders.html">My Orders</a></li>
+    <li><a href="order-pizza/index.html">Order Pizza</a></li>
+    <li><a href="order-pizza/my-orders.html">My Orders</a></li>
   </ul>
   <div class="footer-copy">© 2026 Friends of Solway. All fundraising goes to Solway Primary School. 🌿</div>
 </footer>
