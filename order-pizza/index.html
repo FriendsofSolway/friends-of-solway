@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Friends of Solway — Pizza Lunch Order</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #2BBCB3;
+    --teal-dark: #1A9E96;
+    --teal-light: #E0F7F6;
+    --blue: #3B7DD8;
+    --blue-dark: #2A5FA8;
+    --blue-light: #E3EEF9;
+    --green: #2EAD6D;
+    --green-light: #E5F5ED;
+    --orange: #FF9800;
+    --orange-dark: #EF6C00;
+    --orange-light: #FFF3E0;
+    --red: #E53935;
+    --red-light: #FFEBEE;
+    --bg: #F0FAFA;
+    --card: #FFFFFF;
+    --text: #2D2D2D;
+    --text-light: #5A6B6B;
+    --border: #C8E6E4;
+    --shadow: 0 2px 16px rgba(43,188,179,0.10);
+    --radius: 14px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; display: flex; flex-direction: column; }
+  .page-wrap { max-width: 720px; margin: 0 auto; padding: 0 20px 20px; }
+
+  /* ── NAV ── */
+  nav { background: white; border-bottom: 2px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
+  .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--teal-light); }
+  .nav-brand-text { font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 600; color: var(--teal-dark); line-height: 1.2; }
+  .nav-brand-sub { font-size: 11px; font-weight: 400; color: var(--text-light); font-family: 'Nunito', sans-serif; display: block; }
+  .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--text-light); font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 8px; transition: all 0.15s; }
+  .nav-links a:hover { background: var(--teal-light); color: var(--teal-dark); }
+  .nav-links a.active { background: var(--teal-light); color: var(--teal-dark); }
+  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-light); margin: 5px 0; border-radius: 2px; }
+
+  /* ── PAGE HEADER ── */
+  .page-header { background: linear-gradient(160deg, #E8FAF9 0%, #EAF2FF 50%, #FFF8E1 100%); padding: 48px 24px 40px; text-align: center; position: relative; overflow: hidden; margin-bottom: 24px; }
+  .page-header::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(43,188,179,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+  .page-header-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
+  .page-header-logo { width: 100px; height: 100px; margin: 0 auto 16px; display: block; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 16px rgba(43,188,179,0.2); }
+  .page-header h1 { font-family: 'Fredoka', sans-serif; font-size: clamp(24px, 5vw, 36px); font-weight: 700; color: var(--teal-dark); margin-bottom: 8px; }
+  .page-header p { font-size: 15px; color: var(--text-light); max-width: 520px; margin: 0 auto; }
+
+  .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; margin-bottom: 16px; border: 1px solid var(--border); }
+  .card-title { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: var(--teal-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .card-title .step { background: linear-gradient(135deg, var(--teal), var(--blue)); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+
+  label { display: block; font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .required::after { content: ' *'; color: var(--red); font-weight: 700; }
+  input[type="text"], input[type="email"], input[type="tel"], select {
+    width: 100%; padding: 10px 14px; border: 2px solid var(--border); border-radius: 8px;
+    font-family: 'Nunito', sans-serif; font-size: 15px; color: var(--text);
+    transition: border-color 0.2s; background: white; -webkit-appearance: none;
+  }
+  input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, select:focus { outline: none; border-color: var(--teal); }
+  .field { margin-bottom: 14px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* ── STEP 1: Date accordion ── */
+  .date-accordion-trigger { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 12px 16px; background: white; border: 2px solid var(--border); border-radius: 10px; cursor: pointer; font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 600; color: var(--text); transition: all 0.2s; text-align: left; }
+  .date-accordion-trigger:hover { border-color: var(--teal); background: var(--teal-light); }
+  .date-accordion-trigger.open { border-color: var(--teal); border-bottom-left-radius: 0; border-bottom-right-radius: 0; background: var(--teal-light); }
+  .date-accordion-trigger .trigger-left { display: flex; align-items: center; gap: 10px; }
+  .date-accordion-trigger .trigger-label { display: flex; flex-direction: column; gap: 2px; }
+  .date-accordion-trigger .trigger-title { font-size: 15px; font-weight: 700; color: var(--teal-dark); }
+  .date-accordion-trigger .trigger-summary { font-size: 13px; font-weight: 600; color: var(--text-light); }
+  .date-accordion-trigger .trigger-summary.has-dates { color: var(--teal-dark); }
+  .accordion-chevron { width: 20px; height: 20px; color: var(--teal-dark); transition: transform 0.25s ease; flex-shrink: 0; }
+  .date-accordion-trigger.open .accordion-chevron { transform: rotate(180deg); }
+  .date-accordion-panel { border: 2px solid var(--teal); border-top: none; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
+  .date-accordion-panel.open { max-height: 600px; }
+  .date-grid { display: flex; flex-direction: column; padding: 8px; gap: 6px; background: var(--teal-light); max-height: 222px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--teal) var(--teal-light); }
+  .date-grid::-webkit-scrollbar { width: 6px; }
+  .date-grid::-webkit-scrollbar-track { background: var(--teal-light); border-radius: 3px; }
+  .date-grid::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 3px; }
+  .date-option { display: flex; align-items: center; gap: 12px; padding: 11px 14px; background: white; border-radius: 8px; border: 2px solid var(--border); cursor: pointer; transition: all 0.2s; user-select: none; }
+  .date-option:hover { border-color: var(--teal); }
+  .date-option.selected { border-color: var(--teal); background: var(--teal-light); }
+  .date-option input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--teal); cursor: pointer; flex-shrink: 0; }
+  .date-option-label { flex: 1; font-weight: 600; font-size: 14px; }
+  .date-option-cutoff { font-size: 12px; color: var(--text-light); font-weight: 400; }
+  .cutoff-note { font-size: 12px; color: var(--text-light); margin-top: 10px; font-weight: 400; }
+
+  /* ── Profile hint & duplicate warning ── */
+  #profileHint { display: none; margin-top: 10px; padding: 10px 14px; border-radius: 8px; font-size: 14px; font-weight: 600; background: var(--teal-light); color: var(--teal-dark); border: 2px solid var(--teal); }
+  #profileHint.visible { display: block; }
+  #duplicateWarning { display: none; margin-top: 12px; padding: 12px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; background: var(--orange-light); color: var(--orange-dark); border: 2px solid var(--orange); line-height: 1.6; }
+  #duplicateWarning.visible { display: block; }
+
+  /* ── STEP 3: Children ── */
+  .child-row { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: linear-gradient(135deg, var(--teal-light), var(--blue-light)); border-radius: 10px; border: 1px solid var(--border); margin-bottom: 10px; }
+  .child-row .child-num { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 600; color: var(--teal-dark); white-space: nowrap; }
+  .child-row input[type="text"] { flex: 1; min-width: 0; }
+  .child-row select { flex: 1; min-width: 0; }
+  .child-row .remove-btn { background: none; border: none; color: var(--red); cursor: pointer; font-size: 18px; padding: 4px; border-radius: 6px; line-height: 1; flex-shrink: 0; transition: background 0.2s; }
+  .child-row .remove-btn:hover { background: var(--red-light); }
+  .add-child-btn { width: 100%; padding: 13px; border: 2px dashed var(--teal); border-radius: 10px; background: transparent; color: var(--teal-dark); font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 4px; }
+  .add-child-btn:hover { background: var(--teal-light); }
+  .add-child-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* ── STEP 4: Pizza grid ── */
+  .grid-prompt { color: var(--text-light); font-size: 14px; font-style: italic; text-align: center; padding: 16px 0; }
+  .pizza-grid { display: flex; flex-direction: column; gap: 20px; }
+  .grid-child-block { border: 2px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .grid-child-header { background: linear-gradient(135deg, var(--teal), var(--blue)); color: white; padding: 10px 16px; font-family: 'Fredoka', sans-serif; font-size: 16px; font-weight: 600; }
+  .grid-dates { display: flex; flex-direction: column; gap: 0; }
+  .grid-date-row { display: flex; align-items: stretch; border-top: 1px solid var(--border); background: white; }
+  .grid-date-row:first-child { border-top: none; }
+  .grid-date-label { width: 80px; flex-shrink: 0; padding: 12px 10px; font-size: 13px; font-weight: 700; color: var(--teal-dark); display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--border); background: var(--teal-light); text-align: center; }
+  .grid-date-label .gdl-day { font-size: 12px; line-height: 1.3; }
+  .grid-cell { flex: 1; padding: 12px 14px; display: flex; flex-direction: column; gap: 0; }
+
+  /* Base pizza label */
+  .cell-base { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: var(--teal-light); border-radius: 8px; border: 2px solid var(--teal); }
+  .cell-base-name { font-weight: 700; font-size: 14px; color: var(--teal-dark); }
+  .cell-base-price { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 15px; color: var(--teal-dark); }
+
+  /* Add-on chips */
+  .addon-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .addon-chip { display: flex; align-items: center; gap: 5px; padding: 6px 10px; border: 2px solid var(--border); border-radius: 20px; cursor: pointer; font-size: 13px; font-weight: 600; background: white; transition: all 0.15s; white-space: nowrap; user-select: none; }
+  .addon-chip:hover { border-color: var(--teal); color: var(--teal-dark); }
+  .addon-chip.selected { border-color: var(--teal); background: var(--teal-light); color: var(--teal-dark); }
+  .addon-chip input[type="checkbox"] { width: 13px; height: 13px; accent-color: var(--teal); cursor: pointer; }
+  .addon-chip-price { font-weight: 700; font-size: 12px; color: var(--text-light); }
+  .addon-chip.selected .addon-chip-price { color: var(--teal-dark); }
+
+  /* Pizza total */
+  .cell-pizza-total { font-size: 13px; font-weight: 700; color: var(--teal-dark); text-align: right; margin-top: 6px; }
+
+  /* Flavour — always visible */
+  .cell-flavour { margin-top: 10px; }
+  .cell-flavour-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-light); margin-bottom: 4px; display: block; }
+  .cell-flavour select { font-size: 13px; padding: 7px 10px; }
+
+  /* ── STEP 5: Summary ── */
+  .summary { background: var(--orange-light); border-radius: 10px; padding: 18px; }
+  .summary-title { font-family: 'Fredoka', sans-serif; font-size: 16px; font-weight: 600; color: var(--orange-dark); margin-bottom: 12px; }
+  .summary-date-group { margin-bottom: 12px; }
+  .summary-date-heading { font-family: 'Fredoka', sans-serif; font-size: 14px; font-weight: 700; color: var(--orange-dark); margin-bottom: 4px; padding-bottom: 4px; border-bottom: 1px solid rgba(0,0,0,0.08); }
+  .summary-items { list-style: none; }
+  .summary-items li { display: flex; justify-content: space-between; padding: 5px 0; font-size: 14px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .summary-items li:last-child { border-bottom: none; }
+  .summary-total { display: flex; justify-content: space-between; padding-top: 12px; margin-top: 8px; border-top: 2px solid var(--orange); font-family: 'Fredoka', sans-serif; font-size: 20px; font-weight: 700; color: var(--orange-dark); }
+  .empty-summary { color: var(--text-light); font-size: 14px; font-style: italic; }
+
+  .submit-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, var(--teal), var(--blue)); color: white; border: none; border-radius: 10px; font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 700; cursor: pointer; transition: opacity 0.2s; margin-top: 16px; }
+  .submit-btn:hover { opacity: 0.9; }
+  .submit-btn:disabled { background: #CCC; cursor: not-allowed; opacity: 1; }
+  .submit-btn.loading { opacity: 0.8; pointer-events: none; }
+  .spinner { display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.6s linear infinite; vertical-align: middle; margin-right: 8px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .error-banner { background: var(--red-light); color: var(--red); padding: 14px 18px; border-radius: 10px; font-size: 14px; font-weight: 600; margin-bottom: 16px; display: none; }
+  .error-banner.visible { display: block; }
+  .closed-banner { background: var(--orange-light); color: var(--orange-dark); padding: 24px; border-radius: var(--radius); font-size: 16px; font-weight: 600; text-align: center; margin-bottom: 16px; border: 2px solid var(--orange); line-height: 1.7; }
+
+  .step-hidden { display: none; }
+  .step-reveal { animation: stepReveal 0.4s ease both; }
+  @keyframes stepReveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── FOOTER ── */
+  .site-footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 40px 24px 28px; text-align: center; margin-top: auto; }
+  .footer-logo { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px; display: block; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
+  .footer-name { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: white; margin-bottom: 4px; }
+  .footer-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 14px 0; flex-wrap: wrap; }
+  .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
+  .footer-links a:hover { color: var(--teal); }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 14px; }
+
+  .my-orders-bar { text-align: center; padding: 20px 16px; }
+  .my-orders-bar a { display: inline-block; color: white; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 18px; text-decoration: none; background: linear-gradient(135deg, var(--teal), var(--blue)); padding: 14px 32px; border-radius: 10px; transition: opacity 0.2s; }
+  .my-orders-bar a:hover { opacity: 0.9; }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: block; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 12px 16px 16px; border-bottom: 2px solid var(--border); box-shadow: var(--shadow); gap: 2px; }
+    .nav-links.open a { padding: 10px 12px; }
+  }
+  @media (max-width: 540px) {
+    .field-row { grid-template-columns: 1fr; }
+    .page-header h1 { font-size: 22px; }
+    .page-header-logo { width: 72px; height: 72px; }
+    .child-row { flex-wrap: wrap; }
+    .child-row select { flex: 1 1 100%; }
+    .grid-date-label { width: 64px; }
+    .addon-chips { gap: 4px; }
+    .addon-chip { font-size: 12px; padding: 5px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://friendsofsolway.github.io/friends-of-solway/" class="nav-brand">
+      <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="nav-logo">
+      <span class="nav-brand-text">
+        Friends of Solway
+        <span class="nav-brand-sub">Solway Primary School</span>
+      </span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="https://friendsofsolway.github.io/friends-of-solway/">Home</a></li>
+      <li><a href="https://friendsofsolway.github.io/friends-of-solway/past-fundraisers.html">Past Fundraisers</a></li>
+      <li><a href="https://friendsofsolway.github.io/friends-of-solway/sponsors.html">Sponsors</a></li>
+      <li><a href="solway-pizza-order.html" class="active">🍕 Order Pizza</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="page-header-logo">
+    <h1>🍕 Pizza Lunch Order</h1>
+    <p style="margin-bottom:18px;">Delicious pizza delivered straight to school!</p>
+    <div style="text-align:left;max-width:680px;margin:0 auto;background:rgba(255,255,255,0.55);border-radius:12px;padding:16px 20px;">
+      <div style="font-family:'Fredoka',sans-serif;font-weight:600;color:var(--teal-dark);font-size:15px;margin-bottom:10px;">How it works</div>
+      <div style="display:flex;gap:10px;margin-bottom:10px;align-items:flex-start;">
+        <span style="background:linear-gradient(135deg,var(--teal),var(--blue));color:white;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">1</span>
+        <span style="font-size:14px;">Enter your email. <strong>Use the same email each time</strong> and the form will remember your and your children's details.</span>
+      </div>
+      <div style="display:flex;gap:10px;margin-bottom:10px;align-items:flex-start;">
+        <span style="background:linear-gradient(135deg,var(--teal),var(--blue));color:white;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">2</span>
+        <span style="font-size:14px;">Order your pizza! You can <strong>pre-order for multiple weeks all in one go</strong> — just this week or the whole term.</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <span style="background:linear-gradient(135deg,var(--teal),var(--blue));color:white;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">3</span>
+        <span style="font-size:14px;">Pick your delivery dates. The form will <strong>alert you if it looks like you've already ordered</strong> for that date.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <div class="error-banner" id="errorBanner"></div>
+  <div class="closed-banner" id="closedBanner" style="display:none">
+    🍕 Orders are currently closed!<br>Check back when the next order window opens 📅
+  </div>
+
+  <form id="orderForm">
+
+    <!-- Partnership banner -->
+    <div style="background:#FFFFFF;border-radius:var(--radius);padding:12px 16px;margin-bottom:16px;border:2px solid #E31837;display:flex;align-items:center;gap:12px;flex-wrap:wrap;box-shadow:0 2px 12px rgba(227,24,55,0.10);">
+      <img src="dominos-logo.png" alt="Domino's Pizza" style="height:36px;width:auto;flex-shrink:0;object-fit:contain;">
+      <div style="flex:1;min-width:180px;">
+        <div style="font-family:'Fredoka',sans-serif;font-size:14px;font-weight:700;color:#E31837;margin-bottom:2px;">Proudly partnered with Domino's</div>
+        <div style="font-size:12px;color:var(--text-light);line-height:1.5;"><strong style="color:#E31837;">$1 from every pizza</strong> ordered through this form is donated directly to Friends of Solway.</div>
+      </div>
+    </div>
+
+    <!-- Step 1: Email -->
+    <div class="card" id="card1">
+      <div class="card-title"><span class="step">1</span> 📧 Your Email</div>
+      <div class="field">
+        <label for="parentEmail" class="required">Email Address</label>
+        <input type="email" id="parentEmail" required placeholder="e.g. sarah@example.com">
+        <div id="profileHint"></div>
+      </div>
+    </div>
+
+    <!-- Step 2: Parent name/phone -->
+    <div class="card step-hidden" id="card2-details">
+      <div class="card-title"><span class="step">2</span> 👋 Your Details</div>
+      <div class="field-row">
+        <div class="field">
+          <label for="parentName" class="required">Parent / Caregiver Name</label>
+          <input type="text" id="parentName" required placeholder="e.g. Sarah Jones">
+        </div>
+        <div class="field">
+          <label for="parentPhone" class="required">Phone Number</label>
+          <input type="tel" id="parentPhone" required placeholder="e.g. 027 123 4567">
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Pick dates -->
+    <div class="card step-hidden" id="card3-dates">
+      <div class="card-title"><span class="step">3</span> 📅 Choose Delivery Dates</div>
+      <button type="button" class="date-accordion-trigger" id="dateAccordionTrigger" onclick="toggleDateAccordion()">
+        <div class="trigger-left">
+          <div class="trigger-label">
+            <div class="trigger-title">Select Fridays</div>
+            <div class="trigger-summary" id="triggerSummary">No dates selected</div>
+          </div>
+        </div>
+        <svg class="accordion-chevron" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+      <div class="date-accordion-panel" id="dateAccordionPanel">
+        <div class="date-grid" id="dateGrid"></div>
+      </div>
+      <div class="cutoff-note">⏰ Orders for each Friday close at 12pm on the Wednesday before.</div>
+      <div id="duplicateWarning"></div>
+    </div>
+
+    <!-- Step 4: Add children -->
+    <div class="card step-hidden" id="card4-children">
+      <div class="card-title"><span class="step">4</span> 🧒 Your Children</div>
+      <p style="font-size:14px;color:var(--text-light);margin-bottom:14px;">Add each child once — you'll choose their pizza for each date in the next step.</p>
+      <div id="childrenContainer"></div>
+      <button type="button" class="add-child-btn" id="addChildBtn" onclick="addChild()">➕ Add Another Child</button>
+    </div>
+
+    <!-- Step 5: Pizza grid -->
+    <div class="card step-hidden" id="card5-pizza">
+      <div class="card-title"><span class="step">5</span> 🍕 Choose Pizzas</div>
+      <div id="pizzaGrid">
+        <div class="grid-prompt">Select dates and add children above to configure pizzas 🍕</div>
+      </div>
+    </div>
+
+    <!-- Step 6: Summary & pay -->
+    <div class="card step-hidden" id="card6-summary">
+      <div class="card-title"><span class="step">6</span> 🧾 Order Summary & Payment</div>
+      <div class="summary">
+        <div class="summary-title">Your Order</div>
+        <div id="summaryContent"><p class="empty-summary">No items yet — complete the steps above ☝️</p></div>
+        <div class="summary-fee" id="summaryFee" style="display:none;justify-content:space-between;padding:6px 0;font-size:14px;color:var(--text-light);border-top:1px solid rgba(0,0,0,0.08);margin-top:6px;">
+          <span>💳 Payment processing fee</span>
+          <span id="feeAmount">$0.00</span>
+        </div>
+        <div class="summary-total" id="summaryTotal" style="display:none">
+          <span>Total (inc. fee)</span>
+          <span id="totalAmount">$0.00</span>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn" id="submitBtn" disabled>💳 Pay Now — $0.00</button>
+    </div>
+
+  </form>
+
+</div><!-- end page-wrap -->
+
+<div class="my-orders-bar" id="myOrdersBar">
+  <a href="solway-pizza-my-orders.html">📋 View My Placed Orders</a>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer" id="formFooter">
+  <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
+  <div class="footer-name">Friends of Solway</div>
+  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.6)">Fundraising committee for Solway Primary School, Masterton</div>
+  <ul class="footer-links">
+    <li><a href="https://friendsofsolway.github.io/friends-of-solway/">Home</a></li>
+    <li><a href="https://friendsofsolway.github.io/friends-of-solway/past-fundraisers.html">Past Fundraisers</a></li>
+    <li><a href="https://friendsofsolway.github.io/friends-of-solway/sponsors.html">Sponsors</a></li>
+    <li><a href="solway-pizza-order.html">🍕 Order Pizza</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Friends of Solway. All fundraising goes to Solway Primary School. 🌿</div>
+</footer>
+
+<script>
+// ============================================================
+// CONFIGURATION — edit these each term
+// ============================================================
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzNX8kPNKRdlAD4qxrY1mgoYj5x8iJ-DOQd-MpILc8yxwugDiPqxgYdr7HuR_aeOVLwcg/exec';
+
+const DELIVERY_DATES = [
+  // ── Term 2 (ends Fri 3 July) ──
+  '2026-05-29',
+  '2026-06-05',
+  '2026-06-12',
+  '2026-06-19',
+  '2026-06-26',
+  '2026-07-03',
+  // ── Term 3 (Mon 20 Jul – Fri 25 Sep) ──
+  '2026-07-24',
+  '2026-07-31',
+  '2026-08-07',
+  '2026-08-14',
+  '2026-08-21',
+  '2026-08-28',
+  '2026-09-04',
+  '2026-09-11',
+  '2026-09-18',
+  '2026-09-25',
+  // ── Term 4 (Mon 12 Oct – Fri 11 Dec) ──
+  '2026-10-16',
+  '2026-10-23',
+  '2026-10-30',
+  '2026-11-06',
+  '2026-11-13',
+  '2026-11-20',
+  '2026-11-27',
+  '2026-12-04',
+  '2026-12-11',
+];
+
+// Base pizza — every order starts here
+const BASE_PRODUCT = { id: 'mini-pizza', name: 'Mini Pizza', price: 5.50 };
+
+// Optional add-ons — parents can choose any combination.
+// Note: combo price is $1.50 normally, $2.00 when GF Base is also selected.
+// The higher price is handled automatically in calcPizzaPrice and at checkout.
+const ADDONS = [
+  { id: 'addon-df',    name: 'DF Cheese',  fullName: 'Dairy Free Cheese', price: 1.80 },
+  { id: 'addon-gf',    name: 'GF Base',    fullName: 'Gluten Free Base',  price: 4.70 },
+  { id: 'addon-combo', name: 'Combo',      fullName: 'Combo',             label: 'Make it a combo - add fries', price: 1.50 },
+];
+
+// Processing fee passed on to parents — must match Apps Script values
+const STRIPE_FEE_PERCENT = 0.0265; // 2.65% Stripe NZ domestic rate
+const STRIPE_FEE_FIXED   = 0.30;   // 30c flat fee per transaction
+
+const FLAVOURS = ['Cheese', 'Ham and Cheese', 'Hawaiian', 'Pepperoni', 'Vegetable'];
+const CLASSES  = ['Kanuka','Pohutukawa','Rimu','Harakeke','Matai','Titoki','Totara','Kauri','Rata','Manuka'];
+const MAX_CHILDREN = 6;
+
+// ============================================================
+// STATE
+// ============================================================
+let childCount = 0;
+// selections[childId][dateStr] = { addons: ['addon-gf', ...], flavour: 'Cheese' }
+const selections = {};
+
+// ============================================================
+// HELPERS
+// ============================================================
+
+// Build a human-readable product name from a list of add-on IDs
+// e.g. ['addon-gf','addon-combo'] → "Mini Pizza + GF Base + Combo"
+function buildProductName(addons) {
+  if (!addons || addons.length === 0) return BASE_PRODUCT.name;
+  // Consistent ordering: DF Cheese → GF Base → Combo
+  const ordered = ['addon-df', 'addon-gf', 'addon-combo'].filter(id => addons.includes(id));
+  const names = ordered.map(id => ADDONS.find(a => a.id === id)?.name).filter(Boolean);
+  return BASE_PRODUCT.name + (names.length ? ' + ' + names.join(' + ') : '');
+}
+
+// Calculate total price from add-on IDs.
+// Combo costs $2.00 when GF Base is also selected, $1.50 otherwise.
+function calcPizzaPrice(addons) {
+  const list  = addons || [];
+  const hasGF = list.includes('addon-gf');
+  const addonTotal = list.reduce((sum, id) => {
+    if (id === 'addon-combo' && hasGF) return sum + 2.00;
+    const a = ADDONS.find(x => x.id === id);
+    return sum + (a ? a.price : 0);
+  }, 0);
+  return Math.round((BASE_PRODUCT.price + addonTotal) * 100) / 100;
+}
+
+// ============================================================
+// DATE HELPERS
+// ============================================================
+function getCutoffDate(fridayStr) {
+  const friday = new Date(fridayStr + 'T00:00:00+12:00');
+  const wednesday = new Date(friday);
+  wednesday.setDate(friday.getDate() - 2);
+  wednesday.setHours(12, 0, 0, 0);
+  return wednesday;
+}
+
+function getAvailableDates() {
+  const now = new Date();
+  return DELIVERY_DATES.filter(d => now < getCutoffDate(d));
+}
+
+const MONTHS_LONG  = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const DAYS_LONG    = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+function parseDateNZ(dateStr) {
+  const parts = dateStr.split('-');
+  return new Date(Date.UTC(+parts[0], +parts[1] - 1, +parts[2]));
+}
+
+function formatDateFull(dateStr) {
+  const d = parseDateNZ(dateStr);
+  return DAYS_LONG[d.getUTCDay()] + ', ' + d.getUTCDate() + ' ' + MONTHS_LONG[d.getUTCMonth()] + ' ' + d.getUTCFullYear();
+}
+
+function formatDateShort(dateStr) {
+  const d = parseDateNZ(dateStr);
+  return d.getUTCDate() + ' ' + MONTHS_SHORT[d.getUTCMonth()];
+}
+
+function formatCutoff(dateStr) {
+  const c = getCutoffDate(dateStr);
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  return days[c.getDay()] + ' ' + c.getDate() + ' ' + MONTHS_SHORT[c.getMonth()] + ' 12pm';
+}
+
+// ============================================================
+// DATE ACCORDION
+// ============================================================
+function toggleDateAccordion() {
+  const trigger = document.getElementById('dateAccordionTrigger');
+  const panel   = document.getElementById('dateAccordionPanel');
+  const isOpen  = trigger.classList.contains('open');
+  trigger.classList.toggle('open', !isOpen);
+  panel.classList.toggle('open', !isOpen);
+}
+
+function updateTriggerSummary() {
+  const selected = getSelectedDates();
+  const summary  = document.getElementById('triggerSummary');
+  if (selected.length === 0) {
+    summary.textContent = 'No dates selected';
+    summary.classList.remove('has-dates');
+  } else if (selected.length === 1) {
+    summary.textContent = '✓ ' + formatDateFull(selected[0]);
+    summary.classList.add('has-dates');
+  } else {
+    summary.textContent = `✓ ${formatDateFull(selected[0])} + ${selected.length - 1} more`;
+    summary.classList.add('has-dates');
+  }
+}
+
+function buildDateGrid() {
+  const available = getAvailableDates();
+  const grid = document.getElementById('dateGrid');
+
+  if (available.length === 0) {
+    document.getElementById('orderForm').style.display = 'none';
+    document.getElementById('closedBanner').style.display = 'block';
+    return;
+  }
+
+  grid.innerHTML = '';
+  available.forEach(dateStr => {
+    const label = document.createElement('label');
+    label.className = 'date-option';
+    label.innerHTML = `
+      <input type="checkbox" value="${dateStr}">
+      <div class="date-option-label">
+        <div>${formatDateFull(dateStr)}</div>
+        <div class="date-option-cutoff">⏰ Orders close ${formatCutoff(dateStr)}</div>
+      </div>
+    `;
+    const cb = label.querySelector('input');
+    cb.addEventListener('change', () => {
+      label.classList.toggle('selected', cb.checked);
+      onDateChange();
+    });
+    grid.appendChild(label);
+  });
+
+  toggleDateAccordion(); // open by default
+}
+
+function getSelectedDates() {
+  return Array.from(document.querySelectorAll('#dateGrid input[type="checkbox"]:checked')).map(cb => cb.value);
+}
+
+function onDateChange() {
+  updateTriggerSummary();
+  rebuildPizzaGrid();
+  updateSummary();
+  checkForDuplicates();
+}
+
+// ============================================================
+// CHILDREN
+// ============================================================
+function addChild() {
+  if (childCount >= MAX_CHILDREN) return;
+  childCount++;
+  const id = childCount;
+  selections[id] = {};
+
+  const row = document.createElement('div');
+  row.className = 'child-row';
+  row.id = `child-${id}`;
+  row.innerHTML = `
+    <span class="child-num">🧒 Child ${id}</span>
+    <input type="text" placeholder="Full name" class="child-name" data-id="${id}" required>
+    <select class="child-class" data-id="${id}" required>
+      <option value="">Class...</option>
+      ${CLASSES.map(c => `<option value="${c}">${c}</option>`).join('')}
+    </select>
+    ${id > 1 ? `<button type="button" class="remove-btn" onclick="removeChild(${id})" title="Remove">✕</button>` : ''}
+  `;
+  row.querySelector('.child-name').addEventListener('input', () => { rebuildPizzaGrid(); updateSummary(); });
+  row.querySelector('.child-class').addEventListener('change', updateSummary);
+  document.getElementById('childrenContainer').appendChild(row);
+
+  updateAddButton();
+  rebuildPizzaGrid();
+  updateSummary();
+}
+
+function removeChild(id) {
+  document.getElementById(`child-${id}`)?.remove();
+  delete selections[id];
+  childCount--;
+  document.querySelectorAll('.child-row').forEach((row, i) => {
+    row.querySelector('.child-num').textContent = `🧒 Child ${i + 1}`;
+  });
+  updateAddButton();
+  rebuildPizzaGrid();
+  updateSummary();
+}
+
+function updateAddButton() {
+  const btn = document.getElementById('addChildBtn');
+  btn.disabled = childCount >= MAX_CHILDREN;
+  btn.textContent = childCount >= MAX_CHILDREN ? '✋ Maximum 6 children reached' : '➕ Add Another Child';
+}
+
+function getChildren() {
+  return Array.from(document.querySelectorAll('.child-row')).map(row => ({
+    id:  parseInt(row.id.replace('child-', '')),
+    name:row.querySelector('.child-name').value.trim(),
+    cls: row.querySelector('.child-class').value,
+  }));
+}
+
+// ============================================================
+// PIZZA GRID
+// ============================================================
+function rebuildPizzaGrid() {
+  const dates    = getSelectedDates();
+  const children = getChildren();
+  const container = document.getElementById('pizzaGrid');
+
+  if (dates.length === 0 || children.length === 0) {
+    container.innerHTML = '<div class="grid-prompt">Select dates and add children above to configure pizzas 🍕</div>';
+    return;
+  }
+
+  container.innerHTML = '';
+  const grid = document.createElement('div');
+  grid.className = 'pizza-grid';
+
+  children.forEach(child => {
+    if (!selections[child.id]) selections[child.id] = {};
+
+    const block = document.createElement('div');
+    block.className = 'grid-child-block';
+    const childName = child.name || `Child ${child.id}`;
+    block.innerHTML = `
+      <div class="grid-child-header">🧒 ${childName}</div>
+      <div class="grid-dates" id="dates-${child.id}"></div>
+    `;
+
+    const datesDiv = block.querySelector(`#dates-${child.id}`);
+
+    dates.forEach(dateStr => {
+      // Initialise state for this child-date slot if needed
+      if (!selections[child.id][dateStr]) {
+        selections[child.id][dateStr] = { addons: [], flavour: '' };
+      }
+      const sel = selections[child.id][dateStr];
+      if (!Array.isArray(sel.addons)) sel.addons = [];
+
+      // Determine initial combo price label based on whether GF is already selected
+      const initHasGF = sel.addons.includes('addon-gf');
+
+      const row = document.createElement('div');
+      row.className = 'grid-date-row';
+      row.innerHTML = `
+        <div class="grid-date-label">
+          <div class="gdl-day">Fri<br>${formatDateShort(dateStr)}</div>
+        </div>
+        <div class="grid-cell">
+          <div class="cell-base">
+            <span class="cell-base-name">🍕 ${BASE_PRODUCT.name}</span>
+            <span class="cell-base-price">$${BASE_PRODUCT.price.toFixed(2)}</span>
+          </div>
+          <div class="addon-chips">
+            ${ADDONS.map(a => {
+              // Show combo at $2.00 if GF is already selected when the grid is built
+              const displayPrice = (a.id === 'addon-combo' && initHasGF) ? 2.00 : a.price;
+              return `
+              <label class="addon-chip${sel.addons.includes(a.id) ? ' selected' : ''}" data-addon="${a.id}">
+                <input type="checkbox" value="${a.id}" ${sel.addons.includes(a.id) ? 'checked' : ''}>
+                + ${a.label || a.name} <span class="addon-chip-price">+$${displayPrice.toFixed(2)}</span>
+              </label>`;
+            }).join('')}
+          </div>
+          <div class="cell-pizza-total" id="pizza-total-${child.id}-${dateStr}">
+            Total: $${calcPizzaPrice(sel.addons).toFixed(2)}
+          </div>
+          <div class="cell-flavour">
+            <span class="cell-flavour-label">🧀 Flavour <span style="color:var(--red);">*</span></span>
+            <select data-child="${child.id}" data-date="${dateStr}">
+              <option value="">Select flavour...</option>
+              ${FLAVOURS.map(f => `<option value="${f}"${sel.flavour === f ? ' selected' : ''}>${f}</option>`).join('')}
+            </select>
+          </div>
+        </div>
+      `;
+
+      // Wire up add-on checkboxes
+      row.querySelectorAll('.addon-chip input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener('change', () => {
+          const chip    = cb.closest('.addon-chip');
+          const addonId = chip.dataset.addon;
+          const cid     = child.id;
+          const ds      = dateStr;
+
+          if (!selections[cid]) selections[cid] = {};
+          if (!selections[cid][ds]) selections[cid][ds] = { addons: [], flavour: '' };
+          if (!Array.isArray(selections[cid][ds].addons)) selections[cid][ds].addons = [];
+
+          const addons = selections[cid][ds].addons;
+          const idx    = addons.indexOf(addonId);
+          if (cb.checked && idx === -1)  addons.push(addonId);
+          if (!cb.checked && idx > -1)   addons.splice(idx, 1);
+
+          chip.classList.toggle('selected', cb.checked);
+
+          // If GF Base was toggled, update the combo chip price label
+          if (addonId === 'addon-gf') {
+            const hasGF = addons.includes('addon-gf');
+            const comboChip = row.querySelector('[data-addon="addon-combo"] .addon-chip-price');
+            if (comboChip) comboChip.textContent = `+$${hasGF ? '2.00' : '1.50'}`;
+          }
+
+          const totalEl = document.getElementById(`pizza-total-${cid}-${ds}`);
+          if (totalEl) totalEl.textContent = `Total: $${calcPizzaPrice(addons).toFixed(2)}`;
+
+          updateSummary();
+        });
+      });
+
+      // Wire up flavour select
+      const flavourSelect = row.querySelector('.cell-flavour select');
+      flavourSelect.addEventListener('change', () => {
+        if (!selections[child.id]) selections[child.id] = {};
+        if (!selections[child.id][dateStr]) selections[child.id][dateStr] = { addons: [], flavour: '' };
+        selections[child.id][dateStr].flavour = flavourSelect.value;
+        updateSummary();
+      });
+
+      datesDiv.appendChild(row);
+    });
+
+    grid.appendChild(block);
+  });
+
+  container.appendChild(grid);
+}
+
+// ============================================================
+// SUMMARY
+// ============================================================
+function updateSummary() {
+  const dates         = getSelectedDates();
+  const children      = getChildren();
+  const summaryContent = document.getElementById('summaryContent');
+  const summaryTotal  = document.getElementById('summaryTotal');
+  const totalAmount   = document.getElementById('totalAmount');
+  const submitBtn     = document.getElementById('submitBtn');
+
+  if (dates.length === 0 || children.length === 0) {
+    summaryContent.innerHTML = '<p class="empty-summary">No items yet — complete the steps above ☝️</p>';
+    summaryTotal.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.textContent = '💳 Pay Now — $0.00';
+    return;
+  }
+
+  const parentName  = document.getElementById('parentName').value.trim();
+  const parentPhone = document.getElementById('parentPhone').value.trim();
+  const parentEmail = document.getElementById('parentEmail').value.trim();
+  const parentValid = !!(parentName && parentPhone && parentEmail);
+  const childrenValid = children.every(c => c.name && c.cls);
+
+  let total        = 0;
+  let missingCount = 0;
+  let hasAnyItem   = false;
+  let html         = '';
+
+  dates.forEach(dateStr => {
+    let dateHtml = '';
+    children.forEach(child => {
+      const sel = (selections[child.id] || {})[dateStr] || {};
+      // A flavour is required; add-ons are optional
+      if (!sel.flavour) {
+        missingCount++;
+        return;
+      }
+      const price      = calcPizzaPrice(sel.addons || []);
+      const productName = buildProductName(sel.addons || []);
+      const childName  = child.name || `Child ${child.id}`;
+      dateHtml += `<li><span>🍕 ${childName} — ${productName} (${sel.flavour})</span><span>$${price.toFixed(2)}</span></li>`;
+      total += price;
+      hasAnyItem = true;
+    });
+
+    if (dateHtml) {
+      html += `<div class="summary-date-group">
+        <div class="summary-date-heading">📅 ${formatDateFull(dateStr)}</div>
+        <ul class="summary-items">${dateHtml}</ul>
+      </div>`;
+    }
+  });
+
+  if (!hasAnyItem) {
+    summaryContent.innerHTML = '<p class="empty-summary">Choose a flavour for each pizza above 🍕</p>';
+    summaryTotal.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.textContent = '💳 Pay Now — $0.00';
+    return;
+  }
+
+  if (missingCount > 0) {
+    html += `<p style="font-size:13px;color:var(--orange-dark);margin-top:8px;">⚠️ ${missingCount} flavour choice${missingCount > 1 ? 's' : ''} still needed above.</p>`;
+  }
+
+  summaryContent.innerHTML = html;
+
+  // Processing fee
+  const summaryFee  = document.getElementById('summaryFee');
+  const feeAmountEl = document.getElementById('feeAmount');
+  let grandTotal = total;
+  if (total > 0) {
+    const fee  = Math.round(((total + STRIPE_FEE_FIXED) / (1 - STRIPE_FEE_PERCENT) - total) * 100) / 100;
+    grandTotal = Math.round((total + fee) * 100) / 100;
+    feeAmountEl.textContent = `$${fee.toFixed(2)}`;
+    summaryFee.style.display = 'flex';
+  } else {
+    summaryFee.style.display = 'none';
+  }
+
+  summaryTotal.style.display = total > 0 ? 'flex' : 'none';
+  totalAmount.textContent = `$${grandTotal.toFixed(2)}`;
+
+  const allComplete = missingCount === 0 && childrenValid && parentValid;
+  submitBtn.disabled = !allComplete;
+  submitBtn.textContent = total > 0 ? `💳 Pay Now — $${grandTotal.toFixed(2)}` : '💳 Pay Now — $0.00';
+}
+
+['parentName','parentPhone','parentEmail'].forEach(id => {
+  document.getElementById(id).addEventListener('input', updateSummary);
+});
+
+// ============================================================
+// PROFILE LOOKUP + DUPLICATE CHECK
+// ============================================================
+const TEST_MODE = true; // set to false when going live
+
+let lookupTimer  = null;
+let lastLookedUp = '';
+const orderCache = { email: null, orders: null };
+
+document.getElementById('parentEmail').addEventListener('input', function() {
+  orderCache.email  = null;
+  orderCache.orders = null;
+  document.getElementById('duplicateWarning').classList.remove('visible');
+  const email = this.value.trim();
+  clearTimeout(lookupTimer);
+  if (!email || !email.includes('@') || !email.includes('.')) return;
+  if (email === lastLookedUp) return;
+  lookupTimer = setTimeout(() => triggerLookup(email), 300);
+});
+
+document.getElementById('parentEmail').addEventListener('blur', function() {
+  const email = this.value.trim();
+  if (!email || !email.includes('@')) return;
+  clearTimeout(lookupTimer);
+  if (email === lastLookedUp) { checkForDuplicates(); return; }
+  triggerLookup(email);
+});
+
+function revealSteps() {
+  ['card2-details','card3-dates','card4-children','card5-pizza','card6-summary'].forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (!el || !el.classList.contains('step-hidden')) return;
+    setTimeout(() => {
+      el.classList.remove('step-hidden');
+      el.classList.add('step-reveal');
+    }, i * 80);
+  });
+}
+
+async function triggerLookup(email) {
+  lastLookedUp = email;
+  const hint = document.getElementById('profileHint');
+  hint.textContent = '🔍 Looking up your details...';
+  hint.classList.add('visible');
+
+  try {
+    const response = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({ action: 'lookup_all', email, testMode: TEST_MODE })
+    });
+    const result = await response.json();
+    orderCache.email  = email;
+    orderCache.orders = result.success ? (result.orders || []) : [];
+
+    if (result.success && result.profile) {
+      applyProfile(result.profile);
+      hint.textContent = '👋 Welcome back! We\'ve filled in your details.';
+      setTimeout(() => hint.classList.remove('visible'), 5000);
+    } else {
+      hint.classList.remove('visible');
+    }
+    revealSteps();
+    checkForDuplicates();
+  } catch (err) {
+    hint.classList.remove('visible');
+    revealSteps();
+  }
+}
+
+function applyProfile(profile) {
+  const nameField  = document.getElementById('parentName');
+  const phoneField = document.getElementById('parentPhone');
+  if (!nameField.value.trim())  nameField.value  = profile.parentName  || '';
+  if (!phoneField.value.trim()) phoneField.value = profile.parentPhone || '';
+  updateSummary();
+
+  const existingChildren = getChildren();
+  const isDefaultState = existingChildren.length === 1 && !existingChildren[0].name && !existingChildren[0].cls;
+  if (!isDefaultState || !profile.children || profile.children.length === 0) return;
+
+  document.getElementById('childrenContainer').innerHTML = '';
+  childCount = 0;
+  profile.children.forEach(c => {
+    addChild();
+    const rows = document.querySelectorAll('.child-row');
+    const row  = rows[rows.length - 1];
+    row.querySelector('.child-name').value = c.name || '';
+    row.querySelector('.child-class').value = c.cls  || '';
+  });
+  rebuildPizzaGrid();
+  updateSummary();
+}
+
+// ============================================================
+// DUPLICATE ORDER DETECTION
+// ============================================================
+function checkForDuplicates() {
+  const email   = document.getElementById('parentEmail').value.trim();
+  const dates   = getSelectedDates();
+  const warning = document.getElementById('duplicateWarning');
+
+  if (!email || !email.includes('@') || email !== orderCache.email) {
+    if (warning) warning.classList.remove('visible');
+    return;
+  }
+  if (dates.length === 0) { if (warning) warning.classList.remove('visible'); return; }
+
+  const orders = orderCache.orders || [];
+  if (!orders.length) { if (warning) warning.classList.remove('visible'); return; }
+
+  const duplicateDates = [];
+  dates.forEach(dateStr => {
+    const shortDate = formatDateShort(dateStr);
+    const fullDate  = formatDateFull(dateStr);
+    const hasDupe = orders.some(order => {
+      if (order.status !== 'Paid') return false;
+      const raw     = String(order.deliveryDate || '').trim();
+      const isoDate = raw.length >= 10 ? raw.substring(0, 10) : raw;
+      return isoDate === dateStr || raw === fullDate || raw.indexOf(shortDate) > -1;
+    });
+    if (hasDupe) duplicateDates.push(fullDate);
+  });
+
+  if (duplicateDates.length > 0) {
+    let detailHtml = '';
+    duplicateDates.forEach(fullDate => {
+      const matchingOrders = orders.filter(order => {
+        if (order.status !== 'Paid') return false;
+        const raw     = String(order.deliveryDate || '').trim();
+        const isoDate = raw.length >= 10 ? raw.substring(0, 10) : raw;
+        return dates.some(ds => formatDateFull(ds) === fullDate && (isoDate === ds || raw === fullDate));
+      });
+      detailHtml += `<div style="margin:10px 0 4px;font-weight:700;">📅 ${fullDate}</div>`;
+      matchingOrders.forEach(o => {
+        detailHtml += `<div style="padding-left:8px;margin-bottom:2px;font-weight:400;">🧒 ${o.childName||'Unknown'} — ${o.product||''} (${o.flavour||''})</div>`;
+      });
+    });
+
+    warning.innerHTML =
+      '<strong>⚠️ Heads up!</strong> It looks like you\'ve already placed a paid order for:' +
+      detailHtml +
+      '<div style="margin-top:10px;font-weight:400;">If you\'re adding extra children that\'s fine — just continue. Otherwise, you may be ordering twice.</div>';
+    warning.classList.add('visible');
+  } else {
+    if (warning) warning.classList.remove('visible');
+  }
+}
+
+// ============================================================
+// SUBMIT
+// ============================================================
+document.getElementById('orderForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const submitBtn   = document.getElementById('submitBtn');
+  const errorBanner = document.getElementById('errorBanner');
+  errorBanner.classList.remove('visible');
+
+  const dates       = getSelectedDates();
+  const children    = getChildren();
+  const parentName  = document.getElementById('parentName').value.trim();
+  const parentPhone = document.getElementById('parentPhone').value.trim();
+  const parentEmail = document.getElementById('parentEmail').value.trim();
+
+  // Check all cutoffs are still valid
+  for (const dateStr of dates) {
+    if (new Date() >= getCutoffDate(dateStr)) {
+      errorBanner.textContent = `⏰ Orders for ${formatDateFull(dateStr)} have now closed. Please unselect that date and try again.`;
+      errorBanner.classList.add('visible');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+  }
+
+  // Build flat line items: one entry per child × date
+  // Remap addon-combo → addon-combo-gf when GF Base is also selected,
+  // so the Apps Script charges the correct $2.00 Stripe price.
+  const lineItems = [];
+  let total = 0;
+
+  dates.forEach(dateStr => {
+    children.forEach(child => {
+      const sel = (selections[child.id] || {})[dateStr] || {};
+      if (!sel.flavour) return; // skip incomplete rows
+      const price = calcPizzaPrice(sel.addons || []);
+
+      // Remap combo add-on to the GF variant when GF Base is selected
+      let addons = [...(sel.addons || [])];
+      if (addons.includes('addon-gf') && addons.includes('addon-combo')) {
+        addons = addons.map(id => id === 'addon-combo' ? 'addon-combo-gf' : id);
+      }
+
+      lineItems.push({
+        name:                 child.name,
+        'class':              child.cls,
+        product:              buildProductName(sel.addons || []),
+        productId:            BASE_PRODUCT.id,
+        addons:               addons,
+        flavour:              sel.flavour,
+        price:                price,
+        deliveryDate:         dateStr,
+        deliveryDateFormatted:formatDateFull(dateStr),
+      });
+      total += price;
+    });
+  });
+
+  const orderData = {
+    multiDate:    true,
+    parentName,
+    parentPhone,
+    parentEmail,
+    total:        total.toFixed(2),
+    children:     lineItems,
+  };
+
+  submitBtn.classList.add('loading');
+  submitBtn.innerHTML = '<span class="spinner"></span> Processing...';
+  submitBtn.disabled  = true;
+
+  try {
+    const response = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(orderData)
+    });
+    const result = await response.json();
+    if (result.success && result.checkoutUrl) {
+      window.location.href = result.checkoutUrl;
+    } else {
+      throw new Error(result.error || 'Something went wrong. Please try again.');
+    }
+  } catch (err) {
+    errorBanner.textContent = err.message || '😕 Could not process your order. Please try again.';
+    errorBanner.classList.add('visible');
+    submitBtn.classList.remove('loading');
+    submitBtn.innerHTML = `💳 Pay Now — $${total.toFixed(2)}`;
+    submitBtn.disabled  = false;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+});
+
+// ============================================================
+// INIT
+// ============================================================
+buildDateGrid();
+addChild();
+
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+</script>
+</body>
+</html>
