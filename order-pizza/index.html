@@ -123,12 +123,10 @@
   .grid-date-label .gdl-day { font-size: 12px; line-height: 1.3; }
   .grid-cell { flex: 1; padding: 12px 14px; display: flex; flex-direction: column; gap: 0; }
 
-  /* Base pizza label */
   .cell-base { display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: var(--teal-light); border-radius: 8px; border: 2px solid var(--teal); }
   .cell-base-name { font-weight: 700; font-size: 14px; color: var(--teal-dark); }
   .cell-base-price { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 15px; color: var(--teal-dark); }
 
-  /* Add-on chips */
   .addon-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
   .addon-chip { display: flex; align-items: center; gap: 5px; padding: 6px 10px; border: 2px solid var(--border); border-radius: 20px; cursor: pointer; font-size: 13px; font-weight: 600; background: white; transition: all 0.15s; white-space: nowrap; user-select: none; }
   .addon-chip:hover { border-color: var(--teal); color: var(--teal-dark); }
@@ -137,10 +135,8 @@
   .addon-chip-price { font-weight: 700; font-size: 12px; color: var(--text-light); }
   .addon-chip.selected .addon-chip-price { color: var(--teal-dark); }
 
-  /* Pizza total */
   .cell-pizza-total { font-size: 13px; font-weight: 700; color: var(--teal-dark); text-align: right; margin-top: 6px; }
 
-  /* Flavour — always visible */
   .cell-flavour { margin-top: 10px; }
   .cell-flavour-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-light); margin-bottom: 4px; display: block; }
   .cell-flavour select { font-size: 13px; padding: 7px 10px; }
@@ -207,18 +203,18 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="https://friendsofsolway.github.io/friends-of-solway/" class="nav-brand">
-      <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="nav-logo">
+    <a href="../index.html" class="nav-brand">
+      <img src="../Friends_of_Solway_Logo.png" alt="Friends of Solway" class="nav-logo">
       <span class="nav-brand-text">
         Friends of Solway
         <span class="nav-brand-sub">Solway Primary School</span>
       </span>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="https://friendsofsolway.github.io/friends-of-solway/">Home</a></li>
-      <li><a href="https://friendsofsolway.github.io/friends-of-solway/past-fundraisers.html">Past Fundraisers</a></li>
-      <li><a href="https://friendsofsolway.github.io/friends-of-solway/sponsors.html">Sponsors</a></li>
-      <li><a href="solway-pizza-order.html" class="active">🍕 Order Pizza</a></li>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../past-fundraisers.html">Past Fundraisers</a></li>
+      <li><a href="../sponsors.html">Sponsors</a></li>
+      <li><a href="index.html" class="active">🍕 Order Pizza</a></li>
     </ul>
     <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -229,7 +225,7 @@
 <!-- PAGE HEADER -->
 <div class="page-header">
   <div class="page-header-inner">
-    <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="page-header-logo">
+    <img src="../Friends_of_Solway_Logo.png" alt="Friends of Solway" class="page-header-logo">
     <h1>🍕 Pizza Lunch Order</h1>
     <p style="margin-bottom:18px;">Delicious pizza delivered straight to school!</p>
     <div style="text-align:left;max-width:680px;margin:0 auto;background:rgba(255,255,255,0.55);border-radius:12px;padding:16px 20px;">
@@ -353,19 +349,19 @@
 </div><!-- end page-wrap -->
 
 <div class="my-orders-bar" id="myOrdersBar">
-  <a href="solway-pizza-my-orders.html">📋 View My Placed Orders</a>
+  <a href="my-orders.html">📋 View My Placed Orders</a>
 </div>
 
 <!-- FOOTER -->
 <footer class="site-footer" id="formFooter">
-  <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
+  <img src="../Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
   <div class="footer-name">Friends of Solway</div>
   <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.6)">Fundraising committee for Solway Primary School, Masterton</div>
   <ul class="footer-links">
-    <li><a href="https://friendsofsolway.github.io/friends-of-solway/">Home</a></li>
-    <li><a href="https://friendsofsolway.github.io/friends-of-solway/past-fundraisers.html">Past Fundraisers</a></li>
-    <li><a href="https://friendsofsolway.github.io/friends-of-solway/sponsors.html">Sponsors</a></li>
-    <li><a href="solway-pizza-order.html">🍕 Order Pizza</a></li>
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../past-fundraisers.html">Past Fundraisers</a></li>
+    <li><a href="../sponsors.html">Sponsors</a></li>
+    <li><a href="index.html">🍕 Order Pizza</a></li>
   </ul>
   <div class="footer-copy">© 2026 Friends of Solway. All fundraising goes to Solway Primary School. 🌿</div>
 </footer>
@@ -407,49 +403,31 @@ const DELIVERY_DATES = [
   '2026-12-11',
 ];
 
-// Base pizza — every order starts here
 const BASE_PRODUCT = { id: 'mini-pizza', name: 'Mini Pizza', price: 5.50 };
 
-// Optional add-ons — parents can choose any combination.
-// Note: combo price is $1.50 normally, $2.00 when GF Base is also selected.
-// The higher price is handled automatically in calcPizzaPrice and at checkout.
 const ADDONS = [
   { id: 'addon-df',    name: 'DF Cheese',  fullName: 'Dairy Free Cheese', price: 1.80 },
   { id: 'addon-gf',    name: 'GF Base',    fullName: 'Gluten Free Base',  price: 4.70 },
   { id: 'addon-combo', name: 'Combo',      fullName: 'Combo',             label: 'Make it a combo - add fries', price: 1.50 },
 ];
 
-// Processing fee passed on to parents — must match Apps Script values
-const STRIPE_FEE_PERCENT = 0.0265; // 2.65% Stripe NZ domestic rate
-const STRIPE_FEE_FIXED   = 0.30;   // 30c flat fee per transaction
+const STRIPE_FEE_PERCENT = 0.0265;
+const STRIPE_FEE_FIXED   = 0.30;
 
 const FLAVOURS = ['Cheese', 'Ham and Cheese', 'Hawaiian', 'Pepperoni', 'Vegetable'];
 const CLASSES  = ['Kanuka','Pohutukawa','Rimu','Harakeke','Matai','Titoki','Totara','Kauri','Rata','Manuka'];
 const MAX_CHILDREN = 6;
 
-// ============================================================
-// STATE
-// ============================================================
 let childCount = 0;
-// selections[childId][dateStr] = { addons: ['addon-gf', ...], flavour: 'Cheese' }
 const selections = {};
 
-// ============================================================
-// HELPERS
-// ============================================================
-
-// Build a human-readable product name from a list of add-on IDs
-// e.g. ['addon-gf','addon-combo'] → "Mini Pizza + GF Base + Combo"
 function buildProductName(addons) {
   if (!addons || addons.length === 0) return BASE_PRODUCT.name;
-  // Consistent ordering: DF Cheese → GF Base → Combo
   const ordered = ['addon-df', 'addon-gf', 'addon-combo'].filter(id => addons.includes(id));
   const names = ordered.map(id => ADDONS.find(a => a.id === id)?.name).filter(Boolean);
   return BASE_PRODUCT.name + (names.length ? ' + ' + names.join(' + ') : '');
 }
 
-// Calculate total price from add-on IDs.
-// Combo costs $2.00 when GF Base is also selected, $1.50 otherwise.
 function calcPizzaPrice(addons) {
   const list  = addons || [];
   const hasGF = list.includes('addon-gf');
@@ -461,9 +439,6 @@ function calcPizzaPrice(addons) {
   return Math.round((BASE_PRODUCT.price + addonTotal) * 100) / 100;
 }
 
-// ============================================================
-// DATE HELPERS
-// ============================================================
 function getCutoffDate(fridayStr) {
   const friday = new Date(fridayStr + 'T00:00:00+12:00');
   const wednesday = new Date(friday);
@@ -502,9 +477,6 @@ function formatCutoff(dateStr) {
   return days[c.getDay()] + ' ' + c.getDate() + ' ' + MONTHS_SHORT[c.getMonth()] + ' 12pm';
 }
 
-// ============================================================
-// DATE ACCORDION
-// ============================================================
 function toggleDateAccordion() {
   const trigger = document.getElementById('dateAccordionTrigger');
   const panel   = document.getElementById('dateAccordionPanel');
@@ -557,7 +529,7 @@ function buildDateGrid() {
     grid.appendChild(label);
   });
 
-  toggleDateAccordion(); // open by default
+  toggleDateAccordion();
 }
 
 function getSelectedDates() {
@@ -571,9 +543,6 @@ function onDateChange() {
   checkForDuplicates();
 }
 
-// ============================================================
-// CHILDREN
-// ============================================================
 function addChild() {
   if (childCount >= MAX_CHILDREN) return;
   childCount++;
@@ -627,9 +596,6 @@ function getChildren() {
   }));
 }
 
-// ============================================================
-// PIZZA GRID
-// ============================================================
 function rebuildPizzaGrid() {
   const dates    = getSelectedDates();
   const children = getChildren();
@@ -658,14 +624,12 @@ function rebuildPizzaGrid() {
     const datesDiv = block.querySelector(`#dates-${child.id}`);
 
     dates.forEach(dateStr => {
-      // Initialise state for this child-date slot if needed
       if (!selections[child.id][dateStr]) {
         selections[child.id][dateStr] = { addons: [], flavour: '' };
       }
       const sel = selections[child.id][dateStr];
       if (!Array.isArray(sel.addons)) sel.addons = [];
 
-      // Determine initial combo price label based on whether GF is already selected
       const initHasGF = sel.addons.includes('addon-gf');
 
       const row = document.createElement('div');
@@ -681,7 +645,6 @@ function rebuildPizzaGrid() {
           </div>
           <div class="addon-chips">
             ${ADDONS.map(a => {
-              // Show combo at $2.00 if GF is already selected when the grid is built
               const displayPrice = (a.id === 'addon-combo' && initHasGF) ? 2.00 : a.price;
               return `
               <label class="addon-chip${sel.addons.includes(a.id) ? ' selected' : ''}" data-addon="${a.id}">
@@ -703,7 +666,6 @@ function rebuildPizzaGrid() {
         </div>
       `;
 
-      // Wire up add-on checkboxes
       row.querySelectorAll('.addon-chip input[type="checkbox"]').forEach(cb => {
         cb.addEventListener('change', () => {
           const chip    = cb.closest('.addon-chip');
@@ -722,7 +684,6 @@ function rebuildPizzaGrid() {
 
           chip.classList.toggle('selected', cb.checked);
 
-          // If GF Base was toggled, update the combo chip price label
           if (addonId === 'addon-gf') {
             const hasGF = addons.includes('addon-gf');
             const comboChip = row.querySelector('[data-addon="addon-combo"] .addon-chip-price');
@@ -736,7 +697,6 @@ function rebuildPizzaGrid() {
         });
       });
 
-      // Wire up flavour select
       const flavourSelect = row.querySelector('.cell-flavour select');
       flavourSelect.addEventListener('change', () => {
         if (!selections[child.id]) selections[child.id] = {};
@@ -754,9 +714,6 @@ function rebuildPizzaGrid() {
   container.appendChild(grid);
 }
 
-// ============================================================
-// SUMMARY
-// ============================================================
 function updateSummary() {
   const dates         = getSelectedDates();
   const children      = getChildren();
@@ -788,7 +745,6 @@ function updateSummary() {
     let dateHtml = '';
     children.forEach(child => {
       const sel = (selections[child.id] || {})[dateStr] || {};
-      // A flavour is required; add-ons are optional
       if (!sel.flavour) {
         missingCount++;
         return;
@@ -823,7 +779,6 @@ function updateSummary() {
 
   summaryContent.innerHTML = html;
 
-  // Processing fee
   const summaryFee  = document.getElementById('summaryFee');
   const feeAmountEl = document.getElementById('feeAmount');
   let grandTotal = total;
@@ -848,10 +803,7 @@ function updateSummary() {
   document.getElementById(id).addEventListener('input', updateSummary);
 });
 
-// ============================================================
-// PROFILE LOOKUP + DUPLICATE CHECK
-// ============================================================
-const TEST_MODE = true; // set to false when going live
+const TEST_MODE = true;
 
 let lookupTimer  = null;
 let lastLookedUp = '';
@@ -942,9 +894,6 @@ function applyProfile(profile) {
   updateSummary();
 }
 
-// ============================================================
-// DUPLICATE ORDER DETECTION
-// ============================================================
 function checkForDuplicates() {
   const email   = document.getElementById('parentEmail').value.trim();
   const dates   = getSelectedDates();
@@ -997,9 +946,6 @@ function checkForDuplicates() {
   }
 }
 
-// ============================================================
-// SUBMIT
-// ============================================================
 document.getElementById('orderForm').addEventListener('submit', async function(e) {
   e.preventDefault();
 
@@ -1013,7 +959,6 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
   const parentPhone = document.getElementById('parentPhone').value.trim();
   const parentEmail = document.getElementById('parentEmail').value.trim();
 
-  // Check all cutoffs are still valid
   for (const dateStr of dates) {
     if (new Date() >= getCutoffDate(dateStr)) {
       errorBanner.textContent = `⏰ Orders for ${formatDateFull(dateStr)} have now closed. Please unselect that date and try again.`;
@@ -1023,19 +968,15 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
     }
   }
 
-  // Build flat line items: one entry per child × date
-  // Remap addon-combo → addon-combo-gf when GF Base is also selected,
-  // so the Apps Script charges the correct $2.00 Stripe price.
   const lineItems = [];
   let total = 0;
 
   dates.forEach(dateStr => {
     children.forEach(child => {
       const sel = (selections[child.id] || {})[dateStr] || {};
-      if (!sel.flavour) return; // skip incomplete rows
+      if (!sel.flavour) return;
       const price = calcPizzaPrice(sel.addons || []);
 
-      // Remap combo add-on to the GF variant when GF Base is selected
       let addons = [...(sel.addons || [])];
       if (addons.includes('addon-gf') && addons.includes('addon-combo')) {
         addons = addons.map(id => id === 'addon-combo' ? 'addon-combo-gf' : id);
@@ -1091,9 +1032,6 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
   }
 });
 
-// ============================================================
-// INIT
-// ============================================================
 buildDateGrid();
 addChild();
 
