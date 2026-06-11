@@ -7,20 +7,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --teal: #2BBCB3;
-    --teal-dark: #1A9E96;
-    --teal-light: #E0F7F6;
-    --blue: #3B7DD8;
-    --orange: #FF9800;
-    --orange-dark: #EF6C00;
-    --orange-light: #FFF3E0;
-    --bg: #F0FAFA;
-    --card: #FFFFFF;
-    --text: #2D2D2D;
-    --text-light: #5A6B6B;
-    --border: #C8E6E4;
-    --shadow: 0 2px 16px rgba(43,188,179,0.10);
-    --radius: 14px;
+    --teal: #2BBCB3; --teal-dark: #1A9E96; --teal-light: #E0F7F6;
+    --blue: #3B7DD8; --orange: #FF9800; --orange-dark: #EF6C00; --orange-light: #FFF3E0;
+    --bg: #F0FAFA; --card: #FFFFFF; --text: #2D2D2D; --text-light: #5A6B6B;
+    --border: #C8E6E4; --shadow: 0 2px 16px rgba(43,188,179,0.10); --radius: 14px;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
@@ -30,30 +20,19 @@
   .icon { font-size: 56px; margin-bottom: 16px; line-height: 1; }
   h1 { font-family: 'Fredoka', sans-serif; font-size: 26px; font-weight: 700; color: var(--orange-dark); margin-bottom: 12px; }
   p { color: var(--text-light); font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
-  .retry-btn {
-    display: inline-block;
-    padding: 14px 32px;
-    background: linear-gradient(135deg, var(--teal), var(--blue));
-    color: white;
-    border-radius: 10px;
-    font-family: 'Fredoka', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
+  .retry-btn { display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, var(--teal), var(--blue)); color: white; border-radius: 10px; font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 700; text-decoration: none; transition: opacity 0.2s; }
   .retry-btn:hover { opacity: 0.9; }
   .footer { margin-top: 24px; color: var(--text-light); font-size: 13px; }
 </style>
 </head>
 <body>
 <div class="container">
-  <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="header-logo">
+  <img src="../Friends_of_Solway_Logo.png" alt="Friends of Solway" class="header-logo">
   <div class="card">
     <div class="icon">😕</div>
     <h1>Order Not Completed</h1>
     <p>Your order wasn't completed — no payment has been taken.<br>Click below to go back and try again.</p>
-    <a href="solway-pizza-order.html" class="retry-btn">🍕 Try Again</a>
+    <a href="index.html" class="retry-btn">🍕 Try Again</a>
   </div>
   <div class="footer">🌊 Friends of Solway — Fundraising for Solway Primary School, Masterton 🌿</div>
 </div>
