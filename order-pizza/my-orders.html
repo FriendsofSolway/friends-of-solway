@@ -17,7 +17,7 @@
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; display: flex; flex-direction: column; }
-  .page-wrap { max-width: 640px; margin: 0 auto; padding: 0 20px 20px; width: 100%; }Fte
+  .page-wrap { max-width: 640px; margin: 0 auto; padding: 0 20px 20px; width: 100%; }
   nav { background: white; border-bottom: 2px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
   .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
   .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
@@ -72,6 +72,10 @@
   .footer-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 14px 0; flex-wrap: wrap; }
   .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
   .footer-links a:hover { color: var(--teal); }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 16px auto; max-width: 480px; }
+  .footer-policy-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 8px 0; flex-wrap: wrap; }
+  .footer-policy-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 12px; transition: color 0.15s; }
+  .footer-policy-links a:hover { color: var(--teal); }
   .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 14px; }
   @media (max-width: 640px) {
     .nav-links { display: none; }
@@ -88,7 +92,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="../index.html" class="nav-brand">
@@ -110,7 +113,6 @@
   </div>
 </nav>
 
-<!-- PAGE HEADER -->
 <div class="page-header">
   <div class="page-header-inner">
     <img src="../Friends_of_Solway_Logo.png" alt="Friends of Solway" class="page-header-logo">
@@ -136,18 +138,24 @@
 
 </div>
 
-<!-- FOOTER -->
 <footer class="site-footer">
   <img src="../Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
   <div class="footer-name">Friends of Solway</div>
-  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.6)">Fundraising committee for Solway Primary School, Masterton</div>
+  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.6)">Supporting Solway Primary School, Masterton</div>
+  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.55)">📧 <a href="mailto:office@solway.school.nz" style="color:rgba(255,255,255,0.65);text-decoration:none;">office@solway.school.nz</a></div>
   <ul class="footer-links">
     <li><a href="../index.html">Home</a></li>
     <li><a href="../past-fundraisers.html">Past Fundraisers</a></li>
     <li><a href="../sponsors.html">Sponsors</a></li>
     <li><a href="index.html">🍕 Order Pizza</a></li>
   </ul>
-  <div class="footer-copy">© 2026 Friends of Solway. All fundraising goes to Solway Primary School. 🌿</div>
+  <hr class="footer-divider">
+  <ul class="footer-policy-links">
+    <li><a href="../privacy.html">Privacy Policy</a></li>
+    <li><a href="../refunds.html">Refund &amp; Cancellation Policy</a></li>
+    <li><a href="../terms.html">Terms &amp; Conditions</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Friends of Solway. 🌿</div>
 </footer>
 
 <script>
@@ -166,12 +174,12 @@ async function lookupOrders() {
   const email = document.getElementById('lookupEmail').value.trim();
   if (!email) return;
 
-  const btn = document.getElementById('lookupBtn');
+  const btn     = document.getElementById('lookupBtn');
   const results = document.getElementById('results');
 
   btn.classList.add('loading');
   btn.innerHTML = '<span class="spinner"></span> Searching...';
-  btn.disabled = true;
+  btn.disabled  = true;
   results.innerHTML = '';
 
   try {
@@ -192,15 +200,15 @@ async function lookupOrders() {
 
   btn.classList.remove('loading');
   btn.innerHTML = '🔎 Find My Orders';
-  btn.disabled = false;
+  btn.disabled  = false;
 }
 
 const MONTHS_LONG = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const DAYS_LONG   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
 function formatDateNice(dateStr) {
-  const s = String(dateStr || '').trim();
-  const ymd = s.length >= 10 ? s.substring(0, 10) : s;
+  const s    = String(dateStr || '').trim();
+  const ymd  = s.length >= 10 ? s.substring(0, 10) : s;
   const parts = ymd.split('-');
   if (parts.length === 3 && parts[0].length === 4) {
     const d = new Date(Date.UTC(+parts[0], +parts[1] - 1, +parts[2]));
