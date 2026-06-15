@@ -97,7 +97,7 @@
   .stat-remaining .stat-value { color: var(--text); }
   .stat-goal .stat-value { color: #27500A; }
 
-  /* ── WHAT WE'RE RAISING FOR ── */
+  /* ── WHAT WE'RE WORKING TOWARDS ── */
   .raising-section { background: white; }
   .raising-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 32px; }
   .raising-card { background: var(--bg); border: 2px solid var(--border); border-radius: var(--radius); padding: 24px; text-align: center; transition: all 0.2s; }
@@ -107,7 +107,7 @@
   .raising-card-desc { font-size: 13px; color: var(--text-light); line-height: 1.5; }
   .raising-card-amount { display: inline-block; margin-top: 10px; padding: 4px 12px; background: var(--teal-light); color: var(--teal-dark); border-radius: 20px; font-family: 'Fredoka', sans-serif; font-size: 14px; font-weight: 600; }
 
-  /* ── CURRENT FUNDRAISERS ── */
+  /* ── ACTIVITIES ── */
   .fundraisers-section { background: linear-gradient(180deg, var(--bg) 0%, #EAF9F8 100%); }
   .fundraisers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 8px; }
   .fundraiser-card { background: white; border-radius: var(--radius); border: 2px solid var(--border); box-shadow: var(--shadow-sm); overflow: hidden; transition: all 0.2s; display: flex; flex-direction: column; }
@@ -154,7 +154,11 @@
   .footer-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 16px 0; flex-wrap: wrap; }
   .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
   .footer-links a:hover { color: var(--teal); }
-  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 16px; }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 16px auto; max-width: 480px; }
+  .footer-policy-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 8px 0; flex-wrap: wrap; }
+  .footer-policy-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 12px; transition: color 0.15s; }
+  .footer-policy-links a:hover { color: var(--teal); }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 12px; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 640px) {
@@ -203,7 +207,8 @@
       <div class="hero-logo-ring"></div>
       <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="hero-logo">
     </div>
-    <h1>Raising funds for<br><em>Solway Primary School</em></h1>
+    <!-- CHANGED: "Raising funds for" → "Supporting" -->
+    <h1>Supporting<br><em>Solway Primary School</em></h1>
     <p class="hero-subtitle">Friends of Solway is a parent-led committee working together to make school life richer for every child at Solway. 🌿</p>
     <div class="hero-btns">
       <a href="past-fundraisers.html" class="btn-primary">🏆 See Past Fundraisers</a>
@@ -212,11 +217,12 @@
   </div>
 </section>
 
-<!-- FUNDRAISING GOAL -->
+<!-- PROGRESS GOAL -->
 <section class="section">
   <div class="section-inner" style="text-align:center">
     <div class="section-label">2026 Goal</div>
-    <h2 class="section-title">Our Fundraising Progress</h2>
+    <!-- CHANGED: "Our Fundraising Progress" → "Our Progress" -->
+    <h2 class="section-title">Our Progress</h2>
     <p class="section-subtitle" style="margin:0 auto 32px">Every pizza ordered, every plant sold gets us closer. Here's where we're at!</p>
     <div class="goal-card">
       <div class="goal-header">
@@ -284,12 +290,15 @@
   </div>
 </section>
 
-<!-- WHAT WE'RE RAISING FOR -->
+<!-- WHAT WE'RE WORKING TOWARDS -->
 <section class="section raising-section">
   <div class="section-inner">
-    <div class="section-label">Where it goes</div>
-    <h2 class="section-title">What We're Raising For</h2>
-    <p class="section-subtitle">Every dollar raised goes directly back into improving the school for our tamariki.</p>
+    <!-- CHANGED: "Where it goes" → "School improvements" -->
+    <div class="section-label">School improvements</div>
+    <!-- CHANGED: "What We're Raising For" → "What We're Working Towards" -->
+    <h2 class="section-title">What We're Working Towards</h2>
+    <!-- CHANGED: "Every dollar raised" → "Every dollar" -->
+    <p class="section-subtitle">Every dollar goes directly back into improving the school for our tamariki.</p>
     <div class="raising-grid">
       <div class="raising-card">
         <span class="raising-icon">🎨</span>
@@ -319,11 +328,12 @@
   </div>
 </section>
 
-<!-- CURRENT FUNDRAISERS -->
+<!-- WHAT'S ON -->
 <section class="section fundraisers-section">
   <div class="section-inner">
     <div class="section-label">Get involved</div>
-    <h2 class="section-title">Current Fundraisers</h2>
+    <!-- CHANGED: "Current Fundraisers" → "What's On" -->
+    <h2 class="section-title">What's On</h2>
     <p class="section-subtitle" style="margin-bottom:28px">Easy ways to support the school — every little bit helps!</p>
     <div class="fundraisers-grid">
       <div class="fundraiser-card">
@@ -331,7 +341,8 @@
         <div class="fundraiser-body">
           <span class="fundraiser-tag tag-open">🟢 Open now</span>
           <div class="fundraiser-title">🍕 Friday Pizza Lunch</div>
-          <div class="fundraiser-desc">Order pizza for your child delivered to school every Friday.</div>
+          <!-- CHANGED: removed fundraiser framing, focused on food ordering -->
+          <div class="fundraiser-desc">Order a hot pizza lunch for your child, delivered straight to school every Friday. Proudly partnered with Domino's — order online in minutes.</div>
           <div class="fundraiser-meta">
             <span>📅 Every Friday</span>
             <span>💳 Pay online</span>
@@ -420,7 +431,8 @@
 <!-- ABOUT STRIP -->
 <div class="about-strip">
   <h2>👋 Who are Friends of Solway?</h2>
-  <p>We're a group of parents and caregivers who volunteer our time to raise funds that go directly back into Solway Primary School.</p>
+  <!-- CHANGED: "raise funds that go directly back into" → "support and improve" -->
+  <p>We're a group of parents and caregivers who volunteer our time to support and improve Solway Primary School for the benefit of every child in our community.</p>
   <a href="#" class="btn-white">Learn more about us →</a>
 </div>
 
@@ -429,6 +441,8 @@
   <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
   <div class="footer-name">Friends of Solway</div>
   <div style="font-size:13px;margin-bottom:4px">Supporting Solway Primary School, Masterton</div>
+  <!-- ADDED: contact email -->
+  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.55)">📧 <a href="mailto:hello@friendsofsolway.co.nz" style="color:rgba(255,255,255,0.65);text-decoration:none;">hello@friendsofsolway.co.nz</a></div>
   <ul class="footer-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="past-fundraisers.html">Past Fundraisers</a></li>
@@ -437,7 +451,14 @@
     <li><a href="order-pizza/index.html">Order Pizza</a></li>
     <li><a href="order-pizza/my-orders.html">My Orders</a></li>
   </ul>
-  <div class="footer-copy">© 2026 Friends of Solway.🌿</div>
+  <!-- ADDED: policy links -->
+  <hr class="footer-divider">
+  <ul class="footer-policy-links">
+    <li><a href="privacy.html">Privacy Policy</a></li>
+    <li><a href="refunds.html">Refund &amp; Cancellation Policy</a></li>
+    <li><a href="terms.html">Terms &amp; Conditions</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Friends of Solway. 🌿</div>
 </footer>
 
 <script>
@@ -445,7 +466,8 @@ function toggleNav() {
   document.getElementById('navLinks').classList.toggle('open');
 }
 const GOAL = 5000;
-const RAISED = TBC;
+// FIXED: was "const RAISED = TBC" which caused a JavaScript error — set to 0 until figure is confirmed
+const RAISED = 0;
 const SEG_COLOURS = [
   '#8B0000','#B22020','#C0392B','#D44020','#E05020',
   '#E86820','#F08020','#F5A020','#F5C020','#EAD020',
@@ -462,8 +484,10 @@ function animateProgress() {
       if (seg) seg.setAttribute('fill', i < filledSegs ? SEG_COLOURS[i] : '#ebebeb');
     }
   }, 300);
-  document.getElementById('statRaised').textContent = '$' + RAISED.toLocaleString('en-NZ');
-  document.getElementById('statRemaining').textContent = '$' + remaining.toLocaleString('en-NZ');
+  if (RAISED > 0) {
+    document.getElementById('statRaised').textContent = '$' + RAISED.toLocaleString('en-NZ');
+    document.getElementById('statRemaining').textContent = '$' + remaining.toLocaleString('en-NZ');
+  }
 }
 animateProgress();
 </script>
