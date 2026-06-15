@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Friends of Solway</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #2BBCB3; --teal-dark: #1A9E96; --teal-light: #E0F7F6; --teal-mid: #B2ECEA;
+    --blue: #3B7DD8; --blue-dark: #2A5FA8;
+    --bg: #F0FAFA; --card: #FFFFFF; --text: #1E3232; --text-mid: #3A5252; --text-light: #5A7070;
+    --border: #C8E6E4;
+    --shadow-sm: 0 2px 12px rgba(43,188,179,0.10);
+    --shadow: 0 4px 24px rgba(43,188,179,0.14);
+    --radius: 16px; --radius-lg: 24px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+
+  nav { background: white; border-bottom: 2px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); }
+  .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--teal-mid); }
+  .nav-brand-text { font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 600; color: var(--teal-dark); line-height: 1.2; }
+  .nav-brand-sub { font-size: 11px; font-weight: 400; color: var(--text-light); font-family: 'Nunito', sans-serif; display: block; }
+  .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 8px; transition: all 0.15s; }
+  .nav-links a:hover { background: var(--teal-light); color: var(--teal-dark); }
+  .nav-cta { background: linear-gradient(135deg, var(--teal), var(--blue)); color: white !important; padding: 8px 16px !important; border-radius: 10px !important; font-weight: 700 !important; }
+  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-mid); margin: 5px 0; border-radius: 2px; }
+
+  .page-hero { background: linear-gradient(160deg, #E8FAF9 0%, #EAF2FF 100%); padding: 48px 24px; text-align: center; border-bottom: 2px solid var(--border); }
+  .page-hero h1 { font-family: 'Fredoka', sans-serif; font-size: clamp(26px, 5vw, 40px); font-weight: 700; color: var(--teal-dark); margin-bottom: 8px; }
+  .page-hero p { font-size: 15px; color: var(--text-light); }
+
+  .content-wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 64px; }
+  .policy-card { background: white; border-radius: var(--radius-lg); border: 2px solid var(--border); box-shadow: var(--shadow); padding: 40px; }
+  .policy-card h2 { font-family: 'Fredoka', sans-serif; font-size: 20px; font-weight: 700; color: var(--teal-dark); margin: 32px 0 10px; }
+  .policy-card h2:first-child { margin-top: 0; }
+  .policy-card p { font-size: 15px; color: var(--text-mid); margin-bottom: 12px; }
+  .policy-card ul { padding-left: 20px; margin-bottom: 12px; }
+  .policy-card ul li { font-size: 15px; color: var(--text-mid); margin-bottom: 6px; }
+  .policy-card a { color: var(--teal-dark); }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+
+  footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 40px 24px 28px; text-align: center; }
+  .footer-logo { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px; display: block; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
+  .footer-name { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: white; margin-bottom: 6px; }
+  .footer-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 16px 0; flex-wrap: wrap; }
+  .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
+  .footer-links a:hover { color: var(--teal); }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 16px auto; max-width: 480px; }
+  .footer-policy-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 8px 0; flex-wrap: wrap; }
+  .footer-policy-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 12px; transition: color 0.15s; }
+  .footer-policy-links a:hover { color: var(--teal); }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 12px; }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: block; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 12px 16px 16px; border-bottom: 2px solid var(--border); box-shadow: var(--shadow); gap: 2px; }
+    .nav-links.open a { padding: 10px 12px; }
+    .policy-card { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="nav-logo">
+      <span class="nav-brand-text">Friends of Solway<span class="nav-brand-sub">Solway Primary School</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="past-fundraisers.html">Past Fundraisers</a></li>
+      <li><a href="sponsors.html">Sponsors</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="order-pizza/index.html" class="nav-cta">🍕 Order Pizza</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>🔒 Privacy Policy</h1>
+  <p>Last updated: June 2026</p>
+</div>
+
+<div class="content-wrap">
+  <div class="policy-card">
+
+    <h2>Who we are</h2>
+    <p>Friends of Solway is a parent-led committee operating under the direction of the Solway Primary School Board of Trustees, Masterton, New Zealand. We can be contacted at <a href="mailto:office@solway.school.nz">office@solway.school.nz</a>.</p>
+
+    <hr class="divider">
+
+    <h2>What information we collect</h2>
+    <p>When you use our pizza lunch ordering service, we collect the following information:</p>
+    <ul>
+      <li>Your name and email address</li>
+      <li>Your phone number</li>
+      <li>Your child's name and class</li>
+      <li>Your pizza selections and order history</li>
+    </ul>
+    <p>Payment information (card details) is processed directly and securely by Stripe. Friends of Solway does not store or have access to your card details at any time.</p>
+
+    <hr class="divider">
+
+    <h2>How we use your information</h2>
+    <p>We use the information you provide solely to:</p>
+    <ul>
+      <li>Process and fulfil your pizza lunch orders</li>
+      <li>Send you order confirmations and receipts</li>
+      <li>Contact you if there is an issue with your order</li>
+      <li>Pre-fill your details for future orders to save you time</li>
+    </ul>
+    <p>We do not use your information for marketing purposes, and we do not share your information with any third party other than Stripe (for payment processing) and Domino's (for order fulfilment).</p>
+
+    <hr class="divider">
+
+    <h2>Data storage</h2>
+    <p>Your order information is stored securely in Google Sheets, accessible only to authorised Friends of Solway committee members. We retain order data for the current school year and delete it at the end of each year.</p>
+
+    <hr class="divider">
+
+    <h2>Your rights</h2>
+    <p>Under the New Zealand Privacy Act 2020, you have the right to access the personal information we hold about you, and to ask us to correct it. To make a request, please contact us at <a href="mailto:office@solway.school.nz">office@solway.school.nz</a>.</p>
+
+    <hr class="divider">
+
+    <h2>Cookies</h2>
+    <p>Our website uses your email address stored in your browser's local storage to remember your details between visits. No tracking cookies or third-party analytics are used.</p>
+
+    <hr class="divider">
+
+    <h2>Contact us</h2>
+    <p>If you have any questions about this privacy policy or how we handle your information, please contact us at <a href="mailto:office@solway.school.nz">office@solway.school.nz</a>.</p>
+
+  </div>
+</div>
+
+<footer>
+  <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
+  <div class="footer-name">Friends of Solway</div>
+  <div style="font-size:13px;margin-bottom:4px">Supporting Solway Primary School, Masterton</div>
+  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.55)">📧 <a href="mailto:office@solway.school.nz" style="color:rgba(255,255,255,0.65);text-decoration:none;">office@solway.school.nz</a></div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="past-fundraisers.html">Past Fundraisers</a></li>
+    <li><a href="sponsors.html">Sponsors</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="order-pizza/index.html">Order Pizza</a></li>
+    <li><a href="order-pizza/my-orders.html">My Orders</a></li>
+  </ul>
+  <hr class="footer-divider">
+  <ul class="footer-policy-links">
+    <li><a href="privacy.html">Privacy Policy</a></li>
+    <li><a href="refunds.html">Refund &amp; Cancellation Policy</a></li>
+    <li><a href="terms.html">Terms &amp; Conditions</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Friends of Solway. 🌿</div>
+</footer>
+
+</body>
+</html>
