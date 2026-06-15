@@ -17,7 +17,6 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
 
-  /* ── NAV ── */
   nav { background: white; border-bottom: 2px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); }
   .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
   .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
@@ -32,7 +31,6 @@
   .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
   .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-mid); margin: 5px 0; border-radius: 2px; transition: 0.2s; }
 
-  /* ── MAIN CONTENT ── */
   .main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 48px 24px; }
   .container { max-width: 520px; width: 100%; background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow); border: 2px solid var(--border); padding: 48px 40px; text-align: center; }
   .emoji { font-size: 64px; margin-bottom: 20px; line-height: 1; }
@@ -45,13 +43,16 @@
   .btn-orders:hover { border-color: var(--teal); background: var(--teal-light); }
   .btn-wrap { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 8px; }
 
-  /* ── FOOTER ── */
   footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 40px 24px 28px; text-align: center; }
   .footer-logo { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px; display: block; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
   .footer-name { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: white; margin-bottom: 6px; }
   .footer-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 16px 0; flex-wrap: wrap; }
   .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
   .footer-links a:hover { color: var(--teal); }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 16px auto; max-width: 480px; }
+  .footer-policy-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 8px 0; flex-wrap: wrap; }
+  .footer-policy-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 12px; transition: color 0.15s; }
+  .footer-policy-links a:hover { color: var(--teal); }
   .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 16px; }
 
   @media (max-width: 640px) {
@@ -65,7 +66,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="../index.html" class="nav-brand">
@@ -87,7 +87,6 @@
   </div>
 </nav>
 
-<!-- MAIN -->
 <main class="main">
   <div class="container">
     <div class="emoji">✅</div>
@@ -96,7 +95,7 @@
     <div class="highlight">
       A receipt has been sent to your email address from Stripe. You don't need to do anything else — we'll have the pizzas ready on the day! 🍕
     </div>
-    <p>If you need to make any changes to your order, please contact the Friends of Solway team.</p>
+    <p>If you need to make any changes to your order, please contact the Friends of Solway team at <a href="mailto:office@solway.school.nz" style="color:var(--teal-dark);font-weight:700;">office@solway.school.nz</a>.</p>
     <div class="btn-wrap">
       <a href="my-orders.html" class="btn-orders">📋 View My Orders</a>
       <a href="../index.html" class="btn-home">🏠 Back to Home</a>
@@ -104,11 +103,11 @@
   </div>
 </main>
 
-<!-- FOOTER -->
 <footer>
   <img src="../Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
   <div class="footer-name">Friends of Solway</div>
-  <div style="font-size:13px;margin-bottom:4px">Fundraising committee for Solway Primary School, Masterton</div>
+  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.6)">Supporting Solway Primary School, Masterton</div>
+  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.55)">📧 <a href="mailto:office@solway.school.nz" style="color:rgba(255,255,255,0.65);text-decoration:none;">office@solway.school.nz</a></div>
   <ul class="footer-links">
     <li><a href="../index.html">Home</a></li>
     <li><a href="../past-fundraisers.html">Past Fundraisers</a></li>
@@ -116,7 +115,13 @@
     <li><a href="index.html">🍕 Order Pizza</a></li>
     <li><a href="my-orders.html">My Orders</a></li>
   </ul>
-  <div class="footer-copy">© 2026 Friends of Solway. All fundraising goes to Solway Primary School. 🌿</div>
+  <hr class="footer-divider">
+  <ul class="footer-policy-links">
+    <li><a href="../privacy.html">Privacy Policy</a></li>
+    <li><a href="../refunds.html">Refund &amp; Cancellation Policy</a></li>
+    <li><a href="../terms.html">Terms &amp; Conditions</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Friends of Solway. 🌿</div>
 </footer>
 
 <script>
