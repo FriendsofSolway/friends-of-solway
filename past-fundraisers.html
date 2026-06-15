@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Past Fundraisers — Friends of Solway</title>
+<title>Past Events — Friends of Solway</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -66,6 +66,10 @@
   .footer-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 16px 0; flex-wrap: wrap; }
   .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
   .footer-links a:hover { color: var(--teal); }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 16px auto; max-width: 480px; }
+  .footer-policy-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 8px 0; flex-wrap: wrap; }
+  .footer-policy-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 12px; transition: color 0.15s; }
+  .footer-policy-links a:hover { color: var(--teal); }
   .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 16px; }
   @media (max-width: 860px) { .section-inner { padding: 0 4px; } .past-card-title { font-size: 19px; } }
   @media (max-width: 640px) {
@@ -82,7 +86,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-brand">
@@ -94,7 +97,7 @@
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
-      <li><a href="past-fundraisers.html" class="active">Past Fundraisers</a></li>
+      <li><a href="past-fundraisers.html" class="active">Past Events</a></li>
       <li><a href="sponsors.html">Sponsors</a></li>
       <li><a href="order-pizza/index.html" class="nav-cta">🍕 Order Pizza</a></li>
     </ul>
@@ -104,24 +107,22 @@
   </div>
 </nav>
 
-<!-- PAGE HEADER -->
 <div class="page-header">
   <div class="page-header-inner">
-    <h1>🏆 Past Fundraisers 🏆</h1>
-    <p>A record of everything we've achieved together — every dollar raised goes directly back into Solway Primary School.</p>
+    <h1>🏆 Past Events 🏆</h1>
+    <p>A record of everything we've achieved together — every dollar goes directly back into Solway Primary School.</p>
   </div>
 </div>
 
-<!-- STATS STRIP -->
 <div class="stats-strip">
   <div class="stats-inner">
     <div>
       <div class="strip-stat-value">6</div>
-      <div class="strip-stat-label">Fundraisers completed</div>
+      <div class="strip-stat-label">Events completed</div>
     </div>
     <div>
       <div class="strip-stat-value">$11,000+</div>
-      <div class="strip-stat-label">Total raised</div>
+      <div class="strip-stat-label">Total</div>
     </div>
     <div>
       <div class="strip-stat-value">1</div>
@@ -130,7 +131,6 @@
   </div>
 </div>
 
-<!-- FUNDRAISER LIST -->
 <section class="section">
   <div class="section-inner">
     <div class="year-group">
@@ -145,7 +145,7 @@
           </div>
           <div class="past-card-amount-wrap">
             <div class="past-card-amount">$2,374.60</div>
-            <div class="past-card-amount-label">Raised</div>
+            <div class="past-card-amount-label">Total</div>
           </div>
         </div>
         <div class="past-card-body">
@@ -165,7 +165,7 @@
           </div>
           <div class="past-card-amount-wrap">
             <div class="past-card-amount">$584</div>
-            <div class="past-card-amount-label">Raised</div>
+            <div class="past-card-amount-label">Total</div>
           </div>
         </div>
         <div class="past-card-body">
@@ -185,7 +185,7 @@
           </div>
           <div class="past-card-amount-wrap">
             <div class="past-card-amount">$613.80</div>
-            <div class="past-card-amount-label">Raised</div>
+            <div class="past-card-amount-label">Total</div>
           </div>
         </div>
         <div class="past-card-body">
@@ -205,7 +205,7 @@
           </div>
           <div class="past-card-amount-wrap">
             <div class="past-card-amount tbc">TBC</div>
-            <div class="past-card-amount-label">Raised</div>
+            <div class="past-card-amount-label">Total</div>
           </div>
         </div>
         <div class="past-card-body">
@@ -222,7 +222,7 @@
           </div>
           <div class="past-card-amount-wrap">
             <div class="past-card-amount">$499.30</div>
-            <div class="past-card-amount-label">Raised</div>
+            <div class="past-card-amount-label">Total</div>
           </div>
         </div>
         <div class="past-card-body">
@@ -239,7 +239,7 @@
           </div>
           <div class="past-card-amount-wrap">
             <div class="past-card-amount">$7,020</div>
-            <div class="past-card-amount-label">Raised</div>
+            <div class="past-card-amount-label">Total</div>
           </div>
         </div>
         <div class="past-card-body">
@@ -254,19 +254,25 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
   <div class="footer-name">Friends of Solway</div>
-  <div style="font-size:13px;margin-bottom:4px">Fundraising committee for Solway Primary School, Masterton</div>
+  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.6)">Supporting Solway Primary School, Masterton</div>
+  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.55)">📧 <a href="mailto:office@solway.school.nz" style="color:rgba(255,255,255,0.65);text-decoration:none;">office@solway.school.nz</a></div>
   <ul class="footer-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="past-fundraisers.html">Past Fundraisers</a></li>
+    <li><a href="past-fundraisers.html">Past Events</a></li>
     <li><a href="sponsors.html">Sponsors</a></li>
     <li><a href="order-pizza/index.html">Order Pizza</a></li>
     <li><a href="order-pizza/my-orders.html">My Orders</a></li>
   </ul>
-  <div class="footer-copy">© 2026 Friends of Solway. All fundraising goes to Solway Primary School. 🌿</div>
+  <hr class="footer-divider">
+  <ul class="footer-policy-links">
+    <li><a href="privacy.html">Privacy Policy</a></li>
+    <li><a href="refunds.html">Refund &amp; Cancellation Policy</a></li>
+    <li><a href="terms.html">Terms &amp; Conditions</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Friends of Solway. 🌿</div>
 </footer>
 
 <script>
