@@ -22,7 +22,12 @@
   p { color: var(--text-light); font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
   .retry-btn { display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, var(--teal), var(--blue)); color: white; border-radius: 10px; font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 700; text-decoration: none; transition: opacity 0.2s; }
   .retry-btn:hover { opacity: 0.9; }
-  .footer { margin-top: 24px; color: var(--text-light); font-size: 13px; }
+  .footer { margin-top: 24px; color: var(--text-light); font-size: 13px; line-height: 1.8; }
+  .footer a { color: var(--teal-dark); text-decoration: none; font-weight: 600; }
+  .footer a:hover { text-decoration: underline; }
+  .footer-policy { margin-top: 10px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; font-size: 12px; }
+  .footer-policy a { color: var(--text-light); text-decoration: none; }
+  .footer-policy a:hover { color: var(--teal-dark); text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -34,7 +39,15 @@
     <p>Your order wasn't completed — no payment has been taken.<br>Click below to go back and try again.</p>
     <a href="index.html" class="retry-btn">🍕 Try Again</a>
   </div>
-  <div class="footer">🌊 Friends of Solway — Fundraising for Solway Primary School, Masterton 🌿</div>
+  <div class="footer">
+    🌊 Friends of Solway — Supporting Solway Primary School, Masterton 🌿<br>
+    Need help? <a href="mailto:office@solway.school.nz">office@solway.school.nz</a>
+    <div class="footer-policy">
+      <a href="../privacy.html">Privacy Policy</a>
+      <a href="../refunds.html">Refund &amp; Cancellation Policy</a>
+      <a href="../terms.html">Terms &amp; Conditions</a>
+    </div>
+  </div>
 </div>
 </body>
 </html>
