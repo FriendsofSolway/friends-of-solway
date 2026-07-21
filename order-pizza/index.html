@@ -311,7 +311,7 @@
     <!-- Step 4: Add children -->
     <div class="card step-hidden" id="card4-children">
       <div class="card-title"><span class="step">4</span> 🧒 Your Children</div>
-      <p style="font-size:14px;color:var(--text-light);margin-bottom:14px;">Add each child once — you'll choose their pizza for each date in the next step.</p>
+      <p style="font-size:14px;color:var(--text-light);margin-bottom:14px;">Add each child once — you'll choose their pizza for each date in the next step. Not ordering for one of them this time? Just tap ✕ to remove them from this order (they'll still be remembered for next time).</p>
       <div id="childrenContainer"></div>
       <button type="button" class="add-child-btn" id="addChildBtn" onclick="addChild()">➕ Add Another Child</button>
     </div>
@@ -398,7 +398,12 @@ const CLASSES  = ['Kanuka','Pohutukawa','Rimu','Harakeke','Matai','Titoki','Tota
 const MAX_CHILDREN = 6;
 
 let childCount = 0;
+let nextChildId = 0;
 const selections = {};
+
+function escapeHtml(str) {
+  return String(str ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
 
 function buildProductName(addons) {
   if (!addons || addons.length === 0) return BASE_PRODUCT.name;
@@ -522,19 +527,20 @@ function onDateChange() {
 function addChild() {
   if (childCount >= MAX_CHILDREN) return;
   childCount++;
-  const id = childCount;
+  nextChildId++;
+  const id = nextChildId;
   selections[id] = {};
   const row = document.createElement('div');
   row.className = 'child-row';
   row.id = `child-${id}`;
   row.innerHTML = `
-    <span class="child-num">🧒 Child ${id}</span>
+    <span class="child-num">🧒 Child ${childCount}</span>
     <input type="text" placeholder="Full name" class="child-name" data-id="${id}" required>
     <select class="child-class" data-id="${id}" required>
       <option value="">Class...</option>
       ${CLASSES.map(c => `<option value="${c}">${c}</option>`).join('')}
     </select>
-    ${id > 1 ? `<button type="button" class="remove-btn" onclick="removeChild(${id})" title="Remove">✕</button>` : ''}
+    <button type="button" class="remove-btn" onclick="removeChild(${id})" title="Remove this child from the order">✕</button>
   `;
   row.querySelector('.child-name').addEventListener('input', () => { rebuildPizzaGrid(); updateSummary(); });
   row.querySelector('.child-class').addEventListener('change', updateSummary);
@@ -545,15 +551,24 @@ function addChild() {
 }
 
 function removeChild(id) {
-  document.getElementById(`child-${id}`)?.remove();
+  const row = document.getElementById(`child-${id}`);
+  if (!row) return;
+  const name = row.querySelector('.child-name').value.trim();
+  if (name && !confirm(`Remove ${name} from this order?`)) return;
+  row.remove();
   delete selections[id];
   childCount--;
+  if (childCount === 0) {
+    addChild();
+    return;
+  }
   document.querySelectorAll('.child-row').forEach((row, i) => {
     row.querySelector('.child-num').textContent = `🧒 Child ${i + 1}`;
   });
   updateAddButton();
   rebuildPizzaGrid();
   updateSummary();
+  checkForDuplicates();
 }
 
 function updateAddButton() {
@@ -587,7 +602,7 @@ function rebuildPizzaGrid() {
     block.className = 'grid-child-block';
     const childName = child.name || `Child ${child.id}`;
     block.innerHTML = `
-      <div class="grid-child-header">🧒 ${childName}</div>
+      <div class="grid-child-header">🧒 ${escapeHtml(childName)}</div>
       <div class="grid-dates" id="dates-${child.id}"></div>
     `;
     const datesDiv = block.querySelector(`#dates-${child.id}`);
@@ -697,7 +712,7 @@ function updateSummary() {
       const price       = calcPizzaPrice(sel.addons || []);
       const productName = buildProductName(sel.addons || []);
       const childName   = child.name || `Child ${child.id}`;
-      dateHtml += `<li><span>🍕 ${childName} — ${productName} (${sel.flavour})</span><span>$${price.toFixed(2)}</span></li>`;
+      dateHtml += `<li><span>🍕 ${escapeHtml(childName)} — ${productName} (${sel.flavour})</span><span>$${price.toFixed(2)}</span></li>`;
       total += price;
       hasAnyItem = true;
     });
@@ -792,8 +807,8 @@ async function triggerLookup(email) {
     orderCache.orders = result.success ? (result.orders || []) : [];
     if (result.success && result.profile) {
       applyProfile(result.profile);
-      hint.textContent = '👋 Welcome back! We\'ve filled in your details.';
-      setTimeout(() => hint.classList.remove('visible'), 5000);
+      hint.textContent = '👋 Welcome back! We\'ve filled in your details. Only ordering for some of your children? Tap ✕ to remove any who don\'t need pizza this time.';
+      setTimeout(() => hint.classList.remove('visible'), 8000);
     } else {
       hint.classList.remove('visible');
     }
@@ -857,11 +872,12 @@ function checkForDuplicates() {
         if (order.status !== 'Paid') return false;
         const raw     = String(order.deliveryDate || '').trim();
         const isoDate = raw.length >= 10 ? raw.substring(0, 10) : raw;
-        return dates.some(ds => formatDateFull(ds) === fullDate && (isoDate === ds || raw === fullDate));
+        return dates.some(ds => formatDateFull(ds) === fullDate &&
+          (isoDate === ds || raw === fullDate || raw.indexOf(formatDateShort(ds)) > -1));
       });
       detailHtml += `<div style="margin:10px 0 4px;font-weight:700;">📅 ${fullDate}</div>`;
       matchingOrders.forEach(o => {
-        detailHtml += `<div style="padding-left:8px;margin-bottom:2px;font-weight:400;">🧒 ${o.childName||'Unknown'} — ${o.product||''} (${o.flavour||''})</div>`;
+        detailHtml += `<div style="padding-left:8px;margin-bottom:2px;font-weight:400;">🧒 ${escapeHtml(o.childName||'Unknown')} — ${escapeHtml(o.product||'')} (${escapeHtml(o.flavour||'')})</div>`;
       });
     });
     warning.innerHTML =
