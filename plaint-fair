@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plant Fair — Friends of Solway</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #2BBCB3;
+    --teal-dark: #1A9E96;
+    --teal-light: #E0F7F6;
+    --teal-mid: #B2ECEA;
+    --blue: #3B7DD8;
+    --blue-dark: #2A5FA8;
+    --blue-light: #E3EEF9;
+    --green: #2EAD6D;
+    --green-dark: #1B7A4A;
+    --green-light: #E5F5ED;
+    --orange: #FF9800;
+    --orange-dark: #EF6C00;
+    --orange-light: #FFF3E0;
+    --purple: #7C4DBE;
+    --purple-light: #F1EBFA;
+    --red: #E53935;
+    --bg: #F0FAFA;
+    --card: #FFFFFF;
+    --text: #1E3232;
+    --text-mid: #3A5252;
+    --text-light: #5A7070;
+    --border: #C8E6E4;
+    --shadow-sm: 0 2px 12px rgba(43,188,179,0.10);
+    --shadow: 0 4px 24px rgba(43,188,179,0.14);
+    --shadow-lg: 0 8px 40px rgba(43,188,179,0.18);
+    --radius: 16px;
+    --radius-lg: 24px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav { background: white; border-bottom: 2px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); }
+  .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--teal-mid); }
+  .nav-brand-text { font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 600; color: var(--teal-dark); line-height: 1.2; }
+  .nav-brand-sub { font-size: 11px; font-weight: 400; color: var(--text-light); font-family: 'Nunito', sans-serif; display: block; }
+  .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 8px; transition: all 0.15s; }
+  .nav-links a:hover { background: var(--teal-light); color: var(--teal-dark); }
+  .nav-links a.active { background: var(--teal-light); color: var(--teal-dark); }
+  .nav-cta { background: linear-gradient(135deg, var(--teal), var(--blue)); color: white !important; padding: 8px 16px !important; border-radius: 10px !important; font-weight: 700 !important; }
+  .nav-cta:hover { opacity: 0.9; background: linear-gradient(135deg, var(--teal), var(--blue)) !important; color: white !important; }
+  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-mid); margin: 5px 0; border-radius: 2px; transition: 0.2s; }
+
+  /* ── HERO ── */
+  .hero { background: linear-gradient(160deg, #EAF6E4 0%, #E8FAF9 55%, #FFF8E1 100%); padding: 56px 24px 48px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 340px; height: 340px; background: radial-gradient(circle, rgba(46,173,109,0.14) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+  .hero-inner { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; position: relative; z-index: 1; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--green-dark); background: var(--green-light); padding: 5px 12px; border-radius: 20px; margin-bottom: 16px; }
+  .hero h1 { font-family: 'Fredoka', sans-serif; font-size: clamp(32px, 5vw, 48px); font-weight: 700; color: var(--text); line-height: 1.1; margin-bottom: 14px; }
+  .hero h1 em { color: var(--green-dark); font-style: normal; }
+  .hero p { font-size: 16px; color: var(--text-mid); max-width: 460px; margin-bottom: 24px; }
+  .hero-facts { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+  .hero-fact { display: flex; align-items: center; gap: 8px; background: white; border: 2px solid var(--border); border-radius: 12px; padding: 10px 14px; font-size: 14px; font-weight: 700; color: var(--text); box-shadow: var(--shadow-sm); }
+  .hero-fact .ico { font-size: 17px; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; background: linear-gradient(135deg, var(--green), var(--teal)); color: white; text-decoration: none; font-family: 'Fredoka', sans-serif; font-size: 16px; font-weight: 600; border-radius: 12px; box-shadow: 0 4px 16px rgba(46,173,109,0.35); transition: all 0.2s; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(46,173,109,0.45); }
+  .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; background: white; color: var(--teal-dark); text-decoration: none; font-family: 'Fredoka', sans-serif; font-size: 16px; font-weight: 600; border-radius: 12px; border: 2px solid var(--border); transition: all 0.2s; }
+  .btn-secondary:hover { border-color: var(--teal); background: var(--teal-light); transform: translateY(-2px); }
+
+  .hero-poster { position: relative; }
+  .hero-poster img { width: 100%; max-width: 320px; display: block; margin: 0 auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); border: 6px solid white; transform: rotate(1.5deg); }
+
+  /* ── SECTIONS ── */
+  .section { padding: 52px 24px; }
+  .section-inner { max-width: 1080px; margin: 0 auto; }
+  .section-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--green-dark); margin-bottom: 8px; }
+  .section-title { font-family: 'Fredoka', sans-serif; font-size: clamp(22px, 4vw, 30px); font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.2; }
+  .section-subtitle { font-size: 15px; color: var(--text-light); margin-bottom: 32px; max-width: 540px; }
+
+  /* ── DETAILS STRIP ── */
+  .details-section { background: white; }
+  .details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .detail-card { background: var(--bg); border: 2px solid var(--border); border-radius: var(--radius); padding: 22px; }
+  .detail-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 12px; }
+  .detail-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-light); margin-bottom: 4px; }
+  .detail-value { font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 600; color: var(--text); }
+
+  /* ── PLANT CATEGORIES ── */
+  .plants-section { background: linear-gradient(180deg, var(--bg) 0%, #EEF9EA 100%); }
+  .plants-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; }
+  .plant-card { background: white; border: 2px solid var(--border); border-radius: var(--radius); padding: 22px 16px; text-align: center; transition: all 0.2s; }
+  .plant-card:hover { border-color: var(--green); transform: translateY(-3px); box-shadow: var(--shadow); }
+  .plant-icon { font-size: 34px; display: block; margin-bottom: 10px; }
+  .plant-name { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 600; color: var(--text); }
+  .plants-more { text-align: center; margin-top: 20px; font-size: 14px; color: var(--text-light); }
+
+  /* ── WHY IT MATTERS ── */
+  .why-section { background: white; }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .why-card { display: flex; gap: 14px; align-items: flex-start; }
+  .why-icon { width: 42px; height: 42px; border-radius: 12px; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 19px; flex-shrink: 0; }
+  .why-title { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+  .why-desc { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+
+  /* ── POSTER CALLOUT ── */
+  .poster-strip { background: linear-gradient(135deg, var(--green-dark), var(--teal-dark)); padding: 48px 24px; color: white; text-align: center; }
+  .poster-strip h2 { font-family: 'Fredoka', sans-serif; font-size: clamp(20px, 3.5vw, 26px); font-weight: 700; margin-bottom: 10px; }
+  .poster-strip p { font-size: 15px; opacity: 0.88; max-width: 480px; margin: 0 auto 22px; }
+  .btn-white { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: white; color: var(--green-dark); text-decoration: none; font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 700; border-radius: 12px; transition: all 0.2s; }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.15); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 40px 24px 28px; text-align: center; }
+  .footer-logo { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px; display: block; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
+  .footer-name { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: white; margin-bottom: 6px; }
+  .footer-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 16px 0; flex-wrap: wrap; }
+  .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
+  .footer-links a:hover { color: var(--teal); }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 16px auto; max-width: 480px; }
+  .footer-policy-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 8px 0; flex-wrap: wrap; }
+  .footer-policy-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 12px; transition: color 0.15s; }
+  .footer-policy-links a:hover { color: var(--teal); }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 12px; }
+
+  /* ── LIGHTBOX ── */
+  .popup-overlay { position: fixed; inset: 0; background: rgba(20, 40, 40, 0.75); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 24px; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
+  .popup-overlay.visible { opacity: 1; pointer-events: auto; }
+  .popup-box { position: relative; max-width: 420px; width: 100%; max-height: 90vh; background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); overflow: hidden; transform: scale(0.94) translateY(10px); transition: transform 0.25s ease; }
+  .popup-overlay.visible .popup-box { transform: scale(1) translateY(0); }
+  .popup-box img { display: block; width: 100%; height: auto; max-height: calc(90vh - 20px); object-fit: contain; }
+  .popup-close { position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; border-radius: 50%; background: white; border: none; box-shadow: 0 2px 10px rgba(0,0,0,0.25); font-family: 'Fredoka', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; transition: transform 0.15s, background 0.15s; }
+  .popup-close:hover { background: var(--teal-light); transform: scale(1.08); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-poster { order: -1; }
+    .hero-poster img { max-width: 240px; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: block; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 12px 16px 16px; border-bottom: 2px solid var(--border); box-shadow: var(--shadow); gap: 2px; }
+    .nav-links.open a { padding: 10px 12px; }
+    .hero { padding: 40px 20px 40px; }
+    .section { padding: 36px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX (full poster view) -->
+<div class="popup-overlay" id="posterLightbox">
+  <div class="popup-box">
+    <button class="popup-close" id="lightboxCloseBtn" aria-label="Close">×</button>
+    <img src="PlantFairPoster.png" alt="Friends of Solway Plant Fair — Saturday 31 October, from 9am, Solway Primary School">
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="nav-logo">
+      <span class="nav-brand-text">
+        Friends of Solway
+        <span class="nav-brand-sub">Solway Primary School</span>
+      </span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="plant-fair.html" class="active">Plant Fair</a></li>
+      <li><a href="past-fundraisers.html">Past Fundraisers</a></li>
+      <li><a href="sponsors.html">Sponsors</a></li>
+      <li><a href="order-pizza/index.html" class="nav-cta">🍕 Order Pizza</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="hero-eyebrow">🟢 Open now</span>
+      <h1>Friends of Solway<br><em>Plant Fair</em></h1>
+      <p>Thousands of plants at great prices — natives, vegetables, fruit bushes, flowering plants, indoor plants and more. Every purchase supports our tamariki. 🌿</p>
+      <div class="hero-facts">
+        <div class="hero-fact"><span class="ico">📅</span> Saturday 31 October</div>
+        <div class="hero-fact"><span class="ico">⏰</span> From 9am</div>
+        <div class="hero-fact"><span class="ico">📍</span> Solway Primary School</div>
+        <div class="hero-fact"><span class="ico">💳</span> Cash & EFTPOS</div>
+      </div>
+      <div class="hero-btns">
+        <a href="#" class="btn-primary" id="viewPosterBtn">🖼️ View Full Poster</a>
+        <a href="index.html" class="btn-secondary">← Back to Home</a>
+      </div>
+    </div>
+    <div class="hero-poster">
+      <img src="PlantFairPoster.png" alt="Friends of Solway Plant Fair poster — Saturday 31 October, from 9am, Solway Primary School">
+    </div>
+  </div>
+</section>
+
+<!-- EVENT DETAILS -->
+<section class="section details-section">
+  <div class="section-inner">
+    <div class="section-label">Event details</div>
+    <h2 class="section-title">The Essentials</h2>
+    <p class="section-subtitle">Everything you need to know before you come along.</p>
+    <div class="details-grid">
+      <div class="detail-card">
+        <div class="detail-icon">📅</div>
+        <div class="detail-label">Date</div>
+        <div class="detail-value">Saturday 31 October</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-icon">⏰</div>
+        <div class="detail-label">Time</div>
+        <div class="detail-value">From 9am</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-icon">📍</div>
+        <div class="detail-label">Location</div>
+        <div class="detail-value">Solway Primary School</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-icon">💳</div>
+        <div class="detail-label">Payment</div>
+        <div class="detail-value">Cash & EFTPOS available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANT CATEGORIES -->
+<section class="section plants-section">
+  <div class="section-inner">
+    <div class="section-label">What's on sale</div>
+    <h2 class="section-title">Plants Include</h2>
+    <p class="section-subtitle">1000s of plants ready for a new home in your garden.</p>
+    <div class="plants-grid">
+      <div class="plant-card">
+        <span class="plant-icon">🌳</span>
+        <div class="plant-name">Natives</div>
+      </div>
+      <div class="plant-card">
+        <span class="plant-icon">🥕</span>
+        <div class="plant-name">Vegetables</div>
+      </div>
+      <div class="plant-card">
+        <span class="plant-icon">🫐</span>
+        <div class="plant-name">Fruit Bushes</div>
+      </div>
+      <div class="plant-card">
+        <span class="plant-icon">🌸</span>
+        <div class="plant-name">Flowering Plants</div>
+      </div>
+      <div class="plant-card">
+        <span class="plant-icon">🪴</span>
+        <div class="plant-name">Indoor Plants</div>
+      </div>
+      <div class="plant-card">
+        <span class="plant-icon">✨</span>
+        <div class="plant-name">And More!</div>
+      </div>
+    </div>
+    <p class="plants-more">Grown with care and lovingly potted up by our Friends of Solway volunteers. 🌱</p>
+  </div>
+</section>
+
+<!-- WHY COME -->
+<section class="section why-section">
+  <div class="section-inner">
+    <div class="section-label">Why come along</div>
+    <h2 class="section-title">Great Plants, Great Cause</h2>
+    <div class="why-grid" style="margin-top:8px">
+      <div class="why-card">
+        <div class="why-icon">🏷️</div>
+        <div>
+          <div class="why-title">Great Prices, Great Quality</div>
+          <div class="why-desc">Healthy, well-grown plants at prices that beat the garden centre.</div>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💚</div>
+        <div>
+          <div class="why-title">Support Our School & Students</div>
+          <div class="why-desc">Every dollar raised goes straight back into projects for Solway tamariki.</div>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💳</div>
+        <div>
+          <div class="why-title">Cash & EFTPOS Available</div>
+          <div class="why-desc">Pay however suits you on the day — no need to bring exact change.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSTER STRIP -->
+<div class="poster-strip">
+  <h2>📌 Save the Date</h2>
+  <p>Grab the full poster to share with friends and whānau, or print it out for the noticeboard.</p>
+  <a href="#" class="btn-white" id="posterStripBtn">🖼️ View Full Poster</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
+  <div class="footer-name">Friends of Solway</div>
+  <div style="font-size:13px;margin-bottom:4px">Supporting Solway Primary School, Masterton</div>
+
+  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.55)">📧 <a href="mailto:office@solway.school.nz" style="color:rgba(255,255,255,0.65);text-decoration:none;">office@solway.school.nz</a></div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="plant-fair.html">Plant Fair</a></li>
+    <li><a href="past-fundraisers.html">Past Fundraisers</a></li>
+    <li><a href="sponsors.html">Sponsors</a></li>
+    <li><a href="order-pizza/index.html">Order Pizza</a></li>
+  </ul>
+
+  <hr class="footer-divider">
+  <ul class="footer-policy-links">
+    <li><a href="privacy.html">Privacy Policy</a></li>
+    <li><a href="refunds.html">Refund &amp; Cancellation Policy</a></li>
+    <li><a href="terms.html">Terms &amp; Conditions</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Friends of Solway. 🌿</div>
+</footer>
+
+<script>
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// Poster lightbox
+(function() {
+  var lightbox = document.getElementById('posterLightbox');
+  var closeBtn = document.getElementById('lightboxCloseBtn');
+
+  function openLightbox(e) {
+    if (e) e.preventDefault();
+    lightbox.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('viewPosterBtn').addEventListener('click', openLightbox);
+  document.getElementById('posterStripBtn').addEventListener('click', openLightbox);
+  closeBtn.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('visible')) closeLightbox();
+  });
+})();
+</script>
+</body>
+</html>
