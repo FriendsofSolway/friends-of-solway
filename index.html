@@ -52,6 +52,64 @@
   .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
   .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-mid); margin: 5px 0; border-radius: 2px; transition: 0.2s; }
 
+  /* ── PLANT FAIR POPUP ── */
+  .popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 40, 40, 0.72);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .popup-overlay.visible { opacity: 1; pointer-events: auto; }
+  .popup-box {
+    position: relative;
+    max-width: 420px;
+    width: 100%;
+    max-height: 90vh;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transform: scale(0.94) translateY(10px);
+    transition: transform 0.25s ease;
+  }
+  .popup-overlay.visible .popup-box { transform: scale(1) translateY(0); }
+  .popup-box img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: calc(90vh - 20px);
+    object-fit: contain;
+  }
+  .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    font-family: 'Fredoka', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: transform 0.15s, background 0.15s;
+  }
+  .popup-close:hover { background: var(--teal-light); transform: scale(1.08); }
+
   /* ── HERO ── */
   .hero { background: linear-gradient(160deg, #E8FAF9 0%, #EAF2FF 50%, #FFF8E1 100%); padding: 64px 24px 72px; text-align: center; position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(43,188,179,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
@@ -175,6 +233,14 @@
 </style>
 </head>
 <body>
+
+<!-- PLANT FAIR POPUP -->
+<div class="popup-overlay" id="plantFairPopup">
+  <div class="popup-box">
+    <button class="popup-close" id="popupCloseBtn" aria-label="Close">×</button>
+    <img src="PlantFairPoster.png" alt="Friends of Solway Plant Fair — Saturday 31 October, from 9am, Solway Primary School">
+  </div>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -354,14 +420,15 @@
       <div class="fundraiser-card">
         <div class="fundraiser-banner green"></div>
         <div class="fundraiser-body">
-          <span class="fundraiser-tag tag-upcoming">🟡 Coming soon</span>
-          <div class="fundraiser-title">🌱 Plant Sale</div>
-          <div class="fundraiser-desc">Grab something beautiful for your garden while supporting the school! A range of plants available — dates and details coming soon.</div>
+          <span class="fundraiser-tag tag-open">🟢 Open now</span>
+          <div class="fundraiser-title">🌱 Plant Fair</div>
+          <div class="fundraiser-desc">Thousands of plants — natives, vegetables, fruit bushes, flowering plants and more. Great prices, great quality, all supporting our tamariki.</div>
           <div class="fundraiser-meta">
-            <span>📅 Date TBC</span>
-            <span>💵 Cash & card</span>
+            <span>📅 Sat 31 October</span>
+            <span>⏰ From 9am</span>
+            <span>💵 Cash & EFTPOS</span>
           </div>
-          <a href="#" class="fundraiser-link disabled">Details TBC</a>
+          <a href="#" class="fundraiser-link" onclick="document.getElementById('plantFairPopup').classList.add('visible');document.body.style.overflow='hidden';return false;">See Poster →</a>
         </div>
       </div>
     </div>
@@ -465,6 +532,38 @@
 function toggleNav() {
   document.getElementById('navLinks').classList.toggle('open');
 }
+
+// ── PLANT FAIR POPUP ──
+// Shows once per browser session. Change sessionStorage to localStorage
+// below if you'd rather it only ever shows once per device until cleared.
+(function() {
+  var popup = document.getElementById('plantFairPopup');
+  var closeBtn = document.getElementById('popupCloseBtn');
+  var STORAGE_KEY = 'plantFairPopupSeen';
+
+  function closePopup() {
+    popup.classList.remove('visible');
+    document.body.style.overflow = '';
+    try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+  }
+
+  var alreadySeen = false;
+  try { alreadySeen = sessionStorage.getItem(STORAGE_KEY) === '1'; } catch (e) {}
+
+  if (!alreadySeen) {
+    popup.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+
+  closeBtn.addEventListener('click', closePopup);
+  popup.addEventListener('click', function(e) {
+    if (e.target === popup) closePopup();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && popup.classList.contains('visible')) closePopup();
+  });
+})();
+
 const GOAL = 5000;
 
 const RAISED = 0;
