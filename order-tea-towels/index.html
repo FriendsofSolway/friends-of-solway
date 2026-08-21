@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Friends of Solway — Tea Towel Fundraiser Order</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #2BBCB3;
+    --teal-dark: #1A9E96;
+    --teal-light: #E0F7F6;
+    --blue: #3B7DD8;
+    --blue-dark: #2A5FA8;
+    --blue-light: #E3EEF9;
+    --green: #2EAD6D;
+    --green-light: #E5F5ED;
+    --orange: #FF9800;
+    --orange-dark: #EF6C00;
+    --orange-light: #FFF3E0;
+    --red: #E53935;
+    --red-light: #FFEBEE;
+    --bg: #F0FAFA;
+    --card: #FFFFFF;
+    --text: #2D2D2D;
+    --text-light: #5A6B6B;
+    --border: #C8E6E4;
+    --shadow: 0 2px 16px rgba(43,188,179,0.10);
+    --radius: 14px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; display: flex; flex-direction: column; }
+  .page-wrap { max-width: 720px; margin: 0 auto; padding: 0 20px 20px; }
+  /* NAV */
+  nav { background: white; border-bottom: 2px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
+  .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--teal-light); }
+  .nav-brand-text { font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 600; color: var(--teal-dark); line-height: 1.2; }
+  .nav-brand-sub { font-size: 11px; font-weight: 400; color: var(--text-light); font-family: 'Nunito', sans-serif; display: block; }
+  .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--text-light); font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 8px; transition: all 0.15s; }
+  .nav-links a:hover { background: var(--teal-light); color: var(--teal-dark); }
+  .nav-links a.active { background: var(--teal-light); color: var(--teal-dark); }
+  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-light); margin: 5px 0; border-radius: 2px; }
+  /* PAGE HEADER */
+  .page-header { background: linear-gradient(160deg, #E8FAF9 0%, #EAF2FF 50%, #FFF8E1 100%); padding: 48px 24px 40px; text-align: center; position: relative; overflow: hidden; margin-bottom: 24px; }
+  .page-header::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(43,188,179,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+  .page-header-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
+  .page-header-logo { width: 100px; height: 100px; margin: 0 auto 16px; display: block; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 16px rgba(43,188,179,0.2); }
+  .page-header h1 { font-family: 'Fredoka', sans-serif; font-size: clamp(24px, 5vw, 36px); font-weight: 700; color: var(--teal-dark); margin-bottom: 8px; }
+  .page-header p { font-size: 15px; color: var(--text-light); max-width: 520px; margin: 0 auto; }
+  .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; margin-bottom: 16px; border: 1px solid var(--border); }
+  .card-title { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: var(--teal-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .card-title .step { background: linear-gradient(135deg, var(--teal), var(--blue)); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+  label { display: block; font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .required::after { content: ' *'; color: var(--red); font-weight: 700; }
+  input[type="text"], input[type="email"], input[type="tel"], select {
+    width: 100%; padding: 10px 14px; border: 2px solid var(--border); border-radius: 8px;
+    font-family: 'Nunito', sans-serif; font-size: 15px; color: var(--text);
+    transition: border-color 0.2s; background: white; -webkit-appearance: none;
+  }
+  input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, select:focus { outline: none; border-color: var(--teal); }
+  .field { margin-bottom: 14px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .cutoff-note { font-size: 12px; color: var(--text-light); margin-top: 10px; font-weight: 400; }
+  /* Profile hint & duplicate warning */
+  #profileHint { display: none; margin-top: 10px; padding: 10px 14px; border-radius: 8px; font-size: 14px; font-weight: 600; background: var(--teal-light); color: var(--teal-dark); border: 2px solid var(--teal); }
+  #profileHint.visible { display: block; }
+  #duplicateWarning { display: none; margin-top: 12px; padding: 12px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; background: var(--orange-light); color: var(--orange-dark); border: 2px solid var(--orange); line-height: 1.6; }
+  #duplicateWarning.visible { display: block; }
+  /* Children + quantities */
+  .child-row { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: linear-gradient(135deg, var(--teal-light), var(--blue-light)); border-radius: 10px; border: 1px solid var(--border); margin-bottom: 10px; flex-wrap: wrap; }
+  .child-row .child-num { font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 600; color: var(--teal-dark); white-space: nowrap; }
+  .child-row input[type="text"] { flex: 2 1 160px; min-width: 0; }
+  .child-row select.child-class { flex: 1 1 130px; min-width: 0; }
+  .child-row select.child-qty { flex: 1 1 170px; min-width: 0; }
+  .child-price { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 15px; color: var(--teal-dark); white-space: nowrap; min-width: 62px; text-align: right; }
+  .child-row .remove-btn { background: none; border: none; color: var(--red); cursor: pointer; font-size: 18px; padding: 4px; border-radius: 6px; line-height: 1; flex-shrink: 0; transition: background 0.2s; }
+  .child-row .remove-btn:hover { background: var(--red-light); }
+  .child-row .remove-btn.confirm { background: var(--red); color: white; font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 700; padding: 7px 10px; border-radius: 8px; white-space: nowrap; }
+  .child-row .remove-btn.confirm:hover { background: var(--red); opacity: 0.9; }
+  .add-child-btn { width: 100%; padding: 13px; border: 2px dashed var(--teal); border-radius: 10px; background: transparent; color: var(--teal-dark); font-family: 'Fredoka', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; margin-top: 4px; }
+  .add-child-btn:hover { background: var(--teal-light); }
+  .add-child-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .pricing-note { display: flex; align-items: center; gap: 10px; background: var(--teal-light); border: 1px solid var(--teal); border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; font-size: 14px; color: var(--teal-dark); }
+  .combine-note { font-size: 12px; color: var(--text-light); margin-top: 12px; font-weight: 400; line-height: 1.6; }
+  /* Summary */
+  .summary { background: var(--orange-light); border-radius: 10px; padding: 18px; }
+  .summary-title { font-family: 'Fredoka', sans-serif; font-size: 16px; font-weight: 600; color: var(--orange-dark); margin-bottom: 12px; }
+  .summary-items { list-style: none; }
+  .summary-items li { display: flex; justify-content: space-between; padding: 5px 0; font-size: 14px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .summary-items li:last-child { border-bottom: none; }
+  .summary-fee { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; color: var(--text-light); border-top: 1px solid rgba(0,0,0,0.08); margin-top: 6px; }
+  .summary-total { display: flex; justify-content: space-between; padding-top: 12px; margin-top: 8px; border-top: 2px solid var(--orange); font-family: 'Fredoka', sans-serif; font-size: 20px; font-weight: 700; color: var(--orange-dark); }
+  .empty-summary { color: var(--text-light); font-size: 14px; font-style: italic; }
+  .submit-btn { width: 100%; padding: 16px; background: linear-gradient(135deg, var(--teal), var(--blue)); color: white; border: none; border-radius: 10px; font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 700; cursor: pointer; transition: opacity 0.2s; margin-top: 16px; }
+  .submit-btn:hover { opacity: 0.9; }
+  .submit-btn:disabled { background: #CCC; cursor: not-allowed; opacity: 1; }
+  .submit-btn.loading { opacity: 0.8; pointer-events: none; }
+  .spinner { display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.6s linear infinite; vertical-align: middle; margin-right: 8px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .error-banner { background: var(--red-light); color: var(--red); padding: 14px 18px; border-radius: 10px; font-size: 14px; font-weight: 600; margin-bottom: 16px; display: none; }
+  .error-banner.visible { display: block; }
+  .closed-banner, .notopen-banner { background: var(--orange-light); color: var(--orange-dark); padding: 24px; border-radius: var(--radius); font-size: 16px; font-weight: 600; text-align: center; margin-bottom: 16px; border: 2px solid var(--orange); line-height: 1.7; }
+  .step-hidden { display: none; }
+  .step-reveal { animation: stepReveal 0.4s ease both; }
+  @keyframes stepReveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  /* FOOTER */
+  .site-footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 40px 24px 28px; text-align: center; margin-top: auto; }
+  .footer-logo { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px; display: block; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
+  .footer-name { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: white; margin-bottom: 4px; }
+  .footer-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 14px 0; flex-wrap: wrap; }
+  .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
+  .footer-links a:hover { color: var(--teal); }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 16px auto; max-width: 480px; }
+  .footer-policy-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 8px 0; flex-wrap: wrap; }
+  .footer-policy-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 12px; transition: color 0.15s; }
+  .footer-policy-links a:hover { color: var(--teal); }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 14px; }
+  .my-orders-bar { text-align: center; padding: 20px 16px; }
+  .my-orders-bar a { display: inline-block; color: white; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 18px; text-decoration: none; background: linear-gradient(135deg, var(--teal), var(--blue)); padding: 14px 32px; border-radius: 10px; transition: opacity 0.2s; }
+  .my-orders-bar a:hover { opacity: 0.9; }
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: block; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 12px 16px 16px; border-bottom: 2px solid var(--border); box-shadow: var(--shadow); gap: 2px; }
+    .nav-links.open a { padding: 10px 12px; }
+  }
+  @media (max-width: 540px) {
+    .field-row { grid-template-columns: 1fr; }
+    .page-header h1 { font-size: 22px; }
+    .page-header-logo { width: 72px; height: 72px; }
+    .child-row { flex-wrap: wrap; }
+    .child-row input[type="text"] { flex: 1 1 100%; }
+    .child-row select.child-class, .child-row select.child-qty { flex: 1 1 48%; }
+    .child-price { flex: 1 1 100%; text-align: left; }
+  }
+</style>
+</head>
+<body>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <img src="../Friends_of_Solway_Logo.png" alt="Friends of Solway" class="nav-logo">
+      <span class="nav-brand-text">
+        Friends of Solway
+        <span class="nav-brand-sub">Solway Primary School</span>
+      </span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../past-fundraisers.html">Past Events</a></li>
+      <li><a href="../sponsors.html">Sponsors</a></li>
+      <li><a href="../order-pizza/index.html">🍕 Order Pizza</a></li>
+      <li><a href="index.html" class="active">🧺 Order Tea Towels</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <img src="../Friends_of_Solway_Logo.png" alt="Friends of Solway" class="page-header-logo">
+    <h1>🧺 Tea Towel Fundraiser</h1>
+    <p style="margin-bottom:18px;">A keepsake tea towel featuring your child's own artwork — order now, pay securely, and it'll be sent home ready for Christmas!</p>
+    <div style="text-align:left;max-width:680px;margin:0 auto;background:rgba(255,255,255,0.55);border-radius:12px;padding:16px 20px;">
+      <div style="font-family:'Fredoka',sans-serif;font-weight:600;color:var(--teal-dark);font-size:15px;margin-bottom:10px;">How it works</div>
+      <div style="display:flex;gap:10px;margin-bottom:10px;align-items:flex-start;">
+        <span style="background:linear-gradient(135deg,var(--teal),var(--blue));color:white;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">1</span>
+        <span style="font-size:14px;">Enter your email. <strong>Use the same email each time</strong> and the form will remember your and your children's details.</span>
+      </div>
+      <div style="display:flex;gap:10px;margin-bottom:10px;align-items:flex-start;">
+        <span style="background:linear-gradient(135deg,var(--teal),var(--blue));color:white;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">2</span>
+        <span style="font-size:14px;">Add each child and choose how many tea towels — <strong>$15 for the first, just $10 for each extra</strong> (great for grandparents!).</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;">
+        <span style="background:linear-gradient(135deg,var(--teal),var(--blue));color:white;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">3</span>
+        <span style="font-size:14px;">Pre-orders close <strong>12pm, Friday 16 October</strong> so final numbers can go to print in time for delivery.</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-wrap">
+  <div class="error-banner" id="errorBanner"></div>
+  <div class="notopen-banner" id="notOpenBanner" style="display:none">
+    🧺 Tea towel pre-orders open soon!<br>Come back from <strong id="openDateText"></strong> to place your order 📅
+  </div>
+  <div class="closed-banner" id="closedBanner" style="display:none">
+    🧺 Pre-orders are now closed!<br>Final quantities have gone to print — thanks to everyone who ordered 🎉
+  </div>
+  <form id="orderForm">
+    <div style="background:#FFFFFF;border-radius:var(--radius);padding:14px 18px;margin-bottom:16px;border:2px solid var(--border);display:flex;align-items:center;gap:12px;box-shadow:var(--shadow);">
+      <span style="font-size:24px;flex-shrink:0;">🧺</span>
+      <div style="flex:1;font-size:13px;color:var(--text-light);line-height:1.6;">
+        This is the <strong style="color:var(--teal-dark);">Friends of Solway Tea Towel Fundraiser</strong> — each child's own self-portrait, printed onto a keepsake tea towel. This is a <strong>pre-order</strong>: your card is charged when you order, and towels are sent home once printed (estimated early December).
+      </div>
+    </div>
+    <!-- Step 1: Email -->
+    <div class="card" id="card1">
+      <div class="card-title"><span class="step">1</span> 📧 Your Email</div>
+      <div class="field">
+        <label for="parentEmail" class="required">Email Address</label>
+        <input type="email" id="parentEmail" required placeholder="e.g. sarah@example.com">
+        <div id="profileHint"></div>
+      </div>
+    </div>
+    <!-- Step 2: Parent name/phone -->
+    <div class="card step-hidden" id="card2-details">
+      <div class="card-title"><span class="step">2</span> 👋 Your Details</div>
+      <div class="field-row">
+        <div class="field">
+          <label for="parentName" class="required">Parent / Caregiver Name</label>
+          <input type="text" id="parentName" required placeholder="e.g. Sarah Jones">
+        </div>
+        <div class="field">
+          <label for="parentPhone" class="required">Phone Number</label>
+          <input type="tel" id="parentPhone" required placeholder="e.g. 027 123 4567">
+        </div>
+      </div>
+    </div>
+    <!-- Step 3: Children & quantities -->
+    <div class="card step-hidden" id="card3-children">
+      <div class="card-title"><span class="step">3</span> 🧒 Your Children & Tea Towels</div>
+      <div class="pricing-note">💲 <strong>$15</strong> for the first tea towel, <strong>$10</strong> for each extra one — stock up for grandparents, aunties and uncles!</div>
+      <p style="font-size:14px;color:var(--text-light);margin-bottom:14px;">Add each child you're ordering for and choose their quantity. Not ordering for one of them this time? Just tap ✕ to remove them from this order (they'll still be remembered for next time).</p>
+      <div id="childrenContainer"></div>
+      <button type="button" class="add-child-btn" id="addChildBtn" onclick="addChild()">➕ Add Another Child</button>
+      <div id="duplicateWarning"></div>
+      <div class="combine-note">ℹ️ If a class doesn't reach the printer's minimum order, it may be combined with another class in the same year group so the fundraiser can still go ahead — we'll be in touch if that affects your order, with the option to change your mind.</div>
+    </div>
+    <!-- Step 4: Summary & pay -->
+    <div class="card step-hidden" id="card4-summary">
+      <div class="card-title"><span class="step">4</span> 🧾 Order Summary & Payment</div>
+      <div class="summary">
+        <div class="summary-title">Your Order</div>
+        <div id="summaryContent"><p class="empty-summary">No items yet — complete the steps above ☝️</p></div>
+        <div class="summary-fee" id="summaryFee" style="display:none;">
+          <span>💳 Payment processing fee</span>
+          <span id="feeAmount">$0.00</span>
+        </div>
+        <div class="summary-total" id="summaryTotal" style="display:none">
+          <span>Total (inc. fee)</span>
+          <span id="totalAmount">$0.00</span>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn" id="submitBtn" disabled>💳 Pay Now — $0.00</button>
+    </div>
+  </form>
+</div>
+<div class="my-orders-bar" id="myOrdersBar">
+  <a href="my-orders.html">📋 View My Placed Orders</a>
+</div>
+<!-- FOOTER -->
+<footer class="site-footer" id="formFooter">
+  <img src="../Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
+  <div class="footer-name">Friends of Solway</div>
+  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.6)">Supporting Solway Primary School, Masterton</div>
+  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.55)">📧 <a href="mailto:office@solway.school.nz" style="color:rgba(255,255,255,0.65);text-decoration:none;">office@solway.school.nz</a></div>
+  <ul class="footer-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../past-fundraisers.html">Past Events</a></li>
+    <li><a href="../sponsors.html">Sponsors</a></li>
+    <li><a href="../order-pizza/index.html">🍕 Order Pizza</a></li>
+    <li><a href="index.html">🧺 Order Tea Towels</a></li>
+  </ul>
+  <hr class="footer-divider">
+  <ul class="footer-policy-links">
+    <li><a href="../privacy.html">Privacy Policy</a></li>
+    <li><a href="../refunds.html">Refund &amp; Cancellation Policy</a></li>
+    <li><a href="../terms.html">Terms &amp; Conditions</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Friends of Solway. 🌿</div>
+</footer>
+<script>
+/* ============================================================
+   Backend: standalone "Solway Tea Towel Orders" Google Sheet +
+   Apps Script (separate from the pizza system — its own Sheet,
+   script deployment, and Stripe webhook). Pricing is tiered
+   ($15 first child + $10 each extra) via a single Stripe Product
+   using inline price_data (dynamic pricing), so no per-quantity
+   Price IDs are needed in the Stripe dashboard.
+
+   Remaining go-live steps:
+   1. Confirm a real Stripe TEST secret key is set in the Apps
+      Script (STRIPE_SECRET_KEY) — done.
+   2. Stripe webhook (Developers → Webhooks) pointed at a Cloudflare
+      Worker relay in front of APPS_SCRIPT_URL below, listening for
+      checkout.session.completed — done (Apps Script exec URLs 302
+      redirect, which Stripe's webhook sender treats as a failure;
+      see Tea-Towel-Webhook-Relay-Fix.md in the project for details).
+   3. Tested end-to-end with card 4242 4242 4242 4242 — confirmed a
+      row lands in the "Solway Tea Towel Orders" Sheet — done.
+   4. Before taking real payments: swap in the LIVE Stripe secret
+      key and TEA_TOWEL_PRODUCT_ID (prod_V6r6RKAEMXkS3p) in the
+      Apps Script, redeploy, and update SUCCESS_URL/CANCEL_URL/the
+      webhook relay target if the exec URL changes.
+   5. Dedicated tea-towel success.html / cancel.html / my-orders.html
+      now exist in order-tea-towels/ (this folder) — SUCCESS_URL and
+      CANCEL_URL in the Apps Script must point here, not at the old
+      dead friendsofsolway.github.io/solway-pizza/ URLs.
+   ============================================================ */
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwcg1NrReREZxP5Irxnz7dIkFIXqX1K-wlR-dXDfFypRkGS0D-IIR6trXookNkvpwLP/exec';
+
+// Pre-order window
+const ORDER_OPEN_DATE   = new Date('2026-09-01T00:00:00+12:00');
+const ORDER_CUTOFF_DATE = new Date('2026-10-16T12:00:00+12:00');
+const EXPECTED_DELIVERY_LABEL = 'Early December 2026 (estimate)';
+
+// Pricing: $15 for the first tea towel per child, $10 for each additional
+const PRICE_FIRST      = 15.00;
+const PRICE_ADDITIONAL = 10.00;
+const MAX_QTY_PER_CHILD = 8;
+
+const STRIPE_FEE_PERCENT = 0.0265;
+const STRIPE_FEE_FIXED   = 0.30;
+
+const CLASSES = ['Kanuka','Pohutukawa','Rimu','Harakeke','Matai','Titoki','Totara','Kauri','Rata','Manuka','Kahikatea'];
+const MAX_CHILDREN = 6;
+
+let childCount = 0;
+let nextChildId = 0;
+
+function escapeHtml(str) {
+  return String(str ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function formatMoney(n) { return `$${(Math.round(n * 100) / 100).toFixed(2)}`; }
+function calcChildPrice(qty) {
+  if (!qty || qty <= 0) return 0;
+  return PRICE_FIRST + (qty - 1) * PRICE_ADDITIONAL;
+}
+function qtyOptionsHtml(selected) {
+  let html = '';
+  for (let n = 1; n <= MAX_QTY_PER_CHILD; n++) {
+    const label = `${n} tea towel${n > 1 ? 's' : ''} — ${formatMoney(calcChildPrice(n))}`;
+    html += `<option value="${n}"${n === selected ? ' selected' : ''}>${label}</option>`;
+  }
+  return html;
+}
+
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// --- Order window state ---
+function formatOpenDate(d) {
+  return d.toLocaleDateString('en-NZ', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Pacific/Auckland' });
+}
+function checkOrderWindow() {
+  const now = new Date();
+  if (now < ORDER_OPEN_DATE) {
+    document.getElementById('openDateText').textContent = formatOpenDate(ORDER_OPEN_DATE);
+    document.getElementById('notOpenBanner').style.display = 'block';
+    document.getElementById('orderForm').style.display = 'none';
+    document.getElementById('myOrdersBar').style.display = 'none';
+    return false;
+  }
+  if (now >= ORDER_CUTOFF_DATE) {
+    document.getElementById('closedBanner').style.display = 'block';
+    document.getElementById('orderForm').style.display = 'none';
+    return false;
+  }
+  return true;
+}
+
+// --- Children rows ---
+function addChild() {
+  if (childCount >= MAX_CHILDREN) return;
+  childCount++;
+  nextChildId++;
+  const id = nextChildId;
+  const row = document.createElement('div');
+  row.className = 'child-row';
+  row.id = `child-${id}`;
+  row.innerHTML = `
+    <span class="child-num">🧒 Child ${childCount}</span>
+    <input type="text" placeholder="Full name" class="child-name" data-id="${id}" required>
+    <select class="child-class" data-id="${id}" required>
+      <option value="">Class...</option>
+      ${CLASSES.map(c => `<option value="${c}">${c}</option>`).join('')}
+    </select>
+    <select class="child-qty" data-id="${id}">
+      ${qtyOptionsHtml(1)}
+    </select>
+    <span class="child-price" id="child-price-${id}">${formatMoney(PRICE_FIRST)}</span>
+    <button type="button" class="remove-btn" title="Remove this child from the order">✕</button>
+  `;
+  row.querySelector('.child-name').addEventListener('input', () => { updateSummary(); });
+  row.querySelector('.child-name').addEventListener('blur', () => { checkForDuplicates(); });
+  row.querySelector('.child-class').addEventListener('change', () => { updateSummary(); checkForDuplicates(); });
+  row.querySelector('.child-qty').addEventListener('change', () => {
+    const qty = parseInt(row.querySelector('.child-qty').value, 10);
+    document.getElementById(`child-price-${id}`).textContent = formatMoney(calcChildPrice(qty));
+    updateSummary();
+  });
+  row.querySelector('.remove-btn').addEventListener('click', () => removeChildRow(id));
+  document.getElementById('childrenContainer').appendChild(row);
+  updateAddButton();
+  updateSummary();
+}
+function removeChildRow(id) {
+  const row = document.getElementById(`child-${id}`);
+  if (!row) return;
+  const btn  = row.querySelector('.remove-btn');
+  const name = row.querySelector('.child-name').value.trim();
+  if (name && btn && !btn.classList.contains('confirm')) {
+    btn.classList.add('confirm');
+    btn.textContent = 'Remove?';
+    clearTimeout(btn._revertTimer);
+    btn._revertTimer = setTimeout(() => {
+      btn.classList.remove('confirm');
+      btn.textContent = '✕';
+    }, 3000);
+    return;
+  }
+  if (btn) clearTimeout(btn._revertTimer);
+  row.remove();
+  childCount--;
+  if (childCount === 0) {
+    addChild();
+    return;
+  }
+  document.querySelectorAll('.child-row').forEach((row, i) => {
+    row.querySelector('.child-num').textContent = `🧒 Child ${i + 1}`;
+  });
+  updateAddButton();
+  updateSummary();
+  checkForDuplicates();
+}
+function updateAddButton() {
+  const btn = document.getElementById('addChildBtn');
+  btn.disabled = childCount >= MAX_CHILDREN;
+  btn.textContent = childCount >= MAX_CHILDREN ? '✋ Maximum 6 children reached' : '➕ Add Another Child';
+}
+function getChildren() {
+  return Array.from(document.querySelectorAll('.child-row')).map(row => ({
+    id:  parseInt(row.id.replace('child-', ''), 10),
+    name: row.querySelector('.child-name').value.trim(),
+    cls:  row.querySelector('.child-class').value,
+    qty:  parseInt(row.querySelector('.child-qty').value, 10) || 1,
+  }));
+}
+
+// --- Summary ---
+function updateSummary() {
+  const children       = getChildren();
+  const summaryContent = document.getElementById('summaryContent');
+  const summaryTotal   = document.getElementById('summaryTotal');
+  const summaryFee     = document.getElementById('summaryFee');
+  const feeAmountEl    = document.getElementById('feeAmount');
+  const totalAmount    = document.getElementById('totalAmount');
+  const submitBtn      = document.getElementById('submitBtn');
+
+  const parentName  = document.getElementById('parentName').value.trim();
+  const parentPhone = document.getElementById('parentPhone').value.trim();
+  const parentEmail = document.getElementById('parentEmail').value.trim();
+  const parentValid = !!(parentName && parentPhone && parentEmail);
+  const namedChildren = children.filter(c => c.name && c.cls);
+  const childrenValid = children.length > 0 && children.every(c => c.name && c.cls);
+
+  if (namedChildren.length === 0) {
+    summaryContent.innerHTML = '<p class="empty-summary">No items yet — complete the steps above ☝️</p>';
+    summaryTotal.style.display = 'none';
+    summaryFee.style.display = 'none';
+    submitBtn.disabled = true;
+    submitBtn.textContent = '💳 Pay Now — $0.00';
+    return;
+  }
+
+  let total = 0;
+  let html = '<ul class="summary-items">';
+  namedChildren.forEach(child => {
+    const price = calcChildPrice(child.qty);
+    total += price;
+    html += `<li><span>🧺 ${escapeHtml(child.name)} (${escapeHtml(child.cls)}) — ${child.qty} tea towel${child.qty > 1 ? 's' : ''}</span><span>${formatMoney(price)}</span></li>`;
+  });
+  html += '</ul>';
+  summaryContent.innerHTML = html;
+
+  let grandTotal = total;
+  if (total > 0) {
+    const fee = Math.round(((total + STRIPE_FEE_FIXED) / (1 - STRIPE_FEE_PERCENT) - total) * 100) / 100;
+    grandTotal = Math.round((total + fee) * 100) / 100;
+    feeAmountEl.textContent = formatMoney(fee);
+    summaryFee.style.display = 'flex';
+  } else {
+    summaryFee.style.display = 'none';
+  }
+  summaryTotal.style.display = total > 0 ? 'flex' : 'none';
+  totalAmount.textContent = formatMoney(grandTotal);
+
+  const allComplete = childrenValid && parentValid;
+  submitBtn.disabled = !allComplete;
+  submitBtn.textContent = total > 0 ? `💳 Pay Now — ${formatMoney(grandTotal)}` : '💳 Pay Now — $0.00';
+}
+['parentName','parentPhone','parentEmail'].forEach(id => {
+  document.getElementById(id).addEventListener('input', updateSummary);
+});
+
+// --- Email lookup / profile prefill / duplicate detection ---
+let lookupTimer  = null;
+let lastLookedUp = '';
+const orderCache = { email: null, orders: null };
+
+document.getElementById('parentEmail').addEventListener('input', function() {
+  orderCache.email  = null;
+  orderCache.orders = null;
+  document.getElementById('duplicateWarning').classList.remove('visible');
+  const email = this.value.trim();
+  clearTimeout(lookupTimer);
+  if (!email || !email.includes('@') || !email.includes('.')) return;
+  if (email === lastLookedUp) return;
+  lookupTimer = setTimeout(() => triggerLookup(email), 300);
+});
+document.getElementById('parentEmail').addEventListener('blur', function() {
+  const email = this.value.trim();
+  if (!email || !email.includes('@')) return;
+  clearTimeout(lookupTimer);
+  if (email === lastLookedUp) { checkForDuplicates(); return; }
+  triggerLookup(email);
+});
+
+function revealSteps() {
+  ['card2-details','card3-children','card4-summary'].forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (!el || !el.classList.contains('step-hidden')) return;
+    setTimeout(() => {
+      el.classList.remove('step-hidden');
+      el.classList.add('step-reveal');
+    }, i * 80);
+  });
+}
+
+async function triggerLookup(email) {
+  lastLookedUp = email;
+  const hint = document.getElementById('profileHint');
+  hint.textContent = '🔍 Looking up your details...';
+  hint.classList.add('visible');
+  try {
+    const response = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({ action: 'lookup_orders', email })
+    });
+    const result = await response.json();
+    orderCache.email  = email;
+    orderCache.orders = result.success ? (result.orders || []) : [];
+    const profile = deriveProfileFromOrders(orderCache.orders);
+    if (profile) {
+      applyProfile(profile);
+      hint.textContent = '👋 Welcome back! We\'ve filled in what we know. Only ordering for some of your children? Tap ✕ to remove any who don\'t need a tea towel this time.';
+      setTimeout(() => hint.classList.remove('visible'), 8000);
+    } else {
+      hint.classList.remove('visible');
+    }
+    revealSteps();
+    checkForDuplicates();
+  } catch (err) {
+    hint.classList.remove('visible');
+    revealSteps();
+  }
+}
+
+// lookupOrders() on the backend returns raw order rows, not a saved
+// "profile" — so we derive a lightweight profile client-side from
+// whatever orders come back (most recent parent name + distinct children).
+function deriveProfileFromOrders(orders) {
+  if (!orders || !orders.length) return null;
+  const last = orders[orders.length - 1];
+  const seen = {};
+  const children = [];
+  orders.forEach(o => {
+    const key = String(o.childName || '').trim().toLowerCase();
+    if (key && !seen[key]) {
+      seen[key] = true;
+      children.push({ name: o.childName, cls: o.childClass });
+    }
+  });
+  return { parentName: last.parentName || '', children };
+}
+
+function applyProfile(profile) {
+  const nameField = document.getElementById('parentName');
+  if (!nameField.value.trim()) nameField.value = profile.parentName || '';
+  updateSummary();
+  const existingChildren = getChildren();
+  const isDefaultState = existingChildren.length === 1 && !existingChildren[0].name && !existingChildren[0].cls;
+  if (!isDefaultState || !profile.children || profile.children.length === 0) return;
+  document.getElementById('childrenContainer').innerHTML = '';
+  childCount = 0;
+  profile.children.forEach(c => {
+    addChild();
+    const rows = document.querySelectorAll('.child-row');
+    const row  = rows[rows.length - 1];
+    row.querySelector('.child-name').value  = c.name || '';
+    row.querySelector('.child-class').value = c.cls  || '';
+  });
+  updateSummary();
+}
+
+function checkForDuplicates() {
+  const email   = document.getElementById('parentEmail').value.trim();
+  const warning = document.getElementById('duplicateWarning');
+  if (!email || !email.includes('@') || email !== orderCache.email) {
+    if (warning) warning.classList.remove('visible');
+    return;
+  }
+  const paidOrders = (orderCache.orders || []).filter(o => o.status === 'Paid');
+  if (!paidOrders.length) { if (warning) warning.classList.remove('visible'); return; }
+
+  const children = getChildren();
+  const matches = [];
+  children.forEach(child => {
+    const name = child.name.trim().toLowerCase();
+    if (!name) return;
+    paidOrders
+      .filter(o => String(o.childName || '').trim().toLowerCase() === name)
+      .forEach(o => matches.push({ name: child.name, order: o }));
+  });
+
+  if (matches.length > 0) {
+    let html = '<strong>⚠️ Heads up!</strong> It looks like you already have a paid tea towel order for:';
+    matches.forEach(m => {
+      html += `<div style="margin-top:8px;">🧺 ${escapeHtml(m.name)} — ${escapeHtml(m.order.product || 'Tea Towel')}</div>`;
+    });
+    html += '<div style="margin-top:10px;font-weight:400;">If you meant to order extra, that\'s fine — otherwise you may be ordering twice.</div>';
+    warning.innerHTML = html;
+    warning.classList.add('visible');
+  } else {
+    warning.classList.remove('visible');
+  }
+}
+
+// --- Submit ---
+document.getElementById('orderForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const submitBtn   = document.getElementById('submitBtn');
+  const errorBanner = document.getElementById('errorBanner');
+  errorBanner.classList.remove('visible');
+
+  if (new Date() >= ORDER_CUTOFF_DATE) {
+    errorBanner.textContent = '⏰ Pre-orders have now closed. Please check back for the next fundraiser!';
+    errorBanner.classList.add('visible');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+
+  const children    = getChildren().filter(c => c.name && c.cls);
+  const parentName  = document.getElementById('parentName').value.trim();
+  const parentPhone = document.getElementById('parentPhone').value.trim();
+  const parentEmail = document.getElementById('parentEmail').value.trim();
+
+  const lineItems = children.map(child => {
+    const qty = child.qty;
+    const price = calcChildPrice(qty);
+    return {
+      name: child.name,
+      'class': child.cls,
+      product: qty === 1 ? 'Tea Towel' : `Tea Towel x${qty}`,
+      productId: 'tea-towel',
+      quantity: qty,
+      price: price,
+      flavour: '', // not applicable to tea towels — kept for sheet schema parity
+      deliveryDate: 'tea-towel-2026',
+      deliveryDateFormatted: EXPECTED_DELIVERY_LABEL,
+    };
+  });
+  const total = lineItems.reduce((sum, c) => sum + c.price, 0);
+
+  const orderData = {
+    parentName,
+    parentPhone,
+    parentEmail,
+    total: total.toFixed(2),
+    children: lineItems,
+    deliveryDateFormatted: EXPECTED_DELIVERY_LABEL,
+  };
+
+  submitBtn.classList.add('loading');
+  submitBtn.innerHTML = '<span class="spinner"></span> Processing...';
+  submitBtn.disabled  = true;
+  try {
+    const response = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(orderData)
+    });
+    const result = await response.json();
+    if (result.success && result.checkoutUrl) {
+      window.location.href = result.checkoutUrl;
+    } else {
+      throw new Error(result.error || 'Something went wrong. Please try again.');
+    }
+  } catch (err) {
+    errorBanner.textContent = err.message || '😕 Could not process your order. Please try again.';
+    errorBanner.classList.add('visible');
+    submitBtn.classList.remove('loading');
+    submitBtn.innerHTML = `💳 Pay Now — ${formatMoney(total)}`;
+    submitBtn.disabled  = false;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+});
+
+// --- Init ---
+if (checkOrderWindow()) {
+  addChild();
+}
+</script>
+</body>
+</html>
