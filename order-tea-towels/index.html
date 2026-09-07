@@ -622,12 +622,14 @@ function deriveProfileFromOrders(orders) {
       children.push({ name: o.childName, cls: o.childClass });
     }
   });
-  return { parentName: last.parentName || '', children };
+    return { parentName: last.parentName || '', parentPhone: last.parentPhone || '', children };
 }
 
 function applyProfile(profile) {
-  const nameField = document.getElementById('parentName');
-  if (!nameField.value.trim()) nameField.value = profile.parentName || '';
+    const nameField = document.getElementById('parentName');
+    if (!nameField.value.trim()) nameField.value = profile.parentName || '';
+    const phoneField = document.getElementById('parentPhone');
+    if (!phoneField.value.trim()) phoneField.value = profile.parentPhone || '';
   updateSummary();
   const existingChildren = getChildren();
   const isDefaultState = existingChildren.length === 1 && !existingChildren[0].name && !existingChildren[0].cls;
