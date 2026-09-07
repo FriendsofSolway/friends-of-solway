@@ -329,18 +329,54 @@ function escapeHtml(str) {
   return String(str ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 function formatMoney(n) { return `$${(Math.round(n * 100) / 100).toFixed(2)}`; }
-function calcChildPrice(qty) {
-  if (!qty || qty <= 0) return 0;
-  return PRICE_FIRST + (qty - 1) * PRICE_ADDITIONAL;
-}
-function qtyOptionsHtml(selected) {
-  let html = '';
-  for (let n = 1; n <= MAX_QTY_PER_CHILD; n++) {
-    const label = `${n} tea towel${n > 1 ? 's' : ''} — ${formatMoney(calcChildPrice(n))}`;
-    html += `<option value="${n}"${n === selected ? ' selected' : ''}>${label}</option>`;
+function calcChildPrice(qty, priorQty) {
+    if (!qty || qty <= 0) return 0;
+    priorQty = priorQty || 0;
+    // If this child already has a paid tea towel from an earlier order, the $15
+    // "first towel" has already been paid for — every towel in this order is
+    // at the $10 additional rate.
+    if (priorQty > 0) return qty * PRICE_ADDITIONAL;
+    return PRICE_FIRST + (qty - 1) * PRICE_ADDITIONAL;
   }
-  return html;
-}
+  // Sums quantities from this child's own PAID past orders (matched by name),
+  // so returning families are charged the discounted rate automatically.
+  function getPriorPaidQty(childName) {
+      const name = String(childName || '').trim().toLowerCase();
+      if (!name || !orderCache.orders) return 0;
+      let qty = 0;
+      orderCache.orders.forEach(o => {
+            if (o.status === 'Paid' && String(o.childName || '').trim().toLowerCase() === name) {
+                    const m = String(o.product || '').match(/x(\d+)/);
+                    qty += m ? parseInt(m[1], 10) : 1;
+            }
+      });
+      return qty;
+  }
+  function qtyOptionsHtml(selected, priorQty) {
+      let html = '';
+      for (let n = 1; n <= MAX_QTY_PER_CHILD; n++) {
+            const label = `${n} tea towel${n > 1 ? 's' : ''} — ${formatMoney(calcChildPrice(n, priorQty))}`;
+            html += `<option value="${n}"${n === selected ? ' selected' : ''}>${label}</option>`;
+      }
+      return html;
+  }
+  // Re-renders one child row's quantity dropdown and price display using
+  // that child's current prior-paid quantity (call after the name changes or
+  // after a lookup completes).
+  function refreshChildPricing(id) {
+      const row = document.getElementById(`child-${id}`);
+      if (!row) return;
+      const priorQty = getPriorPaidQty(row.querySelector('.child-name').value);
+      const qtySelect = row.querySelector('.child-qty');
+      const currentQty = parseInt(qtySelect.value, 10) || 1;
+      qtySelect.innerHTML = qtyOptionsHtml(currentQty, priorQty);
+      document.getElementById(`child-price-${id}`).textContent = formatMoney(calcChildPrice(currentQty, priorQty));
+  }
+  function refreshAllChildPricing() {
+      document.querySelectorAll('.child-row').forEach(row => {
+      const id = parseInt(row.id.replace('child-', ''), 10);
+      refreshChildPricing(id);
+      });
 
 function toggleNav() {
   document.getElementById('navLinks').classList.toggle('open');
@@ -384,19 +420,20 @@ function addChild() {
       ${CLASSES.map(c => `<option value="${c}">${c}</option>`).join('')}
     </select>
     <select class="child-qty" data-id="${id}">
-      ${qtyOptionsHtml(1)}
+      ${qtyOptionsHtml(1, 0)}
     </select>
     <span class="child-price" id="child-price-${id}">${formatMoney(PRICE_FIRST)}</span>
     <button type="button" class="remove-btn" title="Remove this child from the order">✕</button>
   `;
-  row.querySelector('.child-name').addEventListener('input', () => { updateSummary(); });
-  row.querySelector('.child-name').addEventListener('blur', () => { checkForDuplicates(); });
-  row.querySelector('.child-class').addEventListener('change', () => { updateSummary(); checkForDuplicates(); });
-  row.querySelector('.child-qty').addEventListener('change', () => {
-    const qty = parseInt(row.querySelector('.child-qty').value, 10);
-    document.getElementById(`child-price-${id}`).textContent = formatMoney(calcChildPrice(qty));
-    updateSummary();
-  });
+    row.querySelector('.child-name').addEventListener('input', () => { refreshChildPricing(id); updateSummary(); });
+    row.querySelector('.child-name').addEventListener('blur', () => { checkForDuplicates(); });
+      row.querySelector('.child-class').addEventListener('change', () => { updateSummary(); checkForDuplicates(); });
+    row.querySelector('.child-qty').addEventListener('change', () => {
+                          const qty = parseInt(row.querySelector('.child-qty').value, 10);
+      const priorQty = getPriorPaidQty(row.querySelector('.child-name').value);
+          document.getElementById(`child-price-${id}`).textContent = formatMoney(calcChildPrice(qty, priorQty));
+          updateSummary();
+                          });
   row.querySelector('.remove-btn').addEventListener('click', () => removeChildRow(id));
   document.getElementById('childrenContainer').appendChild(row);
   updateAddButton();
@@ -474,9 +511,11 @@ function updateSummary() {
   let total = 0;
   let html = '<ul class="summary-items">';
   namedChildren.forEach(child => {
-    const price = calcChildPrice(child.qty);
-    total += price;
-    html += `<li><span>🧺 ${escapeHtml(child.name)} (${escapeHtml(child.cls)}) — ${child.qty} tea towel${child.qty > 1 ? 's' : ''}</span><span>${formatMoney(price)}</span></li>`;
+        const priorQty = getPriorPaidQty(child.name);
+        const price = calcChildPrice(child.qty, priorQty);
+      total += price;
+      const rateNote = priorQty > 0 ? ' <em>(returning order rate)</em>' : '';
+      html += `<li><span>🧺 ${escapeHtml(child.name)} (${escapeHtml(child.cls)}) — ${child.qty} tea towel${child.qty > 1 ? 's' : ''}${rateNote}</span><span>${formatMoney(price)}</span></li>`;
   });
   html += '</ul>';
   summaryContent.innerHTML = html;
@@ -558,6 +597,8 @@ async function triggerLookup(email) {
       hint.classList.remove('visible');
     }
     revealSteps();
+        refreshAllChildPricing();
+          updateSummary();
     checkForDuplicates();
   } catch (err) {
     hint.classList.remove('visible');
@@ -655,8 +696,9 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
   const parentEmail = document.getElementById('parentEmail').value.trim();
 
   const lineItems = children.map(child => {
-    const qty = child.qty;
-    const price = calcChildPrice(qty);
+        const qty = child.qty;
+            const priorQty = getPriorPaidQty(child.name);
+        const price = calcChildPrice(qty, priorQty);
     return {
       name: child.name,
       'class': child.cls,
