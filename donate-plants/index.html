@@ -68,12 +68,13 @@
   .field { margin-bottom: 14px; }
   .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   .helper-text { font-size: 12px; color: var(--text-light); margin-top: 4px; font-weight: 400; }
+  .info-box { background: var(--teal-light); border: 2px solid var(--teal); border-radius: 10px; padding: 14px 16px; margin-bottom: 16px; font-size: 14px; color: var(--text); line-height: 1.6; }
   /* Plant rows */
   .plant-row { display: flex; align-items: flex-start; gap: 10px; padding: 14px; background: linear-gradient(135deg, var(--green-light), var(--teal-light)); border-radius: 10px; border: 1px solid var(--border); margin-bottom: 10px; flex-wrap: wrap; }
   .plant-row .plant-num { font-family: 'Fredoka', sans-serif; font-size: 14px; font-weight: 600; color: var(--teal-dark); white-space: nowrap; padding-top: 10px; }
   .plant-row .plant-name { flex: 2 1 180px; min-width: 0; }
   .plant-row .plant-qty { flex: 0 1 90px; min-width: 70px; }
-  .plant-row .plant-potsize { flex: 1 1 140px; min-width: 0; }
+  .plant-row .plant-labelled { flex: 1 1 140px; min-width: 0; }
   .plant-row .remove-btn { background: none; border: none; color: var(--red); cursor: pointer; font-size: 18px; padding: 8px 4px; border-radius: 6px; line-height: 1; flex-shrink: 0; transition: background 0.2s; margin-top: 2px; }
   .plant-row .remove-btn:hover { background: var(--red-light); }
   .plant-row .remove-btn.confirm { background: var(--red); color: white; font-family: 'Nunito', sans-serif; font-size: 12px; font-weight: 700; padding: 8px 10px; border-radius: 8px; white-space: nowrap; }
@@ -123,7 +124,7 @@
     .page-header-logo { width: 72px; height: 72px; }
     .plant-row { flex-wrap: wrap; }
     .plant-row .plant-name { flex: 1 1 100%; }
-    .plant-row .plant-qty, .plant-row .plant-potsize { flex: 1 1 48%; }
+    .plant-row .plant-qty, .plant-row .plant-labelled { flex: 1 1 48%; }
   }
 </style>
 </head>
@@ -179,15 +180,6 @@
         <label for="donorEmail" class="required">Email Address</label>
         <input type="email" id="donorEmail" required placeholder="e.g. sarah@example.com">
       </div>
-      <div class="field">
-        <label for="dropoffPref" class="required">Drop-off or Collection?</label>
-        <select id="dropoffPref" required>
-          <option value="">Select an option...</option>
-          <option value="Drop off myself">I'll drop off myself</option>
-          <option value="Need collection">I need the plants collected</option>
-          <option value="Either works">Either works</option>
-        </select>
-      </div>
     </div>
 
     <!-- Step 2: Plants -->
@@ -198,23 +190,10 @@
       <button type="button" class="add-plant-btn" id="addPlantBtn" onclick="addPlant()">➕ Add Another Plant</button>
     </div>
 
-    <!-- Step 3: Logistics -->
+    <!-- Step 3: Drop-off details -->
     <div class="card">
-      <div class="card-title"><span class="step">3</span> 📅 Logistics</div>
-      <div class="field">
-        <label for="careNotes">Special care or watering instructions</label>
-        <textarea id="careNotes" placeholder="Optional — e.g. keep out of direct sun, water twice a week"></textarea>
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label for="readyDate" class="required">When will the plants be ready?</label>
-          <input type="date" id="readyDate" required>
-        </div>
-        <div class="field">
-          <label for="preferredDropoff">Preferred drop-off location/day</label>
-          <input type="text" id="preferredDropoff" placeholder="Optional">
-        </div>
-      </div>
+      <div class="card-title"><span class="step">3</span> 📅 Drop-off Details</div>
+      <div class="info-box">🚚 Plants can be dropped off to school at any stage before <strong>23 October</strong>. Please leave them on the black weed mat to the left-hand side of the shade house.</div>
       <div class="field">
         <label for="otherNotes">Anything else we should know?</label>
         <textarea id="otherNotes" placeholder="Optional"></textarea>
@@ -244,7 +223,7 @@
 <footer class="site-footer" id="formFooter">
   <img src="../Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
   <div class="footer-name">Friends of Solway</div>
-  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.6)">Supporting Solway Primary School, Masterton</div>
+  <div style="font-size:13px;margin-bottom:4px">Supporting Solway Primary School, Masterton</div>
   <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.55)">📧 <a href="mailto:office@solway.school.nz" style="color:rgba(255,255,255,0.65);text-decoration:none;">office@solway.school.nz</a></div>
   <ul class="footer-links">
     <li><a href="../index.html">Home</a></li><li><a href="../plant-fair.html">Plant Fair</a></li>
@@ -263,11 +242,10 @@
 
 <script>
 // ============================================================
-// CONFIGURATION — update after deploying the Apps Script
+// CONFIGURATION
 // ============================================================
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxgYg58jEB4AwI0Ar_ocZeDfnzd16hLK1OYbPcHm49l-T6-mXjg8RjWtpqVZ5s82gkO/exec';
 
-const POT_SIZES = ['Small / tube stock', 'Medium (~2L)', 'Large (~5L+)', 'Mixed sizes', 'Bare-root / cutting'];
 const MAX_PLANTS = 12;
 
 let plantCount = 0;
@@ -294,15 +272,16 @@ function addPlant() {
     <span class="plant-num">🌿 ${plantCount}</span>
     <input type="text" class="plant-name" data-id="${id}" placeholder="Plant name, e.g. Daisy" required>
     <input type="text" class="plant-qty" data-id="${id}" placeholder="Qty" required>
-    <select class="plant-potsize" data-id="${id}">
-      <option value="">Pot size...</option>
-      ${POT_SIZES.map(p => `<option value="${p}">${p}</option>`).join('')}
+    <select class="plant-labelled" data-id="${id}" required>
+      <option value="">Labelled?</option>
+      <option value="Yes">Labelled: Yes</option>
+      <option value="No">Labelled: No</option>
     </select>
     <button type="button" class="remove-btn" title="Remove this plant">✕</button>
   `;
   row.querySelector('.plant-name').addEventListener('input', updateSummary);
   row.querySelector('.plant-qty').addEventListener('input', updateSummary);
-  row.querySelector('.plant-potsize').addEventListener('change', updateSummary);
+  row.querySelector('.plant-labelled').addEventListener('change', updateSummary);
   row.querySelector('.remove-btn').addEventListener('click', () => removePlantRow(id));
   document.getElementById('plantsContainer').appendChild(row);
   updateAddButton();
@@ -344,7 +323,7 @@ function getPlants() {
   return Array.from(document.querySelectorAll('.plant-row')).map(row => ({
     name: row.querySelector('.plant-name').value.trim(),
     quantity: row.querySelector('.plant-qty').value.trim(),
-    potSize: row.querySelector('.plant-potsize').value,
+    labelled: row.querySelector('.plant-labelled').value,
   }));
 }
 
@@ -355,27 +334,24 @@ function updateSummary() {
   const plants = getPlants().filter(p => p.name && p.quantity);
 
   if (plants.length === 0) {
-    summaryItems.innerHTML = '<li class="empty-summary">Add a plant above to see your donation summary ☝️</li>';
+    summaryItems.innerHTML = '<li class="empty-summary">Add a plant above to see your donation summary ☙️</li>';
   } else {
     summaryItems.innerHTML = plants.map(p =>
-      `<li>🌱 ${escapeHtml(p.name)} — qty ${escapeHtml(p.quantity)}${p.potSize ? ' (' + escapeHtml(p.potSize) + ')' : ''}</li>`
+      `<li>🌱 ${escapeHtml(p.name)} — qty ${escapeHtml(p.quantity)}${p.labelled ? ' (Labelled: ' + escapeHtml(p.labelled) + ')' : ''}</li>`
     ).join('');
   }
 
   const donorName = document.getElementById('donorName').value.trim();
   const donorPhone = document.getElementById('donorPhone').value.trim();
   const donorEmail = document.getElementById('donorEmail').value.trim();
-  const dropoffPref = document.getElementById('dropoffPref').value;
-  const readyDate = document.getElementById('readyDate').value;
-  const allPlantsValid = getPlants().every(p => p.name && p.quantity);
+  const allPlantsValid = getPlants().every(p => p.name && p.quantity && p.labelled);
 
-  const valid = donorName && donorPhone && donorEmail && dropoffPref && readyDate && plants.length > 0 && allPlantsValid;
+  const valid = donorName && donorPhone && donorEmail && plants.length > 0 && allPlantsValid;
   submitBtn.disabled = !valid;
 }
 
-['donorName','donorPhone','donorEmail','dropoffPref','readyDate'].forEach(id => {
+['donorName','donorPhone','donorEmail'].forEach(id => {
   document.getElementById(id).addEventListener('input', updateSummary);
-  document.getElementById(id).addEventListener('change', updateSummary);
 });
 
 // --- Submit ---
@@ -388,10 +364,6 @@ document.getElementById('donationForm').addEventListener('submit', async functio
   const donorName = document.getElementById('donorName').value.trim();
   const donorPhone = document.getElementById('donorPhone').value.trim();
   const donorEmail = document.getElementById('donorEmail').value.trim();
-  const dropoffPref = document.getElementById('dropoffPref').value;
-  const careNotes = document.getElementById('careNotes').value.trim();
-  const readyDate = document.getElementById('readyDate').value;
-  const preferredDropoff = document.getElementById('preferredDropoff').value.trim();
   const otherNotes = document.getElementById('otherNotes').value.trim();
   const plants = getPlants().filter(p => p.name && p.quantity);
 
@@ -399,10 +371,6 @@ document.getElementById('donationForm').addEventListener('submit', async functio
     donorName,
     donorPhone,
     donorEmail,
-    dropoffPref,
-    careNotes,
-    readyDate,
-    preferredDropoff,
     otherNotes,
     plants,
   };
