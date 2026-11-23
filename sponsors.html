@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,27 +119,7 @@
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-brand">
-      <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="nav-logo">
-      <span class="nav-brand-text">
-        Friends of Solway
-        <span class="nav-brand-sub">Solway Primary School</span>
-      </span>
-    </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="past-fundraisers.html">Past Events</a></li>
-      <li><a href="sponsors.html" class="active">Sponsors</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="order-pizza/index.html" class="nav-cta">🍕 Order Pizza</a></li><li><a href="order-tea-towels/index.html">🧺 Order Tea Towels</a></li>
-    </ul>
-    <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
+{% include nav.html active="sponsors" %}
 
 <!-- PAGE HEADER -->
 <div class="page-header">
@@ -158,7 +140,7 @@
     <div class="sponsors-grid gold-grid">
       <div class="sponsor-card gold">
         <div class="sponsor-logo-wrap">
-          <img src="GB_MastertonGreytown Logo.png" alt="Guthrie Bowron" class="sponsor-logo-img">
+          <img src="/images/sponsors/GB_MastertonGreytown_Logo.png" alt="Guthrie Bowron" class="sponsor-logo-img">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">Guthrie Bowron — Masterton and Greytown</div>
@@ -168,7 +150,7 @@
       </div>
       <div class="sponsor-card gold">
         <div class="sponsor-logo-wrap">
-          <img src="EliteRoofingServices.jpg" alt="Elite Roofing Services" class="sponsor-logo-img logo-wide">
+          <img src="/images/sponsors/EliteRoofingServices.jpg" alt="Elite Roofing Services" class="sponsor-logo-img logo-wide">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">Elite Roofing Services</div>
@@ -178,7 +160,7 @@
       </div>
       <div class="sponsor-card gold">
         <div class="sponsor-logo-wrap">
-          <img src="EngageElectricalLogo.jpg" alt="Engage Electrical" class="sponsor-logo-img">
+          <img src="/images/sponsors/EngageElectricalLogo.jpg" alt="Engage Electrical" class="sponsor-logo-img">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">Engage Electrical</div>
@@ -188,7 +170,7 @@
       </div>
       <div class="sponsor-card gold">
         <div class="sponsor-logo-wrap">
-          <img src="SBBuildingLogo.jpg" alt="SB Building &amp; Roofing" class="sponsor-logo-img">
+          <img src="/images/sponsors/SBBuildingLogo.jpg" alt="SB Building &amp; Roofing" class="sponsor-logo-img">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">SB Building &amp; Roofing</div>
@@ -198,7 +180,7 @@
       </div>
       <div class="sponsor-card gold">
         <div class="sponsor-logo-wrap">
-          <img src="COOPERS_LOGO.webp" alt="Cooper Farm Services" class="sponsor-logo-img">
+          <img src="/images/sponsors/COOPERS_LOGO.webp" alt="Cooper Farm Services" class="sponsor-logo-img">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">Cooper Farm Services</div>
@@ -208,7 +190,7 @@
       </div>
       <div class="sponsor-card gold">
         <div class="sponsor-logo-wrap">
-          <img src="ColdAIrHeliLogo.png" alt="Cold Air Helicopters" class="sponsor-logo-img">
+          <img src="/images/sponsors/ColdAIrHeliLogo.png" alt="Cold Air Helicopters" class="sponsor-logo-img">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">Cold Air Helicopters</div>
@@ -218,7 +200,7 @@
       </div>
       <div class="sponsor-card gold">
         <div class="sponsor-logo-wrap">
-          <img src="LaserElectricalLogo.jpg" alt="Laser Electrical Wairarapa" class="sponsor-logo-img logo-wide">
+          <img src="/images/sponsors/LaserElectricalLogo.jpg" alt="Laser Electrical Wairarapa" class="sponsor-logo-img logo-wide">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">Laser Electrical Wairarapa</div>
@@ -228,7 +210,7 @@
       </div>
       <div class="sponsor-card gold">
         <div class="sponsor-logo-wrap">
-          <img src="InspireLivingLogo.jpg" alt="Inspire Living" class="sponsor-logo-img">
+          <img src="/images/sponsors/InspireLivingLogo.jpg" alt="Inspire Living" class="sponsor-logo-img">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">Inspire Living</div>
@@ -238,7 +220,7 @@
       </div>
       <div class="sponsor-card gold">
         <div class="sponsor-logo-wrap">
-          <img src="TotalspanLogo.jpg" alt="Totalspan Wairarapa" class="sponsor-logo-img logo-wide">
+          <img src="/images/sponsors/TotalspanLogo.jpg" alt="Totalspan Wairarapa" class="sponsor-logo-img logo-wide">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">Totalspan Wairarapa</div>
@@ -248,7 +230,7 @@
       </div>
       <div class="sponsor-card gold">
         <div class="sponsor-logo-wrap">
-          <img src="TararuaBuildersLogo.jpg" alt="Tararua Builders Wairarapa Ltd" class="sponsor-logo-img">
+          <img src="/images/sponsors/TararuaBuildersLogo.jpg" alt="Tararua Builders Wairarapa Ltd" class="sponsor-logo-img">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">Tararua Builders Wairarapa Ltd</div>
@@ -258,7 +240,7 @@
       </div>
       <div class="sponsor-card gold">
         <div class="sponsor-logo-wrap">
-          <img src="GNTBuildersLogo.jpg" alt="GNT Builders" class="sponsor-logo-img">
+          <img src="/images/sponsors/GNTBuildersLogo.jpg" alt="GNT Builders" class="sponsor-logo-img">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">GNT Builders</div>
@@ -268,7 +250,7 @@
       </div>
       <div class="sponsor-card gold">
         <div class="sponsor-logo-wrap">
-          <img src="SteinemannLogo.png" alt="Steinemann Construction & Design" class="sponsor-logo-img">
+          <img src="/images/sponsors/SteinemannLogo.png" alt="Steinemann Construction & Design" class="sponsor-logo-img">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">Steinemann Construction &amp; Design</div>
@@ -278,7 +260,7 @@
       </div>
       <div class="sponsor-card gold">
         <div class="sponsor-logo-wrap">
-          <img src="WBSLogo.png" alt="WBS - Wairarapa Building Society" class="sponsor-logo-img">
+          <img src="/images/sponsors/WBSLogo.png" alt="WBS - Wairarapa Building Society" class="sponsor-logo-img">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">WBS - Wairarapa Building Society</div>
@@ -295,7 +277,7 @@
     <div class="sponsors-grid silver-grid">
       <div class="sponsor-card silver">
         <div class="sponsor-logo-wrap">
-          <img src="WairarapaHireCompanyLogo.png" alt="Wairarapa Hire Company" class="sponsor-logo-img">
+          <img src="/images/sponsors/WairarapaHireCompanyLogo.png" alt="Wairarapa Hire Company" class="sponsor-logo-img">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">Wairarapa Hire Company</div>
@@ -305,7 +287,7 @@
       </div>
       <div class="sponsor-card silver">
         <div class="sponsor-logo-wrap">
-          <img src="DoddInsuranceLogo.jpg" alt="Dodd Insurance" class="sponsor-logo-img">
+          <img src="/images/sponsors/DoddInsuranceLogo.jpg" alt="Dodd Insurance" class="sponsor-logo-img">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">Dodd Insurance</div>
@@ -315,7 +297,7 @@
       </div>
       <div class="sponsor-card silver">
         <div class="sponsor-logo-wrap">
-          <img src="McCarthyLogo.png" alt="McCarthy Transport" class="sponsor-logo-img">
+          <img src="/images/sponsors/McCarthyLogo.png" alt="McCarthy Transport" class="sponsor-logo-img">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">McCarthy Transport</div>
@@ -325,7 +307,7 @@
       </div>
       <div class="sponsor-card silver">
         <div class="sponsor-logo-wrap">
-          <img src="MVM.jpg" alt="My Vehicle Maintenance" class="sponsor-logo-img">
+          <img src="/images/sponsors/MVM.jpg" alt="My Vehicle Maintenance" class="sponsor-logo-img">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">My Vehicle Maintenance</div>
@@ -335,7 +317,7 @@
       </div>
       <div class="sponsor-card silver">
         <div class="sponsor-logo-wrap">
-          <img src="Mitre10Logo.jpg" alt="Mitre 10 MEGA Masterton" class="sponsor-logo-img">
+          <img src="/images/sponsors/Mitre10Logo.jpg" alt="Mitre 10 MEGA Masterton" class="sponsor-logo-img">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">Mitre 10 MEGA Masterton</div>
@@ -352,7 +334,7 @@
     <div class="sponsors-grid bronze-grid">
       <div class="sponsor-card bronze">
         <div class="sponsor-logo-wrap">
-          <img src="ShoeClinicLogo.png" alt="Shoe Clinic Masterton" class="sponsor-logo-img">
+          <img src="/images/sponsors/ShoeClinicLogo.png" alt="Shoe Clinic Masterton" class="sponsor-logo-img">
         </div>
         <div class="sponsor-body">
           <div class="sponsor-name">Shoe Clinic Masterton</div>
@@ -424,19 +406,7 @@
 </div>
 
 <!-- FOOTER -->
-<footer>
-  <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
-  <div class="footer-name">Friends of Solway</div>
-  <div style="font-size:13px;margin-bottom:4px">Fundraising committee for Solway Primary School, Masterton</div>
-  <ul class="footer-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="past-fundraisers.html">Past Events</a></li>
-    <li><a href="sponsors.html">Sponsors</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="order-pizza/index.html">Order Pizza</a></li><li><a href="order-tea-towels/index.html">Order Tea Towels</a></li>
-  </ul>
-  <div class="footer-copy">© 2026 Friends of Solway. All fundraising goes to Solway Primary School. 🌿</div>
-</footer>
+{% include footer.html %}
 
 <script>
 function toggleNav() {

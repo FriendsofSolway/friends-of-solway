@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -157,31 +159,12 @@
 <div class="popup-overlay" id="posterLightbox">
   <div class="popup-box">
     <button class="popup-close" id="lightboxCloseBtn" aria-label="Close">×</button>
-    <img src="PlantFairPoster.png" alt="Friends of Solway Plant Fair — Saturday 31 October, from 9am, Solway Primary School">
+    <img src="/images/PlantFairPoster.jpg" alt="Friends of Solway Plant Fair — Saturday 31 October, from 9am, Solway Primary School">
   </div>
 </div>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-brand">
-      <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="nav-logo">
-      <span class="nav-brand-text">
-        Friends of Solway
-        <span class="nav-brand-sub">Solway Primary School</span>
-      </span>
-    </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="past-fundraisers.html">Past Events</a></li>
-      <li><a href="sponsors.html">Sponsors</a></li>
-      <li><a href="order-pizza/index.html" class="nav-cta">🍕 Order Pizza</a></li><li><a href="order-tea-towels/index.html">🧺 Order Tea Towels</a></li>
-    </ul>
-    <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
+{% include nav.html %}
 
 <!-- HERO -->
 <section class="hero">
@@ -202,7 +185,7 @@
       </div>
     </div>
     <div class="hero-poster">
-      <img src="PlantFairPoster.png" alt="Friends of Solway Plant Fair poster — Saturday 31 October, from 9am, Solway Primary School">
+      <img src="/images/PlantFairPoster.jpg" alt="Friends of Solway Plant Fair poster — Saturday 31 October, from 9am, Solway Primary School">
     </div>
   </div>
 </section>
@@ -323,27 +306,7 @@
 </div>
 
 <!-- FOOTER -->
-<footer>
-  <img src="Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
-  <div class="footer-name">Friends of Solway</div>
-  <div style="font-size:13px;margin-bottom:4px">Supporting Solway Primary School, Masterton</div>
-
-  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.55)">📧 <a href="mailto:friendsofsolway@solway.school.nz" style="color:rgba(255,255,255,0.65);text-decoration:none;">friendsofsolway@solway.school.nz</a></div>
-  <ul class="footer-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="past-fundraisers.html">Past Events</a></li>
-    <li><a href="sponsors.html">Sponsors</a></li>
-    <li><a href="order-pizza/index.html">Order Pizza</a></li><li><a href="order-tea-towels/index.html">Order Tea Towels</a></li>
-  </ul>
-
-  <hr class="footer-divider">
-  <ul class="footer-policy-links">
-    <li><a href="privacy.html">Privacy Policy</a></li>
-    <li><a href="refunds.html">Refund &amp; Cancellation Policy</a></li>
-    <li><a href="terms.html">Terms &amp; Conditions</a></li>
-  </ul>
-  <div class="footer-copy">© 2026 Friends of Solway. 🌿</div>
-</footer>
+{% include footer.html %}
 
 <script>
 function toggleNav() {
