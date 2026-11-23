@@ -1,0 +1,77 @@
+/* Friends of Solway - shared styles
+   Used by every page through _includes/head.html.
+   Holds the colour palette, the menu and the footer.
+   Page-specific styles stay in each page's own <style> block, which loads after this file. */
+
+:root {
+  --teal: #2BBCB3;
+  --teal-dark: #1A9E96;
+  --teal-light: #E0F7F6;
+  --teal-mid: #B2ECEA;
+  --blue: #3B7DD8;
+  --blue-dark: #2A5FA8;
+  --blue-light: #E3EEF9;
+  --green: #2EAD6D;
+  --green-light: #E5F5ED;
+  --orange: #FF9800;
+  --orange-dark: #EF6C00;
+  --orange-light: #FFF3E0;
+  --yellow: #FFD600;
+  --red: #E53935;
+  --bg: #F0FAFA;
+  --card: #FFFFFF;
+  --text: #1E3232;
+  --text-mid: #3A5252;
+  --text-light: #5A7070;
+  --border: #C8E6E4;
+  --shadow-sm: 0 2px 12px rgba(43,188,179,0.10);
+  --shadow: 0 4px 24px rgba(43,188,179,0.14);
+  --shadow-lg: 0 8px 40px rgba(43,188,179,0.18);
+  --radius: 16px;
+  --radius-lg: 24px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Hidden visually but read by screen readers */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* ── MENU (_includes/nav.html) ── */
+nav { background: white; border-bottom: 2px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); }
+.nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--teal-mid); }
+.nav-brand-text { font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 600; color: var(--teal-dark); line-height: 1.2; }
+.nav-brand-sub { font-size: 11px; font-weight: 400; color: var(--text-light); font-family: 'Nunito', sans-serif; display: block; }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 8px; transition: all 0.15s; }
+.nav-links a:hover { background: var(--teal-light); color: var(--teal-dark); }
+.nav-links a.active { background: var(--teal-light); color: var(--teal-dark); }
+.nav-cta { background: linear-gradient(135deg, var(--teal), var(--blue)); color: white !important; padding: 8px 16px !important; border-radius: 10px !important; font-weight: 700 !important; }
+.nav-cta:hover { opacity: 0.9; background: linear-gradient(135deg, var(--teal), var(--blue)) !important; color: white !important; }
+.nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-mid); margin: 5px 0; border-radius: 2px; transition: 0.2s; }
+
+/* ── FOOTER (_includes/footer.html) ── */
+.site-footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 40px 24px 28px; text-align: center; margin-top: auto; }
+.footer-logo { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px; display: block; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
+.footer-name { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: white; margin-bottom: 6px; }
+.footer-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 16px 0; flex-wrap: wrap; }
+.footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
+.footer-links a:hover { color: var(--teal); }
+.footer-social { margin: 14px 0 4px; }
+.footer-social a { display: inline-flex; align-items: center; gap: 8px; color: white; text-decoration: none; font-size: 13px; font-weight: 700; padding: 8px 16px; border: 1px solid rgba(255,255,255,0.35); border-radius: 20px; transition: all 0.15s; }
+.footer-social a:hover { border-color: var(--teal); color: var(--teal); }
+.footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 16px auto; max-width: 480px; }
+.footer-policy-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 8px 0; flex-wrap: wrap; }
+.footer-policy-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 12px; transition: color 0.15s; }
+.footer-policy-links a:hover { color: var(--teal); }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 12px; }
+
+/* ── MOBILE MENU ── */
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+  .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 12px 16px 16px; border-bottom: 2px solid var(--border); box-shadow: var(--shadow); gap: 2px; }
+  .nav-links.open a { padding: 10px 12px; }
+}
