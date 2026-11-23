@@ -1,0 +1,4 @@
+# Friends of Solway website - GitHub Pages (Jekyll) settings
+# Keep the README and notes out of the published site.
+exclude:
+  - README.md
