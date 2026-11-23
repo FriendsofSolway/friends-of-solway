@@ -7,52 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Friends of Solway — Supporting Solway Primary School</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+{% include head.html %}
 <style>
-  :root {
-    --teal: #2BBCB3;
-    --teal-dark: #1A9E96;
-    --teal-light: #E0F7F6;
-    --teal-mid: #B2ECEA;
-    --blue: #3B7DD8;
-    --blue-dark: #2A5FA8;
-    --blue-light: #E3EEF9;
-    --green: #2EAD6D;
-    --green-light: #E5F5ED;
-    --orange: #FF9800;
-    --orange-dark: #EF6C00;
-    --orange-light: #FFF3E0;
-    --yellow: #FFD600;
-    --red: #E53935;
-    --bg: #F0FAFA;
-    --card: #FFFFFF;
-    --text: #1E3232;
-    --text-mid: #3A5252;
-    --text-light: #5A7070;
-    --border: #C8E6E4;
-    --shadow-sm: 0 2px 12px rgba(43,188,179,0.10);
-    --shadow: 0 4px 24px rgba(43,188,179,0.14);
-    --shadow-lg: 0 8px 40px rgba(43,188,179,0.18);
-    --radius: 16px;
-    --radius-lg: 24px;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
 
-  /* ── NAV ── */
-  nav { background: white; border-bottom: 2px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); }
-  .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
-  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .nav-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--teal-mid); }
-  .nav-brand-text { font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 600; color: var(--teal-dark); line-height: 1.2; }
-  .nav-brand-sub { font-size: 11px; font-weight: 400; color: var(--text-light); font-family: 'Nunito', sans-serif; display: block; }
-  .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
-  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 8px; transition: all 0.15s; }
-  .nav-links a:hover { background: var(--teal-light); color: var(--teal-dark); }
-  .nav-links a.active { background: var(--teal-light); color: var(--teal-dark); }
-  .nav-cta { background: linear-gradient(135deg, var(--teal), var(--blue)); color: white !important; padding: 8px 16px !important; border-radius: 10px !important; font-weight: 700 !important; }
-  .nav-cta:hover { opacity: 0.9; background: linear-gradient(135deg, var(--teal), var(--blue)) !important; color: white !important; }
-  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-mid); margin: 5px 0; border-radius: 2px; transition: 0.2s; }
 
   /* ── HERO ── */
   .hero { background: linear-gradient(160deg, #E8FAF9 0%, #EAF2FF 50%, #FFF8E1 100%); padding: 64px 24px 72px; text-align: center; position: relative; overflow: hidden; }
@@ -99,6 +57,7 @@
   .stat-raised .stat-value { color: #712B13; }
   .stat-remaining .stat-value { color: var(--text); }
   .stat-goal .stat-value { color: #27500A; }
+  .goal-updated { font-size: 12px; color: var(--text-light); text-align: right; margin-top: 12px; }
 
   /* ── WHAT WE'RE WORKING TOWARDS ── */
   .raising-section { background: white; }
@@ -150,32 +109,19 @@
   .about-strip p { font-size: 16px; opacity: 0.88; max-width: 560px; margin: 0 auto 28px; line-height: 1.65; }
   .about-strip .btn-white { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; background: white; color: var(--teal-dark); text-decoration: none; font-family: 'Fredoka', sans-serif; font-size: 16px; font-weight: 700; border-radius: 12px; transition: all 0.2s; }
   .about-strip .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.15); }
+  .about-strip-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .about-strip .btn-outline-white { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; background: transparent; color: white; text-decoration: none; font-family: 'Fredoka', sans-serif; font-size: 16px; font-weight: 700; border-radius: 12px; border: 2px solid rgba(255,255,255,0.8); transition: all 0.2s; }
+  .about-strip .btn-outline-white:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
 
-  /* ── FOOTER ── */
-  footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 40px 24px 28px; text-align: center; }
-  .footer-logo { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px; display: block; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
-  .footer-name { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: white; margin-bottom: 6px; }
-  .footer-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 16px 0; flex-wrap: wrap; }
-  .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
-  .footer-links a:hover { color: var(--teal); }
-  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 16px auto; max-width: 480px; }
-  .footer-policy-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 8px 0; flex-wrap: wrap; }
-  .footer-policy-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 12px; transition: color 0.15s; }
-  .footer-policy-links a:hover { color: var(--teal); }
-  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 12px; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 640px) {
-    .nav-links { display: none; }
-    .nav-hamburger { display: block; }
-    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 12px 16px 16px; border-bottom: 2px solid var(--border); box-shadow: var(--shadow); gap: 2px; }
-    .nav-links.open a { padding: 10px 12px; }
     .goal-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .stat-value { font-size: 20px; }
     .hero { padding: 48px 20px 56px; }
     .section { padding: 40px 20px; }
   }
-  @media (max-width: 380px) { .goal-stats { grid-template-columns: 1fr; } }
+  @media (max-width: 480px) { .goal-stats { grid-template-columns: 1fr; } .goal-card { padding: 24px 20px; } }
 </style>
 </head>
 <body>
@@ -213,7 +159,7 @@
         <div class="goal-desc">We are so lucky to have a school pool for our tamariki to use, and despite the hot Wairarapa days, the pool can still be extremely cold. To extend the swimming period and ensure it's accessible and comfortable for all of our tamariki, we are working hard towards relining the pool and installing a heat pump water heating system.</div>
       </div>
 
-      <svg id="thermometerSvg" viewBox="0 0 560 55" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+      <svg id="thermometerSvg" aria-hidden="true" focusable="false" viewBox="0 0 560 55" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
         <defs>
           <clipPath id="thermClip">
             <rect x="0" y="18" width="560" height="28" rx="14"/>
@@ -266,6 +212,7 @@
           <div class="stat-value">$60,000</div>
         </div>
       </div>
+      <p class="goal-updated">Last updated: <span id="raisedUpdated">—</span></p>
     </div>
   </div>
 </section>
@@ -281,31 +228,31 @@
     <p class="section-subtitle">Every dollar goes directly back into improving the school for our tamariki.</p>
     <div class="raising-grid">
       <div class="raising-card">
-        <span class="raising-icon">🏊</span>
+        <span class="raising-icon" aria-hidden="true">🏊</span>
         <div class="raising-card-title">Relined & Heated Pool</div>
         <div class="raising-card-desc">Relining the school pool and adding heating so it's accessible and comfortable for every child to use, year-round.</div>
         <div class="raising-card-amount">$60,000 goal — current</div>
       </div>
       <div class="raising-card">
-        <span class="raising-icon">🎨</span>
+        <span class="raising-icon" aria-hidden="true">🎨</span>
         <div class="raising-card-title">Concrete Games</div>
         <div class="raising-card-desc">Beautiful, lasting concrete games installed in our school grounds.</div>
         <div class="raising-card-amount">Future goal</div>
       </div>
       <div class="raising-card">
-        <span class="raising-icon">🌞</span>
+        <span class="raising-icon" aria-hidden="true">🌞</span>
         <div class="raising-card-title">Shade Sails</div>
         <div class="raising-card-desc">Covered outdoor spaces so tamariki can play and learn comfortably in all weather.</div>
         <div class="raising-card-amount">Future goal</div>
       </div>
       <div class="raising-card">
-        <span class="raising-icon">🛝</span>
+        <span class="raising-icon" aria-hidden="true">🛝</span>
         <div class="raising-card-title">Playground Equipment</div>
         <div class="raising-card-desc">Fun, safe play equipment that keeps kids active, imaginative, and engaged at break time.</div>
         <div class="raising-card-amount">Future goal</div>
       </div>
       <div class="raising-card">
-        <span class="raising-icon">🪑</span>
+        <span class="raising-icon" aria-hidden="true">🪑</span>
         <div class="raising-card-title">Seating Areas</div>
         <div class="raising-card-desc">Comfortable outdoor seating for students, whānau, and community to gather and connect.</div>
         <div class="raising-card-amount">Future goal</div>
@@ -337,7 +284,19 @@
           <a href="order-pizza/index.html" class="fundraiser-link">Order Now →</a>
         </div>
       </div>
-      <div class="fundraiser-card"><div class="fundraiser-banner orange"></div><div class="fundraiser-body"><span class="fundraiser-tag tag-closed">🔒 Pre-orders closed</span><div class="fundraiser-title">🧺 Tea Towel Fundraiser</div><div class="fundraiser-desc">Pre-orders are now closed and final quantities have gone to print — thanks to everyone who ordered! Tea towels will come home in time for Christmas.</div><div class="fundraiser-meta"><span>🎄 Home before Christmas</span></div><a href="order-tea-towels/index.html" class="fundraiser-link">View My Orders →</a></div></div>
+      <div class="fundraiser-card"><div class="fundraiser-banner orange"></div><div class="fundraiser-body"><span class="fundraiser-tag tag-closed">🔒 Pre-orders closed</span><div class="fundraiser-title">🧺 Tea Towel Fundraiser</div><div class="fundraiser-desc">Pre-orders are now closed and final quantities have gone to print — thanks to everyone who ordered! Tea towels will come home in time for Christmas.</div><div class="fundraiser-meta"><span>🎄 Home before Christmas</span></div><a href="/order-tea-towels/my-orders.html" class="fundraiser-link">View My Orders →</a></div></div>
+      <div class="fundraiser-card">
+        <div class="fundraiser-banner green"></div>
+        <div class="fundraiser-body">
+          <span class="fundraiser-tag tag-upcoming">🗓️ Coming in 2027</span>
+          <div class="fundraiser-title">✨ More Fundraisers Coming</div>
+          <div class="fundraiser-desc">We're already planning next year's fundraisers. Follow us on Facebook to be the first to hear what's coming up and how you can get involved.</div>
+          <div class="fundraiser-meta">
+            <span>📣 News first on Facebook</span>
+          </div>
+          <a href="https://www.facebook.com/profile.php?id=61577478982554" class="fundraiser-link" target="_blank" rel="noopener">Follow us on Facebook →<span class="sr-only"> (opens in a new tab)</span></a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -350,7 +309,7 @@
     <p class="section-subtitle">A snapshot of what we've raised together so far.</p>
     <div class="past-preview-grid">
       <div class="past-preview-card">
-        <div class="past-preview-icon">🌱</div>
+        <div class="past-preview-icon" aria-hidden="true">🌱</div>
         <div class="past-preview-body">
           <div class="past-preview-title">Plant Fair</div>
           <div class="past-preview-date">31 October 2026</div>
@@ -358,7 +317,7 @@
         <div class="past-preview-amount">$11,628.60</div>
       </div>
       <div class="past-preview-card">
-        <div class="past-preview-icon">🎭</div>
+        <div class="past-preview-icon" aria-hidden="true">🎭</div>
         <div class="past-preview-body">
           <div class="past-preview-title">School Production Snack Stand</div>
           <div class="past-preview-date">Term 4 2026</div>
@@ -366,7 +325,7 @@
         <div class="past-preview-amount">$1,305</div>
       </div>
       <div class="past-preview-card">
-        <div class="past-preview-icon">🍿</div>
+        <div class="past-preview-icon" aria-hidden="true">🍿</div>
         <div class="past-preview-body">
           <div class="past-preview-title">JDDC Snack Bar</div>
           <div class="past-preview-date">Term 4 2026</div>
@@ -374,7 +333,7 @@
         <div class="past-preview-amount">$2,264</div>
       </div>
       <div class="past-preview-card">
-        <div class="past-preview-icon">🏃</div>
+        <div class="past-preview-icon" aria-hidden="true">🏃</div>
         <div class="past-preview-body">
           <div class="past-preview-title">Interschool Cross Country</div>
           <div class="past-preview-date">Sausage Sizzle and Bake Sale</div>
@@ -382,7 +341,7 @@
         <div class="past-preview-amount">$2,374.60</div>
       </div>
       <div class="past-preview-card">
-        <div class="past-preview-icon">🏃</div>
+        <div class="past-preview-icon" aria-hidden="true">🏃</div>
         <div class="past-preview-body">
           <div class="past-preview-title">Sausage Sizzle</div>
           <div class="past-preview-date">Cross Country — 27 May 2026</div>
@@ -390,7 +349,7 @@
         <div class="past-preview-amount">$584</div>
       </div>
       <div class="past-preview-card">
-        <div class="past-preview-icon">🐣</div>
+        <div class="past-preview-icon" aria-hidden="true">🐣</div>
         <div class="past-preview-body">
           <div class="past-preview-title">Hot Cross Buns</div>
           <div class="past-preview-date">March 2026</div>
@@ -398,7 +357,7 @@
         <div class="past-preview-amount">$613.80</div>
       </div>
       <div class="past-preview-card">
-        <div class="past-preview-icon">🍧</div>
+        <div class="past-preview-icon" aria-hidden="true">🍧</div>
         <div class="past-preview-body">
           <div class="past-preview-title">Iceblock Sales</div>
           <div class="past-preview-date">Term 1 2026</div>
@@ -406,7 +365,7 @@
         <div class="past-preview-amount tbc">TBC</div>
       </div>
       <div class="past-preview-card">
-        <div class="past-preview-icon">🏃</div>
+        <div class="past-preview-icon" aria-hidden="true">🏃</div>
         <div class="past-preview-body">
           <div class="past-preview-title">Meet the Teacher BBQ</div>
           <div class="past-preview-date">Term 1 2026</div>
@@ -414,7 +373,7 @@
         <div class="past-preview-amount">$499.30</div>
       </div>
       <div class="past-preview-card">
-        <div class="past-preview-icon">🐑</div>
+        <div class="past-preview-icon" aria-hidden="true">🐑</div>
         <div class="past-preview-body">
           <div class="past-preview-title">Stock Drive</div>
           <div class="past-preview-date">January 2026</div>
@@ -431,7 +390,10 @@
   <h2>👋 Who are Friends of Solway?</h2>
 
   <p>We're a group of parents and caregivers who volunteer our time to support and improve Solway Primary School for the benefit of every child in our community.</p>
-  <a href="/about.html" class="btn-white">Learn more about us →</a>
+  <div class="about-strip-btns">
+    <a href="/about.html" class="btn-white">Learn more about us →</a>
+    <a href="/sponsors.html#become-a-sponsor" class="btn-outline-white">Become a sponsor →</a>
+  </div>
 </div>
 
 <!-- FOOTER -->
@@ -444,13 +406,19 @@ function toggleNav() {
 
 const GOAL = 60000;
 
-const RAISED = 20000;
+const RAISED = 31628.60;
+const RAISED_UPDATED = '24 November 2026'; // change this date whenever RAISED is updated
 const SEG_COLOURS = [
   '#8B0000','#B22020','#C0392B','#D44020','#E05020',
   '#E86820','#F08020','#F5A020','#F5C020','#EAD020',
   '#C8D820','#A0C820','#80B820','#60A820','#409820',
   '#308830','#287828','#206820','#185818'
 ];
+function formatNZD(n) {
+  // show cents only when the amount isn't a whole dollar figure
+  var whole = Math.round(n * 100) % 100 === 0;
+  return '$' + n.toLocaleString('en-NZ', { minimumFractionDigits: whole ? 0 : 2, maximumFractionDigits: 2 });
+}
 function animateProgress() {
   const pct = Math.min((RAISED / GOAL), 1);
   const remaining = Math.max(GOAL - RAISED, 0);
@@ -462,9 +430,10 @@ function animateProgress() {
     }
   }, 300);
   if (RAISED > 0) {
-    document.getElementById('statRaised').textContent = '$' + RAISED.toLocaleString('en-NZ');
-    document.getElementById('statRemaining').textContent = '$' + remaining.toLocaleString('en-NZ');
+    document.getElementById('statRaised').textContent = formatNZD(RAISED);
+    document.getElementById('statRemaining').textContent = formatNZD(remaining);
   }
+  document.getElementById('raisedUpdated').textContent = RAISED_UPDATED;
 }
 animateProgress();
 </script>

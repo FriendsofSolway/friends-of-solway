@@ -8,31 +8,9 @@
 <title>About Us — Friends of Solway</title>
 <meta name="description" content="Friends of Solway is the parent-led fundraising committee for Solway Primary School in Masterton.">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+{% include head.html %}
 <style>
-  :root {
-    --teal: #2BBCB3; --teal-dark: #1A9E96; --teal-light: #E0F7F6; --teal-mid: #B2ECEA;
-    --blue: #3B7DD8; --blue-dark: #2A5FA8;
-    --green: #2EAD6D; --green-light: #E5F5ED;
-    --bg: #F0FAFA; --text: #1E3232; --text-mid: #3A5252; --text-light: #5A7070;
-    --border: #C8E6E4; --shadow-sm: 0 2px 12px rgba(43,188,179,0.10); --shadow: 0 4px 24px rgba(43,188,179,0.14);
-    --radius: 16px;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-  nav { background: white; border-bottom: 2px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); }
-  .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
-  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .nav-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--teal-mid); }
-  .nav-brand-text { font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 600; color: var(--teal-dark); line-height: 1.2; }
-  .nav-brand-sub { font-size: 11px; font-weight: 400; color: var(--text-light); font-family: 'Nunito', sans-serif; display: block; }
-  .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
-  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 8px; transition: all 0.15s; }
-  .nav-links a:hover { background: var(--teal-light); color: var(--teal-dark); }
-  .nav-links a.active { background: var(--teal-light); color: var(--teal-dark); }
-  .nav-cta { background: linear-gradient(135deg, var(--teal), var(--blue)); color: white !important; padding: 8px 16px !important; border-radius: 10px !important; font-weight: 700 !important; }
-  .nav-cta:hover { opacity: 0.9; }
-  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-mid); margin: 5px 0; border-radius: 2px; }
   .page-header { background: linear-gradient(160deg, #E8FAF9 0%, #EAF2FF 50%, #FFF8E1 100%); padding: 56px 24px 48px; text-align: center; position: relative; overflow: hidden; }
   .page-header::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(43,188,179,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
   .page-header-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
@@ -44,21 +22,7 @@
   .strip-stat-label { font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
   .section { padding: 48px 24px 64px; }
   .section-inner { max-width: 860px; margin: 0 auto; }
-  footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 40px 24px 28px; text-align: center; }
-  .footer-logo { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px; display: block; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
-  .footer-name { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: white; margin-bottom: 6px; }
-  .footer-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 16px 0; flex-wrap: wrap; }
-  .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
-  .footer-links a:hover { color: var(--teal); }
-  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 16px auto; max-width: 480px; }
-  .footer-policy-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 8px 0; flex-wrap: wrap; }
-  .footer-policy-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 12px; transition: color 0.15s; }
-  .footer-policy-links a:hover { color: var(--teal); }
-  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 16px; }
   @media (max-width: 640px) {
-    .nav-links { display: none; } .nav-hamburger { display: block; }
-    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 12px 16px 16px; border-bottom: 2px solid var(--border); box-shadow: var(--shadow); gap: 2px; }
-    .nav-links.open a { padding: 10px 12px; }
     .page-header { padding: 40px 20px 32px; } .stats-inner { grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .strip-stat-value { font-size: 24px; } .strip-stat-label { font-size: 10px; }
   }
@@ -122,10 +86,10 @@
     <h2 class="section-title">Every bit of help counts</h2>
     <p class="section-subtitle">You don't need to come to meetings to help. Give what time you can, when you can.</p>
     <div class="grid grid-4">
-      <div class="card"><span class="card-icon">🙋</span><div class="card-title">Volunteer at an event</div><div class="card-desc">Lend a hand for an hour at a sizzle, stall or fair.</div></div>
-      <div class="card"><span class="card-icon">🧁</span><div class="card-title">Bake or donate</div><div class="card-desc">Baking for bake sales, plants for the Plant Fair, or prizes for raffles.</div></div>
-      <div class="card"><span class="card-icon">🛒</span><div class="card-title">Join in</div><div class="card-desc">Order Friday pizza, come along to events and share our posts with whānau and friends.</div></div>
-      <div class="card"><span class="card-icon">🏢</span><div class="card-title">Sponsor us</div><div class="card-desc">Own a business? Partner with us and support Solway tamariki.</div></div>
+      <div class="card"><span class="card-icon" aria-hidden="true">🙋</span><div class="card-title">Volunteer at an event</div><div class="card-desc">Lend a hand for an hour at a sizzle, stall or fair.</div></div>
+      <div class="card"><span class="card-icon" aria-hidden="true">🧁</span><div class="card-title">Bake or donate</div><div class="card-desc">Baking for bake sales, plants for the Plant Fair, or prizes for raffles.</div></div>
+      <div class="card"><span class="card-icon" aria-hidden="true">🛒</span><div class="card-title">Join in</div><div class="card-desc">Order Friday pizza, come along to events and share our posts with whānau and friends.</div></div>
+      <div class="card"><span class="card-icon" aria-hidden="true">🏢</span><div class="card-title">Sponsor us</div><div class="card-desc">Own a business? Partner with us and support Solway tamariki.</div></div>
     </div>
   </div>
 </section>

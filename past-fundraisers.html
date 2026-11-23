@@ -7,31 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Past Events — Friends of Solway</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+{% include head.html %}
 <style>
-  :root {
-    --teal: #2BBCB3; --teal-dark: #1A9E96; --teal-light: #E0F7F6; --teal-mid: #B2ECEA;
-    --blue: #3B7DD8; --blue-dark: #2A5FA8;
-    --green: #2EAD6D; --green-light: #E5F5ED;
-    --bg: #F0FAFA; --text: #1E3232; --text-mid: #3A5252; --text-light: #5A7070;
-    --border: #C8E6E4; --shadow-sm: 0 2px 12px rgba(43,188,179,0.10); --shadow: 0 4px 24px rgba(43,188,179,0.14);
-    --radius: 16px;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-  nav { background: white; border-bottom: 2px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); }
-  .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
-  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .nav-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--teal-mid); }
-  .nav-brand-text { font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 600; color: var(--teal-dark); line-height: 1.2; }
-  .nav-brand-sub { font-size: 11px; font-weight: 400; color: var(--text-light); font-family: 'Nunito', sans-serif; display: block; }
-  .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
-  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 8px; transition: all 0.15s; }
-  .nav-links a:hover { background: var(--teal-light); color: var(--teal-dark); }
-  .nav-links a.active { background: var(--teal-light); color: var(--teal-dark); }
-  .nav-cta { background: linear-gradient(135deg, var(--teal), var(--blue)); color: white !important; padding: 8px 16px !important; border-radius: 10px !important; font-weight: 700 !important; }
-  .nav-cta:hover { opacity: 0.9; }
-  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-mid); margin: 5px 0; border-radius: 2px; }
   .page-header { background: linear-gradient(160deg, #E8FAF9 0%, #EAF2FF 50%, #FFF8E1 100%); padding: 56px 24px 48px; text-align: center; position: relative; overflow: hidden; }
   .page-header::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(43,188,179,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
   .page-header-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
@@ -59,29 +37,14 @@
   .past-card-amount-label { font-size: 11px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-top: 2px; }
   .past-card-body { padding: 20px 24px; }
   .past-card-desc { font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 20px; }
-  .fb-embed-wrap { background: #f0f2f5; border-radius: 10px; overflow: hidden; display: flex; justify-content: center; padding: 16px; }
-  .fb-embed-scaler { width: 100%; max-width: 500px; overflow: hidden; }
-  .fb-embed-scaler iframe { width: 500px; max-width: 100%; display: block; border-radius: 8px; transform-origin: top left; }
-  footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 40px 24px 28px; text-align: center; }
-  .footer-logo { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px; display: block; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
-  .footer-name { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: white; margin-bottom: 6px; }
-  .footer-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 16px 0; flex-wrap: wrap; }
-  .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
-  .footer-links a:hover { color: var(--teal); }
-  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 16px auto; max-width: 480px; }
-  .footer-policy-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 8px 0; flex-wrap: wrap; }
-  .footer-policy-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 12px; transition: color 0.15s; }
-  .footer-policy-links a:hover { color: var(--teal); }
-  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 16px; }
+  .fb-post-link { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; background: var(--blue-light); color: var(--blue-dark); text-decoration: none; font-weight: 700; font-size: 14px; border-radius: 10px; border: 2px solid transparent; transition: all 0.2s; }
+  .fb-post-link:hover { border-color: var(--blue); background: white; }
   @media (max-width: 860px) { .section-inner { padding: 0 4px; } .past-card-title { font-size: 19px; } }
   @media (max-width: 640px) {
-    .nav-links { display: none; } .nav-hamburger { display: block; }
-    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 12px 16px 16px; border-bottom: 2px solid var(--border); box-shadow: var(--shadow); gap: 2px; }
-    .nav-links.open a { padding: 10px 12px; }
     .page-header { padding: 40px 20px 32px; } .stats-inner { grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .strip-stat-value { font-size: 24px; } .strip-stat-label { font-size: 10px; }
     .section { padding: 28px 16px 48px; } .past-card-title { font-size: 17px; }
-    .past-card-body { padding: 16px; } .fb-embed-wrap { padding: 8px; } .year-heading { font-size: 18px; }
+    .past-card-body { padding: 16px; } .year-heading { font-size: 18px; }
   }
   @media (max-width: 420px) { .stats-inner { grid-template-columns: 1fr; gap: 16px; } .past-card-title { font-size: 15px; } .past-card-meta { font-size: 12px; } .nav-brand-sub { display: none; } }
 </style>
@@ -120,7 +83,7 @@
       <div class="year-heading">📅 2026</div>
       <div class="past-card">
         <div class="past-card-header">
-          <div class="past-card-emoji">🌱</div>
+          <div class="past-card-emoji" aria-hidden="true">🌱</div>
           <div class="past-card-info">
             <div class="past-card-title">Plant Fair</div>
             <div class="past-card-meta"><span>📅 31 October 2026</span><span class="tag-complete">✅ Complete</span></div>
@@ -132,14 +95,12 @@
         </div>
         <div class="past-card-body">
           <div class="past-card-desc">Our first Plant Fair — thousands of natives, vegetables, fruit bushes and flowering plants, grown and potted up by our volunteers and generous donors. Thank you to everyone who grew, donated, helped out on the day and came along to shop!</div>
-          <div class="fb-embed-wrap"><div class="fb-embed-scaler">
-            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02wqJtXQAzc8QTnQRqxxudHZu82r55ziGuD46vD5cLnaGVtgXpceMAmY3mWZVRYJc3l%26id%3D61577478982554&show_text=true&width=500" width="500" height="684" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-          </div></div>
+          <a class="fb-post-link" href="https://www.facebook.com/permalink.php?story_fbid=pfbid02wqJtXQAzc8QTnQRqxxudHZu82r55ziGuD46vD5cLnaGVtgXpceMAmY3mWZVRYJc3l&amp;id=61577478982554" target="_blank" rel="noopener"><span aria-hidden="true">📸</span> See the photos and post on Facebook →<span class="sr-only"> (opens in a new tab)</span></a>
         </div>
       </div>
       <div class="past-card">
         <div class="past-card-header">
-          <div class="past-card-emoji">🎭</div>
+          <div class="past-card-emoji" aria-hidden="true">🎭</div>
           <div class="past-card-info">
             <div class="past-card-title">Snack Stand — School Production</div>
             <div class="past-card-meta"><span>📅 Term 4 2026</span><span class="tag-complete">✅ Complete</span></div>
@@ -155,7 +116,7 @@
       </div>
       <div class="past-card">
         <div class="past-card-header">
-          <div class="past-card-emoji">🍿</div>
+          <div class="past-card-emoji" aria-hidden="true">🍿</div>
           <div class="past-card-info">
             <div class="past-card-title">JDDC Snack Bar</div>
             <div class="past-card-meta"><span>📅 Term 4 2026</span><span class="tag-complete">✅ Complete</span></div>
@@ -167,15 +128,13 @@
         </div>
         <div class="past-card-body">
           <div class="past-card-desc">Our snack bar at the Jazz Dance and Drama Centre (JDDC) end of year production. Thank you to our volunteers and to everyone who came along and supported!</div>
-          <div class="fb-embed-wrap"><div class="fb-embed-scaler">
-            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02t5KrSsiqahTVSCfzpG9cMkQDQqvWWCJ188pzP1FB2sXw2m9xVgr8gntAw6FY7mzNl%26id%3D61577478982554&show_text=true&width=500" width="500" height="729" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-          </div></div>
+          <a class="fb-post-link" href="https://www.facebook.com/permalink.php?story_fbid=pfbid02t5KrSsiqahTVSCfzpG9cMkQDQqvWWCJ188pzP1FB2sXw2m9xVgr8gntAw6FY7mzNl&amp;id=61577478982554" target="_blank" rel="noopener"><span aria-hidden="true">📸</span> See the photos and post on Facebook →<span class="sr-only"> (opens in a new tab)</span></a>
         </div>
       </div>
 
       <div class="past-card">
         <div class="past-card-header">
-          <div class="past-card-emoji">🏃</div>
+          <div class="past-card-emoji" aria-hidden="true">🏃</div>
           <div class="past-card-info">
             <div class="past-card-title">InterSchool Cross Country - Sausage sizzle and Bake sale</div>
             <div class="past-card-meta"><span>📅 09 June 2026</span><span class="tag-complete">✅ Complete</span></div>
@@ -187,15 +146,13 @@
         </div>
         <div class="past-card-body">
           <div class="past-card-desc">A sausage sizzle and bake sale at the InterSchool Cross Country - our group of hardy volunteers braced the cold, wind and rain to raise funds for our tamariki. Thank you to all of our amazing Solway whanau for their donated baking!</div>
-          <div class="fb-embed-wrap"><div class="fb-embed-scaler">
-            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid0EQhjx55DvtjZ16Knhovv3yJFnKWQJwwv5cgVxHPDiLPKv87muQcnWR6UZpr6XcWSl%26id%3D61577478982554&show_text=true&width=500" width="500" height="684" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-          </div></div>
+          <a class="fb-post-link" href="https://www.facebook.com/permalink.php?story_fbid=pfbid0EQhjx55DvtjZ16Knhovv3yJFnKWQJwwv5cgVxHPDiLPKv87muQcnWR6UZpr6XcWSl&amp;id=61577478982554" target="_blank" rel="noopener"><span aria-hidden="true">📸</span> See the photos and post on Facebook →<span class="sr-only"> (opens in a new tab)</span></a>
         </div>
       </div>
 
       <div class="past-card">
         <div class="past-card-header">
-          <div class="past-card-emoji">🏃</div>
+          <div class="past-card-emoji" aria-hidden="true">🏃</div>
           <div class="past-card-info">
             <div class="past-card-title">Sausage Sizzle — School Cross Country</div>
             <div class="past-card-meta"><span>📅 27 May 2026</span><span class="tag-complete">✅ Complete</span></div>
@@ -207,15 +164,13 @@
         </div>
         <div class="past-card-body">
           <div class="past-card-desc">A sausage sizzle held at the school cross country event. Thank you to everyone who came along and supported!</div>
-          <div class="fb-embed-wrap"><div class="fb-embed-scaler">
-            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid0suBJaPj7RU1hEDhRUUUJrKjqbcYE6JQErMVgERmjHUvbt4W5AW2hcSet9LyhP5JZl%26id%3D61577478982554&show_text=true&width=500" width="500" height="625" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-          </div></div>
+          <a class="fb-post-link" href="https://www.facebook.com/permalink.php?story_fbid=pfbid0suBJaPj7RU1hEDhRUUUJrKjqbcYE6JQErMVgERmjHUvbt4W5AW2hcSet9LyhP5JZl&amp;id=61577478982554" target="_blank" rel="noopener"><span aria-hidden="true">📸</span> See the photos and post on Facebook →<span class="sr-only"> (opens in a new tab)</span></a>
         </div>
       </div>
 
       <div class="past-card">
         <div class="past-card-header">
-          <div class="past-card-emoji">🐣</div>
+          <div class="past-card-emoji" aria-hidden="true">🐣</div>
           <div class="past-card-info">
             <div class="past-card-title">Hot Cross Buns Sale</div>
             <div class="past-card-meta"><span>📅 March 2026</span><span class="tag-complete">✅ Complete</span></div>
@@ -227,15 +182,13 @@
         </div>
         <div class="past-card-body">
           <div class="past-card-desc">Pre-ordered hot cross buns sold to school families in the lead-up to Easter. A delicious way to raise funds for the school!</div>
-          <div class="fb-embed-wrap"><div class="fb-embed-scaler">
-            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid02NfoLSxKdyt9su9Hpv1NkrT3JvrU8HFDU9mx5qFCdZKTJVCPH1a131dmSvvrtGAGQl%26id%3D61577478982554&show_text=true&width=500" width="500" height="625" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-          </div></div>
+          <a class="fb-post-link" href="https://www.facebook.com/permalink.php?story_fbid=pfbid02NfoLSxKdyt9su9Hpv1NkrT3JvrU8HFDU9mx5qFCdZKTJVCPH1a131dmSvvrtGAGQl&amp;id=61577478982554" target="_blank" rel="noopener"><span aria-hidden="true">📸</span> See the photos and post on Facebook →<span class="sr-only"> (opens in a new tab)</span></a>
         </div>
       </div>
 
       <div class="past-card">
         <div class="past-card-header">
-          <div class="past-card-emoji">🍧</div>
+          <div class="past-card-emoji" aria-hidden="true">🍧</div>
           <div class="past-card-info">
             <div class="past-card-title">Iceblock Sales</div>
             <div class="past-card-meta"><span>📅 Term 1 2026</span><span class="tag-complete">✅ Complete</span></div>
@@ -252,7 +205,7 @@
 
       <div class="past-card">
         <div class="past-card-header">
-          <div class="past-card-emoji">🏃</div>
+          <div class="past-card-emoji" aria-hidden="true">🏃</div>
           <div class="past-card-info">
             <div class="past-card-title">Meet the Teacher</div>
             <div class="past-card-meta"><span>📅 Term 1 2026</span><span class="tag-complete">✅ Complete</span></div>
@@ -269,7 +222,7 @@
 
       <div class="past-card">
         <div class="past-card-header">
-          <div class="past-card-emoji">🐑</div>
+          <div class="past-card-emoji" aria-hidden="true">🐑</div>
           <div class="past-card-info">
             <div class="past-card-title">Stock Drive</div>
             <div class="past-card-meta"><span>📅 January 2026</span><span class="tag-complete">✅ Complete</span></div>
@@ -281,9 +234,7 @@
         </div>
         <div class="past-card-body">
           <div class="past-card-desc">A community stock drive fundraiser supporting the school.</div>
-          <div class="fb-embed-wrap"><div class="fb-embed-scaler">
-            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fpermalink.php%3Fstory_fbid%3Dpfbid0xsvtiFFE2tLqHytotNmFZ8KsmyNWCTK4Th8EA4VaNBGqoBGd1UbAGSXvZ8kJJnt3l%26id%3D61565457876607&show_text=true&width=500" width="500" height="625" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-          </div></div>
+          <a class="fb-post-link" href="https://www.facebook.com/permalink.php?story_fbid=pfbid0xsvtiFFE2tLqHytotNmFZ8KsmyNWCTK4Th8EA4VaNBGqoBGd1UbAGSXvZ8kJJnt3l&amp;id=61565457876607" target="_blank" rel="noopener"><span aria-hidden="true">📸</span> See the photos and post on Facebook →<span class="sr-only"> (opens in a new tab)</span></a>
         </div>
       </div>
 
@@ -297,26 +248,6 @@
 function toggleNav() {
   document.getElementById('navLinks').classList.toggle('open');
 }
-function scaleFbEmbeds() {
-  document.querySelectorAll('.fb-embed-scaler').forEach(function(scaler) {
-    var iframe = scaler.querySelector('iframe');
-    if (!iframe) return;
-    var available = scaler.offsetWidth;
-    var native = 500;
-    if (available < native) {
-      var scale = available / native;
-      iframe.style.transform = 'scale(' + scale + ')';
-      iframe.style.height = (parseInt(iframe.getAttribute('height')) * scale) + 'px';
-      scaler.style.height = (parseInt(iframe.getAttribute('height')) * scale) + 'px';
-    } else {
-      iframe.style.transform = '';
-      iframe.style.height = '';
-      scaler.style.height = '';
-    }
-  });
-}
-window.addEventListener('load', scaleFbEmbeds);
-window.addEventListener('resize', scaleFbEmbeds);
 </script>
 </body>
 </html>
