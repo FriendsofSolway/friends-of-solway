@@ -7,32 +7,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Friends of Solway — View My Orders</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+{% include head.html %}
 <style>
   :root {
-    --teal: #2BBCB3; --teal-dark: #1A9E96; --teal-light: #E0F7F6;
-    --blue: #3B7DD8; --blue-light: #E3EEF9;
-    --orange: #FF9800; --orange-dark: #EF6C00; --orange-light: #FFF3E0;
-    --red: #E53935; --red-light: #FFEBEE;
-    --green: #4CAF50; --green-light: #E8F5E9;
-    --bg: #F0FAFA; --card: #FFFFFF; --text: #2D2D2D; --text-light: #5A6B6B;
-    --border: #C8E6E4; --shadow: 0 2px 16px rgba(43,188,179,0.10); --radius: 14px;
+    --red-light: #FFEBEE;
+    --green: #4CAF50;
+    --green-light: #E8F5E9;
+    --text: #2D2D2D;
+    --text-light: #5A6B6B;
+    --shadow: 0 2px 16px rgba(43,188,179,0.10);
+    --radius: 14px;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; min-height: 100vh; display: flex; flex-direction: column; }
   .page-wrap { max-width: 640px; margin: 0 auto; padding: 0 20px 20px; width: 100%; }
-  nav { background: white; border-bottom: 2px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
-  .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
-  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .nav-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--teal-light); }
-  .nav-brand-text { font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 600; color: var(--teal-dark); line-height: 1.2; }
-  .nav-brand-sub { font-size: 11px; font-weight: 400; color: var(--text-light); font-family: 'Nunito', sans-serif; display: block; }
-  .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
-  .nav-links a { text-decoration: none; color: var(--text-light); font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 8px; transition: all 0.15s; }
-  .nav-links a:hover { background: var(--teal-light); color: var(--teal-dark); }
-  .nav-links a.active { background: var(--teal-light); color: var(--teal-dark); }
-  .nav-cta { background: linear-gradient(135deg, var(--teal), var(--blue)); color: white !important; padding: 8px 16px !important; border-radius: 10px !important; font-weight: 700 !important; }
-  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-light); margin: 5px 0; border-radius: 2px; }
   .page-header { background: linear-gradient(160deg, #E8FAF9 0%, #EAF2FF 50%, #FFF8E1 100%); padding: 48px 24px 40px; text-align: center; position: relative; overflow: hidden; margin-bottom: 24px; }
   .page-header::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(43,188,179,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
   .page-header-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
@@ -68,23 +55,6 @@
   .status-refunded { background: var(--red-light); color: var(--red); }
   .back-link { display: block; text-align: center; margin-top: 16px; color: var(--teal-dark); font-weight: 600; font-size: 14px; text-decoration: none; }
   .back-link:hover { text-decoration: underline; }
-  .site-footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 40px 24px 28px; text-align: center; margin-top: auto; }
-  .footer-logo { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px; display: block; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
-  .footer-name { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: white; margin-bottom: 4px; }
-  .footer-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 14px 0; flex-wrap: wrap; }
-  .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
-  .footer-links a:hover { color: var(--teal); }
-  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 16px auto; max-width: 480px; }
-  .footer-policy-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 8px 0; flex-wrap: wrap; }
-  .footer-policy-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 12px; transition: color 0.15s; }
-  .footer-policy-links a:hover { color: var(--teal); }
-  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 14px; }
-  @media (max-width: 640px) {
-    .nav-links { display: none; }
-    .nav-hamburger { display: block; }
-    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 12px 16px 16px; border-bottom: 2px solid var(--border); box-shadow: var(--shadow); gap: 2px; }
-    .nav-links.open a { padding: 10px 12px; }
-  }
   @media (max-width: 480px) {
     .page-header h1 { font-size: 22px; }
     .page-header-logo { width: 72px; height: 72px; }
