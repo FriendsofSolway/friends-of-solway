@@ -1,0 +1,141 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Friends of Solway</title>
+<meta name="description" content="Friends of Solway is the parent-led fundraising committee for Solway Primary School in Masterton.">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #2BBCB3; --teal-dark: #1A9E96; --teal-light: #E0F7F6; --teal-mid: #B2ECEA;
+    --blue: #3B7DD8; --blue-dark: #2A5FA8;
+    --green: #2EAD6D; --green-light: #E5F5ED;
+    --bg: #F0FAFA; --text: #1E3232; --text-mid: #3A5252; --text-light: #5A7070;
+    --border: #C8E6E4; --shadow-sm: 0 2px 12px rgba(43,188,179,0.10); --shadow: 0 4px 24px rgba(43,188,179,0.14);
+    --radius: 16px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+  nav { background: white; border-bottom: 2px solid var(--border); padding: 0 24px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); }
+  .nav-inner { max-width: 1080px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--teal-mid); }
+  .nav-brand-text { font-family: 'Fredoka', sans-serif; font-size: 17px; font-weight: 600; color: var(--teal-dark); line-height: 1.2; }
+  .nav-brand-sub { font-size: 11px; font-weight: 400; color: var(--text-light); font-family: 'Nunito', sans-serif; display: block; }
+  .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 14px; font-weight: 600; padding: 6px 12px; border-radius: 8px; transition: all 0.15s; }
+  .nav-links a:hover { background: var(--teal-light); color: var(--teal-dark); }
+  .nav-links a.active { background: var(--teal-light); color: var(--teal-dark); }
+  .nav-cta { background: linear-gradient(135deg, var(--teal), var(--blue)); color: white !important; padding: 8px 16px !important; border-radius: 10px !important; font-weight: 700 !important; }
+  .nav-cta:hover { opacity: 0.9; }
+  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-mid); margin: 5px 0; border-radius: 2px; }
+  .page-header { background: linear-gradient(160deg, #E8FAF9 0%, #EAF2FF 50%, #FFF8E1 100%); padding: 56px 24px 48px; text-align: center; position: relative; overflow: hidden; }
+  .page-header::before { content: ''; position: absolute; top: -80px; right: -80px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(43,188,179,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+  .page-header-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
+  .page-header h1 { font-family: 'Fredoka', sans-serif; font-size: clamp(28px, 5vw, 60px); font-weight: 700; color: var(--teal-dark); margin-bottom: 12px; }
+  .page-header p { font-size: 16px; color: var(--text-mid); max-width: 480px; margin: 0 auto; }
+  .stats-strip { background: white; border-bottom: 2px solid var(--border); padding: 28px 24px; }
+  .stats-inner { max-width: 720px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center; }
+  .strip-stat-value { font-family: 'Fredoka', sans-serif; font-size: 32px; font-weight: 700; color: var(--teal-dark); line-height: 1; margin-bottom: 4px; }
+  .strip-stat-label { font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+  .section { padding: 48px 24px 64px; }
+  .section-inner { max-width: 860px; margin: 0 auto; }
+  footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 40px 24px 28px; text-align: center; }
+  .footer-logo { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 16px; display: block; border: 2px solid rgba(255,255,255,0.2); object-fit: cover; }
+  .footer-name { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: white; margin-bottom: 6px; }
+  .footer-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 16px 0; flex-wrap: wrap; }
+  .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 600; transition: color 0.15s; }
+  .footer-links a:hover { color: var(--teal); }
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 16px auto; max-width: 480px; }
+  .footer-policy-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 8px 0; flex-wrap: wrap; }
+  .footer-policy-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 12px; transition: color 0.15s; }
+  .footer-policy-links a:hover { color: var(--teal); }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 16px; }
+  @media (max-width: 640px) {
+    .nav-links { display: none; } .nav-hamburger { display: block; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; padding: 12px 16px 16px; border-bottom: 2px solid var(--border); box-shadow: var(--shadow); gap: 2px; }
+    .nav-links.open a { padding: 10px 12px; }
+    .page-header { padding: 40px 20px 32px; } .stats-inner { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .strip-stat-value { font-size: 24px; } .strip-stat-label { font-size: 10px; }
+  }
+
+  .section-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); margin-bottom: 6px; }
+  .section-title { font-family: 'Fredoka', sans-serif; font-size: clamp(24px, 4vw, 34px); font-weight: 700; color: var(--text); margin-bottom: 10px; }
+  .section-subtitle { font-size: 15px; color: var(--text-light); margin-bottom: 28px; max-width: 620px; }
+  .lead { font-size: 17px; color: var(--text-mid); line-height: 1.75; margin-bottom: 16px; }
+  .alt { background: white; border-top: 2px solid var(--border); border-bottom: 2px solid var(--border); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 860px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .grid-4 { grid-template-columns: 1fr; } }
+  .team-photo { margin: 28px 0 0; }
+  .team-photo img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 2px solid var(--border); box-shadow: var(--shadow); }
+  .team-photo figcaption { font-size: 13px; color: var(--text-light); text-align: center; margin-top: 10px; font-style: italic; }
+  .card { background: var(--bg); border: 2px solid var(--border); border-radius: var(--radius); padding: 24px; transition: all 0.2s; }
+  .alt .card { background: var(--bg); } .section:not(.alt) .card { background: white; }
+  .card:hover { border-color: var(--teal); transform: translateY(-3px); box-shadow: var(--shadow); }
+  .card-icon { font-size: 32px; margin-bottom: 10px; display: block; }
+  .card-title { font-family: 'Fredoka', sans-serif; font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .card-desc { font-size: 14px; color: var(--text-light); line-height: 1.6; }
+  .pill { display: inline-block; margin-top: 12px; padding: 4px 12px; background: var(--teal-light); color: var(--teal-dark); border-radius: 20px; font-family: 'Fredoka', sans-serif; font-size: 13px; font-weight: 600; }
+  .pill.now { background: var(--green-light); color: var(--green); }
+  .cta-strip { background: linear-gradient(135deg, var(--teal-dark), var(--blue-dark)); padding: 56px 24px; color: white; text-align: center; }
+  .cta-strip h2 { font-family: 'Fredoka', sans-serif; font-size: clamp(22px, 4vw, 32px); font-weight: 700; margin-bottom: 14px; }
+  .cta-strip p { font-size: 16px; opacity: 0.9; max-width: 560px; margin: 0 auto 28px; line-height: 1.65; }
+  .btn-white { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; background: white; color: var(--teal-dark); text-decoration: none; font-family: 'Fredoka', sans-serif; font-size: 16px; font-weight: 700; border-radius: 12px; transition: all 0.2s; }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.15); }
+</style>
+</head>
+<body>
+
+{% include nav.html active="about" %}
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <h1>👋 About Us</h1>
+    <p>Kia ora! We're Friends of Solway, the parent-led fundraising committee for Solway Primary School in Masterton.</p>
+  </div>
+</div>
+
+<!-- WHO WE ARE -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Who we are</div>
+    <h2 class="section-title">Parents and caregivers, giving back</h2>
+    <p class="lead">We're a group of parents and caregivers who volunteer our time to support and improve Solway Primary School for the benefit of every child in our community.</p>
+    <p class="lead">We work alongside the school to raise money for the extras that make school life richer for our tamariki: things that sit outside the school's day-to-day budget. Every dollar we raise goes straight back into Solway.</p>
+    <figure class="team-photo">
+      <img src="/images/friends-of-solway-team.jpg" alt="Friends of Solway committee members in matching navy t-shirts, standing together under the school's covered area at the Plant Fair">
+      <figcaption>Some of the Friends of Solway team at our 2026 Plant Fair 🌱</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- GET INVOLVED -->
+<section class="section alt">
+  <div class="section-inner">
+    <div class="section-label">Get involved</div>
+    <h2 class="section-title">Every bit of help counts</h2>
+    <p class="section-subtitle">You don't need to come to meetings to help. Give what time you can, when you can.</p>
+    <div class="grid grid-4">
+      <div class="card"><span class="card-icon">🙋</span><div class="card-title">Volunteer at an event</div><div class="card-desc">Lend a hand for an hour at a sizzle, stall or fair.</div></div>
+      <div class="card"><span class="card-icon">🧁</span><div class="card-title">Bake or donate</div><div class="card-desc">Baking for bake sales, plants for the Plant Fair, or prizes for raffles.</div></div>
+      <div class="card"><span class="card-icon">🛒</span><div class="card-title">Join in</div><div class="card-desc">Order Friday pizza, come along to events and share our posts with whānau and friends.</div></div>
+      <div class="card"><span class="card-icon">🏢</span><div class="card-title">Sponsor us</div><div class="card-desc">Own a business? Partner with us and support Solway tamariki.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <h2>📧 Get in touch</h2>
+  <p>Want to help out, sponsor us, or have an idea for a fundraiser? We'd love to hear from you. Ngā mihi nui for supporting our school!</p>
+  <a href="mailto:friendsofsolway@solway.school.nz" class="btn-white">friendsofsolway@solway.school.nz</a>
+</div>
+
+{% include footer.html %}
+</body>
+</html>
