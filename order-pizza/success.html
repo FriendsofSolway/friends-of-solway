@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,26 +68,7 @@
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
-    <a href="../index.html" class="nav-brand">
-      <img src="../Friends_of_Solway_Logo.png" alt="Friends of Solway" class="nav-logo">
-      <span class="nav-brand-text">
-        Friends of Solway
-        <span class="nav-brand-sub">Solway Primary School</span>
-      </span>
-    </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../past-fundraisers.html">Past Events</a></li>
-      <li><a href="../sponsors.html">Sponsors</a></li>
-      <li><a href="index.html" class="nav-cta">🍕 Order Pizza</a></li>
-    </ul>
-    <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
+{% include nav.html active="pizza" %}
 
 <main class="main">
   <div class="container">
@@ -103,26 +86,7 @@
   </div>
 </main>
 
-<footer>
-  <img src="../Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
-  <div class="footer-name">Friends of Solway</div>
-  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.6)">Supporting Solway Primary School, Masterton</div>
-  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.55)">📧 <a href="mailto:friendsofsolway@solway.school.nz" style="color:rgba(255,255,255,0.65);text-decoration:none;">friendsofsolway@solway.school.nz</a></div>
-  <ul class="footer-links">
-    <li><a href="../index.html">Home</a></li>
-    <li><a href="../past-fundraisers.html">Past Events</a></li>
-    <li><a href="../sponsors.html">Sponsors</a></li>
-    <li><a href="index.html">🍕 Order Pizza</a></li>
-    <li><a href="my-orders.html">My Orders</a></li>
-  </ul>
-  <hr class="footer-divider">
-  <ul class="footer-policy-links">
-    <li><a href="../privacy.html">Privacy Policy</a></li>
-    <li><a href="../refunds.html">Refund &amp; Cancellation Policy</a></li>
-    <li><a href="../terms.html">Terms &amp; Conditions</a></li>
-  </ul>
-  <div class="footer-copy">© 2026 Friends of Solway. 🌿</div>
-</footer>
+{% include footer.html %}
 
 <script>
 function toggleNav() {
