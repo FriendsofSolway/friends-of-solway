@@ -1,0 +1,27 @@
+<style>
+  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 16px auto; max-width: 480px; }
+  .footer-policy-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin: 8px 0; flex-wrap: wrap; }
+  .footer-policy-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 12px; transition: color 0.15s; }
+  .footer-policy-links a:hover { color: var(--teal); }
+</style>
+<footer class="site-footer">
+  <img src="/Friends_of_Solway_Logo.png" alt="Friends of Solway" class="footer-logo">
+  <div class="footer-name">Friends of Solway</div>
+  <div style="font-size:13px;margin-bottom:4px">Supporting Solway Primary School, Masterton</div>
+  <div style="font-size:13px;margin-bottom:4px;color:rgba(255,255,255,0.55)">📧 <a href="mailto:friendsofsolway@solway.school.nz" style="color:rgba(255,255,255,0.65);text-decoration:none;">friendsofsolway@solway.school.nz</a></div>
+  <ul class="footer-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/past-fundraisers.html">Past Events</a></li>
+    <li><a href="/sponsors.html">Sponsors</a></li>
+    <li><a href="/order-pizza/">Order Pizza</a></li>
+    <li><a href="/order-pizza/my-orders.html">My Pizza Orders</a></li>
+    <li><a href="/order-tea-towels/">Order Tea Towels</a></li>
+  </ul>
+  <hr class="footer-divider">
+  <ul class="footer-policy-links">
+    <li><a href="/privacy.html">Privacy Policy</a></li>
+    <li><a href="/refunds.html">Refund &amp; Cancellation Policy</a></li>
+    <li><a href="/terms.html">Terms &amp; Conditions</a></li>
+  </ul>
+  <div class="footer-copy">© {{ site.time | date: "%Y" }} Friends of Solway. 🌿</div>
+</footer>

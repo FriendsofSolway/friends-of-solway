@@ -1,0 +1,21 @@
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/Friends_of_Solway_Logo.png" alt="Friends of Solway" class="nav-logo">
+      <span class="nav-brand-text">
+        Friends of Solway
+        <span class="nav-brand-sub">Solway Primary School</span>
+      </span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/"{% if include.active == "home" %} class="active"{% endif %}>Home</a></li>
+      <li><a href="/past-fundraisers.html"{% if include.active == "past" %} class="active"{% endif %}>Past Events</a></li>
+      <li><a href="/sponsors.html"{% if include.active == "sponsors" %} class="active"{% endif %}>Sponsors</a></li>
+      <li><a href="/order-pizza/"{% if include.active == "pizza" %} class="active"{% else %} class="nav-cta"{% endif %}>🍕 Order Pizza</a></li>
+      <li><a href="/order-tea-towels/"{% if include.active == "teatowels" %} class="active"{% endif %}>🧺 Order Tea Towels</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
