@@ -1,4 +1,4 @@
-<nav>
+<nav aria-label="Main menu">
   <div class="nav-inner">
     <a href="/" class="nav-brand">
       <img src="/Friends_of_Solway_Logo.png" alt="Friends of Solway" class="nav-logo">
@@ -8,15 +8,15 @@
       </span>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="/"{% if include.active == "home" %} class="active"{% endif %}>Home</a></li>
-      <li><a href="/past-fundraisers.html"{% if include.active == "past" %} class="active"{% endif %}>Past Events</a></li>
-      <li><a href="/sponsors.html"{% if include.active == "sponsors" %} class="active"{% endif %}>Sponsors</a></li>
-      <li><a href="/about.html"{% if include.active == "about" %} class="active"{% endif %}>About</a></li>
-      <li><a href="/order-pizza/"{% if include.active == "pizza" %} class="active"{% else %} class="nav-cta"{% endif %}>🍕 Order Pizza</a></li>
-      <li><a href="/order-tea-towels/"{% if include.active == "teatowels" %} class="active"{% endif %}>🧺 Order Tea Towels</a></li>
+      <li><a href="/"{% if include.active == "home" %} class="active" aria-current="page"{% endif %}>Home</a></li>
+      <li><a href="/past-fundraisers.html"{% if include.active == "past" %} class="active" aria-current="page"{% endif %}>Past Events</a></li>
+      <li><a href="/sponsors.html"{% if include.active == "sponsors" %} class="active" aria-current="page"{% endif %}>Sponsors</a></li>
+      <li><a href="/about.html"{% if include.active == "about" %} class="active" aria-current="page"{% endif %}>About</a></li>
+      <li><a href="/order-pizza/"{% if include.active == "pizza" %} class="active" aria-current="page"{% else %} class="nav-cta"{% endif %}><span aria-hidden="true">🍕</span> Order Pizza</a></li>
+      <li><a href="/order-tea-towels/my-orders.html"{% if include.active == "teatowels" %} class="active" aria-current="page"{% endif %}><span aria-hidden="true">🧺</span> Tea Towel Orders</a></li>
     </ul>
-    <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
-      <span></span><span></span><span></span>
+    <button class="nav-hamburger" type="button" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" onclick="var open=document.getElementById('navLinks').classList.toggle('open');this.setAttribute('aria-expanded', open ? 'true' : 'false');">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
     </button>
   </div>
 </nav>
